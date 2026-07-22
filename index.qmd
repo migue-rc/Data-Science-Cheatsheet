@@ -1,0 +1,93 @@
+---
+title: Data-Science Cheat Sheet
+author: Miguel R.
+---
+# Data Science Cheat sheet
+## Statistics
+### Discrete Distributions
+#### Binomial
+number of successes $x$ in $n$ events,
+each with $p$ probability $\to \binom{n}x p^x q^{n-x}$, 
+with $\mu = np$ and $\delta^2 = npq$. If n = 1, this is Bernoulli.
+
+
+#### Geometric  
+first success with $p$ probability on the $n^{th}$ trial $\to q^{n-1}p$, with mean = $1/p$
+
+#### Negative Binomial 
+number of failures before $r$ successes 
+
+#### Hypergeometric 
+number of successes $x$ in a size $N$ population with $n$ draws, without replacement. 
+$$\mu=n\frac{x}{N}$$
+
+#### Poisson 
+number of successes $x$ in a fixed time interval, 
+where success occurs at an average rate $\lambda$ $\to$ $\frac{\lambda^xe^{-\lambda}}{x!}$. 
+$\mu = \delta^2 = \lambda$
+
+
+### Continuous Distributions
+
+#### Uniform 
+all values between $a$ and $b$ are equally likely $\to \frac{1}{b-a}$ with $\mu = \frac{a+b}{2}$ and $\sigma^2 = \frac{(b-a)^2}{12}$ or $\frac{n^2 - 1}{12}$ if discrete
+
+#### Normal/Gaussian 
+$N(\mu,\sigma$), Standard Normal $Z\sim N(0, 1)$
+
+- Central Limit Theorem - sample mean of i.i.d. data approaches normal distribution
+- Empirical Rule - 68\%, 95\%, and 99.7\% of values lie within one, two, and three standard deviations of the mean
+- Normal Approximation - discrete distributions such as Binomial and Poisson can be approximated using z-scores when $np$, $nq$, and $\lambda$ are greater than 10
+\end{itemize}
+
+#### Exponential 
+memoryless time between independent events occurring at an average rate $\lambda$ $\to \lambda e^{-\lambda x}$, with $\mu$ = $\frac{1}{\lambda}$
+
+#### Gamma 
+time until $n$ independent events occurring at an average rate $\lambda$
+
+## Concepts
+
+Prediction Error = Bias$^2$ + Variance + Irreducible Noise
+
+### Bias 
+wrong assumptions when training $\to$ can't capture underlying patterns $\to$ underfit
+
+### Variance 
+sensitive to fluctuations when training$\to$ can't generalize on unseen data $\to$ overfit
+
+The bias-variance tradeoff attempts to minimize these two sources of error, through methods such as:
+
+- Cross validation to generalize to unseen data
+- Dimension reduction and feature selection
+
+In all cases, as variance decreases, bias increases.
+ML models can be divided into two types:
+    - Parametric - uses a fixed number of parameters with respect to sample size
+    - Non-Parametric - uses a flexible number of parameters and doesn't make particular assumptions on the data
+
+### Cross Validation - validates test error with a subset of training data, and selects parameters to maximize average performance
+- $k$-fold - divide data into $k$ groups, and use one to validate
+- leave-$p$-out  - use $p$ samples to validate and the rest to train
+
+## Model Evaluation
+### Regression
+
+#### Mean Squared Error (MSE) 
+$\frac{1}{n}\sum (y_i -\hat{y})^2$
+
+Sum of Squared Error (SSE) = $\sum (y_i - \hat{y})^2$
+
+Total Sum of Squares (SST) = $\sum (y_i - \bar{y})^2$
+\vspace{.1em}
+
+$\boldsymbol{R^2} = 1 - \frac{SSE}{SST}$, the proportion of explained $y$-variability
+
+Note, negative $R^2$ means the model is worse than just predicting the mean. $R^2$ is not valid for nonlinear models, as $SS_{residual } + SS_{error} \neq SST$.
+
+
+#### Adjusted $\boldsymbol{R^2}$ 
+$1 - (1-R^2)\frac{N-1}{N-p-1}$, which changes only when predictors affect $R^2$ above what would be expected by chance
+
+### Classification
+
