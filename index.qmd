@@ -66,7 +66,8 @@ ML models can be divided into two types:
     - Parametric - uses a fixed number of parameters with respect to sample size
     - Non-Parametric - uses a flexible number of parameters and doesn't make particular assumptions on the data
 
-### Cross Validation - validates test error with a subset of training data, and selects parameters to maximize average performance
+### Cross Validation 
+validates test error with a subset of training data, and selects parameters to maximize average performance
 - $k$-fold - divide data into $k$ groups, and use one to validate
 - leave-$p$-out  - use $p$ samples to validate and the rest to train
 
@@ -81,7 +82,8 @@ Sum of Squared Error (SSE) = $\sum (y_i - \hat{y})^2$
 Total Sum of Squares (SST) = $\sum (y_i - \bar{y})^2$
 \vspace{.1em}
 
-$\boldsymbol{R^2} = 1 - \frac{SSE}{SST}$, the proportion of explained $y$-variability
+#### $\boldsymbol{R^2}$
+$1 - \frac{SSE}{SST}$, the proportion of explained $y$-variability
 
 Note, negative $R^2$ means the model is worse than just predicting the mean. $R^2$ is not valid for nonlinear models, as $SS_{residual } + SS_{error} \neq SST$.
 
