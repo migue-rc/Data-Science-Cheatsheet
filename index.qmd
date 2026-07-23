@@ -92,4 +92,65 @@ Note, negative $R^2$ means the model is worse than just predicting the mean. $R^
 $1 - (1-R^2)\frac{N-1}{N-p-1}$, which changes only when predictors affect $R^2$ above what would be expected by chance
 
 ### Classification
+||Predict Yes|Predict No|
+|---|---|---|
+|**Actual Yes**| **T**rue **P**ositive ($1-\beta$)|**F**alse **N**egative ($\beta$)|
+|**Actual No** | **F**alse **P**ositive ($\alpha$)| **T**rue **N**egative ($1-\alpha$)|
+
+
+- Precision = $\frac{TP}{TP + FP}$, percent correct when predict positive
+- Recall, Sensitivity = $\frac{TP}{TP + FN}$, percent of actual positives identified correctly (True Positive Rate)
+- Specificity = $\frac{TN}{TN + FP}$, percent of actual negatives identified correctly, also 1 - FPR (True Negative Rate)
+- $F_1 = 2\frac{precision\cdot recall}{precision + recall}$, useful when classes are **imbalanced**
+
+#### ROC Curve
+plots TPR (True Positive Rate) vs. FPR (False Positive Rate) for every threshold $\alpha$. 
+Area Under the Curve  *measures how likely the model differentiates positives and negatives* (perfect AUC = 1, baseline = 0.5).
+
+
+#### Precision-Recall Curve
+focuses on the *correct prediction of the minority class*, useful when data is imbalanced
+
+## Linear Regression
+Models linear relationships between a continuous response and explanatory variables
+
+
+### Ordinary Least Squares  
+find $\hat{\beta}$ for $\hat{y} = \hat{\beta_{0}} + \hat{\beta}X + \epsilon$
+by solving $\hat{\beta}$ = $(X^{T}X)^{-1}X^{T}Y$ which minimizes the SSE
+
+### Assumptions
+- Linear relationship and independent observations
+- Homoscedasticity - error terms have constant variance
+- Errors are uncorrelated and normally distributed
+- Low multicollinearity
+
+
+### Variance Inflation Factor 
+measures the severity of multicollinearity $\to$ $\frac{1}{1-{R_i}^2}$, where ${R_i}^2$ is found by regressing $X_i$ against all other variables (a common VIF cutoff is 10)
+
+### Regularization
+
+Add a penalty $\lambda$ for large coefficients to the cost function, which reduces overfitting. Requires normalized data.
+
+### Subset  $(L_0)$
+$\lambda ||\hat{\beta}||_0 = \lambda (number \;of\;non\hspace{-.7mm}-\hspace{-.7mm}zero\; variables)$
+
+### LASSO  ($L_1$)
+$\lambda ||\hat{\beta}||_1 = \lambda\sum | \hat{\beta} |$
+
+### Ridge  $(L_2)$
+$\lambda ||\hat{\beta}||_2 = \lambda\sum( \hat{\beta})^2$
+
+::: {.callout-note}
+Combining LASSO and Ridge gives Elastic Net
+:::
+
+## LogisTic Regression
+
+Predicts probability that $y$ belongs to a binary class. Estimates $\beta$ through maximum likelihood estimation (MLE) by fitting a logistic (sigmoid) function to the data. This is equivalent to minimizing the cross entropy loss. Regularization can be added in the exponent.
+
+
+
+
 
