@@ -1,3 +1,16 @@
 project:
   type: website
   output-dir: docs
+
+website:
+  # Set both of these when you create a project from the template.
+  # site-url is REQUIRED for Quarto to generate sitemap.xml.
+  title: "Data Science Cheat Sheet"
+  site-url: "https://migue-rc.github.io/Data-Science-Cheatsheet"
+  # favicon: favicon.ico
+  favicon: "https://migue-rc.github.io/favicon.ico"
+  # Creates a top navbar so users can always get back to your Hub
+  navbar:
+    left:
+      - text: "← Back to Main"
+        href: "https://migue-rc.github.io"
