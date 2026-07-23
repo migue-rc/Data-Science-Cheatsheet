@@ -747,3 +747,75 @@ $\to \frac{\sum (x_i - \bar{x}) (y_i - \bar{y})}{n-1} $
 #### Correlation 
 normalizes covariance to provide both strength and direction of linear relationships $\to r =  \frac{Cov(x,y)}{\sigma_x \sigma_y}$
 Independent variables are uncorrelated,  though the inverse is not necessarily true
+
+## A/B Testing
+
+Examines user experience through randomized tests with two variants.
+The typical steps are:
+
+1. Determine the evaluation metric and experiment goals
+2. Select a significance level $\alpha$ and power threshold 1 - $\beta$
+3. Calculate the required sample size per variation
+4. Randomly assign users into control and treatment groups
+5. Measure and analyze results using the appropriate test
+
+The required sample size depends on $\alpha$, $\beta$, and the MDE
+
+#### Minimum Detectable Effect  
+the target relative minimum increase over the baseline that should be observed from a test
+
+#### Overall Evaluation Criterion  
+quantitative measure of the test's objective, commonly used when short and long-term metrics have inverse relationships
+
+#### Multivariate Testing  
+compares 3$\plus$ variants or combinations, but requires larger sample sizes
+
+#### Bonferroni Correction  
+when conducting $n$ tests,
+run each test at the $\frac{\alpha}{n}$ significance level, which lowers the false positive rate of finding effects by chance
+
+#### Network Effects  
+changes that occur due to effect spillover from other groups. To detect group interference:
+
+1. Split the population into distinct clusters
+2. Randomly assign half the clusters to the control and treatment groups $A_1$ and $B_1$
+3. Randomize the other half at the user-level and assign to control and treatment groups
+    $A_2$ and $B_2$
+4. Intuitively, if there are network effects, then the tests will have different results
+
+To account for network effects, randomize users based on time, cluster, or location
+
+#### Sequential Testing  
+allows for early experiment stopping by drawing statistical borders based on the Type I Error rate. If the effect reaches a border, the test can be stopped. Used to combat \emph{peeking} (preliminarily checking results of a test), which can inflate $p$-values and lead to incorrect conclusions.
+
+#### Cohort Analysis 
+examines specific groups of users based on behavior or time and can help identify whether novelty or primacy effects are present
+
+## Miscellaneous
+
+#### Shapley Values 
+measures the marginal contribution of each variable in the output of a model, where the sum of all Shapley values equals the total value (prediction $-$ mean prediction)
+
+#### SHAP 
+interpretable Shapley method that utilizes both global and local importance to model variable explainability
+
+#### Permutation 
+order matters  $\to \frac{n!}{(n-k)!} = {}^n P_k$
+
+#### Combination  
+order doesn't matter $\to \frac{n!}{k!(n-k)!}= {}^n C_k = \binom nk$
+
+#### Left Skew
+Mean $<$ Median $\leq$ Mode
+
+#### Right Skew  
+Mean $>$ Median $\geq$ Mode
+
+#### Probability vs Likelihood  
+given a situation $\theta$ and observed outcomes $O$, 
+probability is calculated as $P(O|\theta)$. 
+
+However, when true values for $\theta$ are unknown, 
+$O$ is used to estimate the $\theta$ that maximizes the likelihood function. 
+That is, $L(\theta|O) = P(O|\theta)$.
+

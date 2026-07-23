@@ -677,11 +677,389 @@ generates <span class="math inline">\(k\)</span> topics by first assigning each 
 </section>
 <section id="pooling" class="level4">
 <h4 class="anchored" data-anchor-id="pooling">Pooling</h4>
-<p>downsamples convolution layers to reduce dimensionality and maintain spatial invariance, allowing detection of features even if they have shifted slightly. Common techniques return the max or average value in the pooling window. The general CNN architecture is as follows:</p>
+<p>down samples convolution layers to reduce dimensionality and maintain spatial invariance, allowing detection of features even if they have shifted slightly. Common techniques return the max or average value in the pooling window.</p>
+<p>The general CNN architecture is as follows:</p>
 <ol type="1">
 <li>Perform a series of convolution, ReLU, and pooling operations, extracting important features from the data</li>
 <li>Feed output into a fully-connected layer for classification, object detection, or other structural analyses</li>
 </ol>
+</section>
+</section>
+<section id="recurrent-neural-network" class="level2">
+<h2 class="anchored" data-anchor-id="recurrent-neural-network">Recurrent Neural Network</h2>
+<p>Predicts sequential data using a temporally connected system that captures both new inputs and previous outputs using hidden states</p>
+<p><img src="https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/rnn1.JPG?raw=true" class="img-fluid"></p>
+<p>RNNs can model various input-output scenarios, such as many-to-one, one-to-many, and many-to-many. Relies on parameter (weight) sharing for efficiency. To avoid redundant calculations during backpropagation, downstream gradients are found by chaining previous gradients. However, repeatedly multiplying values greater than or less than 1 leads to: - Exploding gradients - model instability and overflows - Vanishing gradients - loss of learning ability This can be solved using: - Gradient clipping - cap the maximum value of gradients - ReLU - its derivative prevents gradient shrinkage for <span class="math inline">\(x &gt; 0\)</span> - Gated cells - regulate the flow of information</p>
+<section id="long-short-term-memory" class="level4">
+<h4 class="anchored" data-anchor-id="long-short-term-memory">Long Short-Term Memory</h4>
+<p>learns long-term dependencies using gated cells and maintains a separate cell state from what is outputted. Gates in LSTM perform the following:</p>
+<ol type="1">
+<li>Forget and filter out irrelevant info from previous layers</li>
+<li>Store relevant info from current input</li>
+<li>Update the current cell state</li>
+<li>Output the hidden state, a filtered version of the cell state LSTMs can be stacked to improve performance.</li>
+</ol>
+</section>
+</section>
+<section id="boosting" class="level2">
+<h2 class="anchored" data-anchor-id="boosting">Boosting</h2>
+<p>Sequentially fits many simple models that account for the previous model’s errors. As opposed to bagging, boosting trains on all the data and combines models using the learning rate <span class="math inline">\(\alpha\)</span>.</p>
+<section id="adaboost" class="level4">
+<h4 class="anchored" data-anchor-id="adaboost">AdaBoost</h4>
+<p>uses sample weighting and decision ‘stumps’ (one-level decision trees) to classify samples 1. Build decision stumps for every feature, choosing the one with the best classification accuracy 2. Assign more weight to misclassified samples and reward trees that differentiate them, where <span class="math inline">\(\alpha = \frac{1}{2}ln\frac{1-TotalError}{TotalError}\)</span> 3. Continue training and weighting decision stumps until convergence</p>
+</section>
+<section id="gradient-boost" class="level4">
+<h4 class="anchored" data-anchor-id="gradient-boost">Gradient Boost</h4>
+<p>trains sequential models by minimizing a given loss function using gradient descent at each step 1. Start by predicting the average value of the response 2. Build a tree on the errors, constrained by depth or the number of leaf nodes 3. Scale decision trees by a constant learning rate <span class="math inline">\(\alpha\)</span> 4. Continue training and weighting decision trees until convergence</p>
+<p>XGBoost - fast gradient boosting method that utilizes regularization and parallelization</p>
+</section>
+</section>
+<section id="recommender-systems" class="level2">
+<h2 class="anchored" data-anchor-id="recommender-systems">Recommender Systems</h2>
+<p>Suggests relevant items to users by predicting ratings and preferences, and is divided into two main types: - Content Filtering - recommends similar items - Collaborative Filtering - recommends what similar users like</p>
+<p>The latter is more common, and includes methods such as: #### Memory-based Approaches<br>
+finds neighborhoods by using rating data to compute user and item similarity, measured using correlation or cosine similarity</p>
+<ul>
+<li>User-User - similar users also liked…
+<ul>
+<li>Leads to more diverse recommendations, as opposed to just recommending popular items</li>
+<li>Suffers from sparsity, as the number of users who rate items is often low</li>
+</ul></li>
+<li>Item-Item - similar users who liked this item also liked…
+<ul>
+<li>Efficient when there are more users than items, since the item neighborhoods update less frequently than users</li>
+<li>Similarity between items is often more reliable than similarity between users</li>
+</ul></li>
+</ul>
+<section id="model-based-approaches" class="level4">
+<h4 class="anchored" data-anchor-id="model-based-approaches">Model-based Approaches</h4>
+<p>predict ratings of unrated items, through methods such as Bayesian networks, SVD, and clustering. Handles sparse data better than memory-based approaches.</p>
+<ul>
+<li>Matrix Factorization - decomposes the user-item rating matrix into two lower-dimensional matrices representing the users and items, each with <span class="math inline">\(k\)</span> latent factors Recommender systems can also be combined through ensemble methods to improve performance.</li>
+</ul>
+</section>
+</section>
+<section id="reinforcement-learning" class="level2">
+<h2 class="anchored" data-anchor-id="reinforcement-learning">Reinforcement Learning</h2>
+<p>Maximizes future rewards by learning through state-action pairs. That is, an <span class="math inline">\(agent\)</span> performs <span class="math inline">\(actions\)</span> in an <span class="math inline">\(environment\)</span>, which updates the <span class="math inline">\(state\)</span> and provides a <span class="math inline">\(reward\)</span>.</p>
+<p><img src="https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/reinforcement4.JPG?raw=true" class="img-fluid"></p>
+<section id="multi-armed-bandit-problem" class="level4">
+<h4 class="anchored" data-anchor-id="multi-armed-bandit-problem">Multi-armed Bandit Problem</h4>
+<p>a gambler plays slot machines with unknown probability distributions and must decide the best strategy to maximize reward. This exemplifies the exploration-exploitation tradeoff, as the best long-term strategy may involve short-term sacrifices.</p>
+<p>RL is divided into two types, with the former being more common: - Model-free - learn through trial and error in the environment - Model-based - access to the underlying (approximate) state-reward distribution</p>
+</section>
+<section id="q-value-qsa" class="level4">
+<h4 class="anchored" data-anchor-id="q-value-qsa">Q-Value <span class="math inline">\(Q(s,a)\)</span></h4>
+<p>captures the expected discounted total future reward given a state and action</p>
+</section>
+<section id="policy" class="level4">
+<h4 class="anchored" data-anchor-id="policy">Policy</h4>
+<p>chooses the best actions for an agent at various states \ $ (s) = _a Q(s,a)$\</p>
+<p>Deep RL algorithms can further be divided into two main types, depending on their learning objective</p>
+</section>
+<section id="value-learning" class="level4">
+<h4 class="anchored" data-anchor-id="value-learning">Value Learning</h4>
+<p>aims to approximate <span class="math inline">\(Q(s,a)\)</span> for all actions the agent can take, but is restricted to discrete action spaces. Can use the <span class="math inline">\(\epsilon\)</span>-greedy method, where <span class="math inline">\(\epsilon\)</span> measures the probability of exploration. If chosen, the next action is selected uniformly at random.</p>
+<ul>
+<li>Q-Learning - simple value iteration model that maximizes the Q-value using a table on states and actions</li>
+<li>Deep Q Network - finds the best action to take by minimizing the Q-loss, the squared error between the target Q-value and the prediction</li>
+</ul>
+</section>
+<section id="policy-gradient-learning" class="level4">
+<h4 class="anchored" data-anchor-id="policy-gradient-learning">Policy Gradient Learning</h4>
+<p>directly optimize the the policy <span class="math inline">\(\pi(s)\)</span> through a probability distribution of actions, without the need for a value function, allowing for continuous action spaces.</p>
+</section>
+<section id="actor-critic-model" class="level4">
+<h4 class="anchored" data-anchor-id="actor-critic-model">Actor-Critic Model</h4>
+<p>hybrid algorithm that relies on two neural networks, an actor <span class="math inline">\(\pi(s,a,\theta\)</span>) which controls agent behavior and a critic <span class="math inline">\(Q(s,a,w)\)</span> that measures how good an action is. Both run in parallel to find the optimal weights <span class="math inline">\(\theta, w\)</span> to maximize expected reward. At each step:</p>
+<ol type="1">
+<li>Pass the current state into the actor and critic</li>
+<li>The critic evaluates the action’s Q-value, and the actor updates its weight <span class="math inline">\(\theta\)</span></li>
+<li>The actor takes the next action leading to a new state, and the critic updates its weight <span class="math inline">\(w\)</span></li>
+</ol>
+</section>
+</section>
+<section id="anomaly-detection" class="level2">
+<h2 class="anchored" data-anchor-id="anomaly-detection">Anomaly Detection</h2>
+<p>Identifies unusual patterns that differ from the majority of the data. Assumes that anomalies are:</p>
+<ul>
+<li>Rare - the minority class that occurs rarely in the data</li>
+<li>Different - have feature values that are very different from normal observations</li>
+</ul>
+<p>Anomaly detection techniques spans a wide range, including methods based on:</p>
+<section id="statistics-1" class="level4">
+<h4 class="anchored" data-anchor-id="statistics-1">Statistics</h4>
+<p>relies on various statistical methods to identify outliers, such as Z-tests, boxplots, interquartile ranges, and variance comparisons</p>
+</section>
+<section id="density" class="level4">
+<h4 class="anchored" data-anchor-id="density">Density</h4>
+<p>useful when data is grouped around dense neighborhoods, measured by distance. Methods include <span class="math inline">\(k\)</span>-nearest neighbors, local outlier factor, and isolation forest.</p>
+<ul>
+<li><p>Isolation Forest - tree-based model that labels outliers based on an anomaly score</p>
+<ol type="1">
+<li><p>Select a random feature and split value, dividing the dataset in two</p></li>
+<li><p>Continue splitting randomly until every point is isolated</p></li>
+<li><p>Calculate the anomaly score for each observation, based on how many iterations it took to isolate that point.</p></li>
+<li><p>If the anomaly score is greater than a threshold, mark it as an outlier</p>
+<p>Intuitively, outliers are easier to isolate and should have shorter path lengths in the tree</p></li>
+</ol></li>
+</ul>
+</section>
+<section id="clusters" class="level4">
+<h4 class="anchored" data-anchor-id="clusters">Clusters</h4>
+<p>data points outside of clusters could potentially be marked as anomalies</p>
+</section>
+<section id="autoencoders" class="level4">
+<h4 class="anchored" data-anchor-id="autoencoders">Autoencoders</h4>
+<p>unsupervised neural networks that compress data through an encoder and reconstruct it using a decoder. Autoencoders do not reconstruct the data perfectly, but rather focus on capturing important features in the data.</p>
+<p><img src="https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/autoencodeerNew.png?raw=true" class="img-fluid"></p>
+<p>The decoder struggles to capture anomalous patterns, and the reconstruction error acts as a score to detect anomalies.</p>
+<p>Autoencoders can also be used for image processing, dimension reduction, and information retrieval.</p>
+</section>
+<section id="hidden-markov-model" class="level4">
+<h4 class="anchored" data-anchor-id="hidden-markov-model">Hidden Markov Model</h4>
+<p>uses observed events <span class="math inline">\(O\)</span> to model a set of <span class="math inline">\(n\)</span> underlying states <span class="math inline">\(Q\)</span> using <span class="math inline">\(\lambda = (A,B,\pi)\)</span></p>
+<ul>
+<li><span class="math inline">\(A\)</span> - <span class="math inline">\(n\times n\)</span> matrix of transition probabilities from state <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span></li>
+<li><span class="math inline">\(B\)</span> - sequence of likelihoods of emitting <span class="math inline">\(o_t\)</span> in state <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(\pi\)</span> - initial probability distribution over states</li>
+</ul>
+<p>HMMs can calculate <span class="math inline">\(P(O|\lambda)\)</span>, find the best hidden state sequence Q, or learn the parameters <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Anomalies are observations that are unlikely to occur across states.</p>
+<p>HMMs can be applied to many problems such as signal processing and part of speech tagging.</p>
+</section>
+</section>
+<section id="time-series" class="level2">
+<h2 class="anchored" data-anchor-id="time-series">Time Series</h2>
+<p>Extracts characteristics from time-sequenced data, which may exhibit the following characteristics: - Stationarity - statistical properties such as mean, variance, and auto correlation are constant over time - Trend - long-term rise or fall in values - Seasonality - variations associated with specific calendar times, occurring at regular intervals less than a year - Cyclicality - variations without a fixed time length, occurring in periods of greater or less than one year - Autocorrelation - degree of linear similarity between current and lagged values</p>
+<p>CV must account for the time aspect, such as for each fold <span class="math inline">\(F_x\)</span>:</p>
+<ul>
+<li>Sliding Window - train <span class="math inline">\(F_1\)</span>, test <span class="math inline">\(F_2\)</span>, then train <span class="math inline">\(F_2\)</span>, test <span class="math inline">\(F_3\)</span></li>
+<li>Forward Chain - train <span class="math inline">\(F_1\)</span>, test <span class="math inline">\(F_2\)</span>, then train <span class="math inline">\(F_1, F_2\)</span>, test <span class="math inline">\(F_3\)</span></li>
+</ul>
+<section id="exponential-smoothing" class="level4">
+<h4 class="anchored" data-anchor-id="exponential-smoothing">Exponential Smoothing</h4>
+<p>uses an exponentially decreasing weight to observations over time, and takes a moving average. The time <span class="math inline">\(t\)</span> output is <span class="math inline">\(s_t = \alpha x_t + (1-\alpha)s_{t-1}\)</span>, where <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>.</p>
+</section>
+<section id="double-exponential-smoothing" class="level4">
+<h4 class="anchored" data-anchor-id="double-exponential-smoothing">Double Exponential Smoothing</h4>
+<p>applies a recursive exponential filter to capture trends within a time series</p>
+<p><span class="math display">\[s_t = \alpha x_t + (1-\alpha)(s_{t-1} + b_{t-1})\]</span></p>
+<p><span class="math display">\[b_t = \beta (s_t - s_{t-1}) + (1-\beta)b_{t-1}\]</span></p>
+<p>Triple exponential smoothing adds a third variable <span class="math inline">\(\gamma\)</span> that accounts for seasonality. </p>
+</section>
+<section id="arima" class="level4">
+<h4 class="anchored" data-anchor-id="arima">ARIMA</h4>
+<p>models time series using three parameters <span class="math inline">\((p,d,q)\)</span>:</p>
+<ul>
+<li><p>Autoregressive - the past <span class="math inline">\(p\)</span> values affect the next value</p></li>
+<li><p>Integrated - values are replaced with the difference between current and previous values, using the difference degree <span class="math inline">\(d\)</span> (0 for stationary data, and 1 for non-stationary)</p></li>
+<li><p>Moving Average - the number of lagged forecast errors and the size of the moving average window <span class="math inline">\(q\)</span></p></li>
+</ul>
+</section>
+<section id="sarima" class="level4">
+<h4 class="anchored" data-anchor-id="sarima">SARIMA</h4>
+<p>models seasonality through four additional seasonality-specific parameters: <span class="math inline">\(P\)</span>, <span class="math inline">\(D\)</span>, <span class="math inline">\(Q\)</span>, and the season length <span class="math inline">\(s\)</span></p>
+</section>
+<section id="prophet" class="level4">
+<h4 class="anchored" data-anchor-id="prophet">Prophet</h4>
+<p>additive model that uses non-linear trends to account for multiple seasonalities such as yearly, weekly, and daily. Robust to missing data and handles outliers well.\ Can be represented as: <span class="math inline">\(y(t) = g(t) + s(t) + h(t) + \epsilon(t)\)</span>, with four distinct components for the growth over time, seasonality, holiday effects, and error. This specification is similar to a generalized additive model.</p>
+</section>
+<section id="generalized-additive-model" class="level4">
+<h4 class="anchored" data-anchor-id="generalized-additive-model">Generalized Additive Model</h4>
+<p>combine predictive methods while preserving additivity across variables, in a form such as <span class="math inline">\(y = \beta_0 + f_1(x_1) + \cdots + f_m(x_m)\)</span>, where functions can be non-linear. GAMs also provide regularized and interpretable solutions for regression and classification problems.</p>
+<p>Classifies data using the label with the highest conditional probability, given data <span class="math inline">\(a\)</span> and classes <span class="math inline">\(c\)</span>. Naive because it assumes variables are independent.</p>
+</section>
+</section>
+<section id="naive-bayes" class="level2">
+<h2 class="anchored" data-anchor-id="naive-bayes">Naive Bayes</h2>
+<section id="bayes-theorem" class="level4">
+<h4 class="anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h4>
+<p><span class="math display">\[P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}\]</span></p>
+</section>
+<section id="gaussian-naive-bayes" class="level4">
+<h4 class="anchored" data-anchor-id="gaussian-naive-bayes">Gaussian Naive Bayes</h4>
+<p>calculates conditional probability for continuous data by assuming a normal distribution</p>
+</section>
+</section>
+<section id="statistics-2" class="level2">
+<h2 class="anchored" data-anchor-id="statistics-2">Statistics</h2>
+<section id="p-value" class="level4">
+<h4 class="anchored" data-anchor-id="p-value">p-value</h4>
+<p>probability that an effect could have occurred by chance. If less than the significance level <span class="math inline">\(\alpha\)</span>, or if the test statistic is greater than the critical value, then reject the null.</p>
+</section>
+<section id="type-i-error-false-positive-alpha" class="level4">
+<h4 class="anchored" data-anchor-id="type-i-error-false-positive-alpha">Type I Error (False Positive <span class="math inline">\(\alpha\)</span>)</h4>
+<p>rejecting a true null</p>
+</section>
+<section id="type-ii-error-false-negative-beta" class="level4">
+<h4 class="anchored" data-anchor-id="type-ii-error-false-negative-beta">Type II Error (False Negative <span class="math inline">\(\beta\)</span>)</h4>
+<p>not rejecting a false null</p>
+<p>Decreasing Type I Error causes an increase in Type II Error</p>
+</section>
+<section id="confidence-level-1---alpha" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-level-1---alpha">Confidence Level (1 - <span class="math inline">\(\alpha\)</span>)</h4>
+<p>probability of finding an effect that did not occur by chance and avoiding a Type I error</p>
+</section>
+<section id="power-1---beta" class="level4">
+<h4 class="anchored" data-anchor-id="power-1---beta">Power (1 - <span class="math inline">\(\beta\)</span>)</h4>
+<p>probability of picking up on an effect that is present and avoiding a Type II Error</p>
+</section>
+<section id="confidence-interval" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h4>
+<p>estimated interval that models the long-term frequency of capturing the true parameter value</p>
+<section id="z-test" class="level5">
+<h5 class="anchored" data-anchor-id="z-test">z-test</h5>
+<p>tests whether normally distributed population means are different, used when <span class="math inline">\(n\)</span> is large and variances are known - z-score - the number of standard deviations between a data point <span class="math inline">\(x\)</span> and the mean <span class="math inline">\(\to \frac{x - \mu}{\sigma}\)</span></p>
+</section>
+<section id="t-test" class="level5">
+<h5 class="anchored" data-anchor-id="t-test">t-test</h5>
+<p>used when population variances are unknown, and converges to the <span class="math inline">\(z\)</span>-test when <span class="math inline">\(n\)</span> is large - t-score - uses the standard error as an estimate for population variance <span class="math inline">\(\to \frac{x - \mu}{s/\sqrt{n}}\)</span></p>
+</section>
+</section>
+<section id="degrees-of-freedom" class="level4">
+<h4 class="anchored" data-anchor-id="degrees-of-freedom">Degrees of Freedom</h4>
+<p>the number of independent (free) dimensions needed before the parameter estimate can be determined</p>
+</section>
+<section id="chi-square-tests" class="level4">
+<h4 class="anchored" data-anchor-id="chi-square-tests">Chi-Square Tests</h4>
+<p>measure differences between categorical variables, using <span class="math inline">\(\chi^2\)</span> = <span class="math inline">\(\sum \frac{observed - expected}{expected}\)</span> to test:</p>
+<ul>
+<li>Goodness of fit - if samples of one categorical variable match the population category expectations</li>
+<li>Independence - if being in one category is independent of another, based off two categories</li>
+<li>Homogeneity - if different subgroups come from the same population, based off a single category</li>
+</ul>
+</section>
+<section id="anova" class="level4">
+<h4 class="anchored" data-anchor-id="anova">ANOVA</h4>
+<p>analysis of variance, used to compare <span class="math inline">\(3+\)</span> samples</p>
+<ul>
+<li>F-score - compares the ratio of explained and unexplained variance <span class="math inline">\(\to \frac{\text{between group variance}}{\text{within group variance}}\)</span></li>
+</ul>
+</section>
+<section id="conditional-probability" class="level4">
+<h4 class="anchored" data-anchor-id="conditional-probability">Conditional Probability</h4>
+<p><span class="math display">\[P(A \mid B) = \frac{P(A \cap B)}{P(B)}\]</span></p>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then <span class="math inline">\(P(A \cap B) = P(A) P(B)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note, events that are independent of themselves must have probability either 1 or 0.</p>
+</div>
+</div>
+</section>
+<section id="union" class="level4">
+<h4 class="anchored" data-anchor-id="union">Union</h4>
+<p><span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</span></p>
+</section>
+<section id="mutually-exclusive" class="level4">
+<h4 class="anchored" data-anchor-id="mutually-exclusive">Mutually Exclusive</h4>
+<p>events cannot happen simultaneously</p>
+</section>
+<section id="expected-value" class="level4">
+<h4 class="anchored" data-anchor-id="expected-value">Expected Value</h4>
+<p><span class="math inline">\(E[X] = \sum x_i p_i\)</span>, with properties - <span class="math inline">\(E[X + Y] = E[X] + E[Y]\)</span> - <span class="math inline">\(E[XY] = E[X]E[Y]\)</span> if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent</p>
+</section>
+<section id="variance-1" class="level4">
+<h4 class="anchored" data-anchor-id="variance-1">Variance</h4>
+<p><span class="math display">\[Var(X) = E[X^2] - E[X]^2\]</span>, with properties</p>
+<ul>
+<li>Var<span class="math inline">\((X\pm Y) =\)</span> Var<span class="math inline">\((X) +\)</span>Var<span class="math inline">\((Y) \pm 2\)</span>Cov<span class="math inline">\((X,Y)\)</span></li>
+<li>Var<span class="math inline">\((aX \pm b) = a^2\)</span>Var<span class="math inline">\((X)\)</span></li>
+</ul>
+</section>
+<section id="covariance" class="level4">
+<h4 class="anchored" data-anchor-id="covariance">Covariance</h4>
+<p>measures the direction of the joint linear relationship of two variables $ $</p>
+</section>
+<section id="correlation" class="level4">
+<h4 class="anchored" data-anchor-id="correlation">Correlation</h4>
+<p>normalizes covariance to provide both strength and direction of linear relationships <span class="math inline">\(\to r =  \frac{Cov(x,y)}{\sigma_x \sigma_y}\)</span> Independent variables are uncorrelated, though the inverse is not necessarily true</p>
+</section>
+</section>
+<section id="ab-testing" class="level2">
+<h2 class="anchored" data-anchor-id="ab-testing">A/B Testing</h2>
+<p>Examines user experience through randomized tests with two variants. The typical steps are:</p>
+<ol type="1">
+<li>Determine the evaluation metric and experiment goals</li>
+<li>Select a significance level <span class="math inline">\(\alpha\)</span> and power threshold 1 - <span class="math inline">\(\beta\)</span></li>
+<li>Calculate the required sample size per variation</li>
+<li>Randomly assign users into control and treatment groups</li>
+<li>Measure and analyze results using the appropriate test</li>
+</ol>
+<p>The required sample size depends on <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, and the MDE</p>
+<section id="minimum-detectable-effect" class="level4">
+<h4 class="anchored" data-anchor-id="minimum-detectable-effect">Minimum Detectable Effect</h4>
+<p>the target relative minimum increase over the baseline that should be observed from a test</p>
+</section>
+<section id="overall-evaluation-criterion" class="level4">
+<h4 class="anchored" data-anchor-id="overall-evaluation-criterion">Overall Evaluation Criterion</h4>
+<p>quantitative measure of the test’s objective, commonly used when short and long-term metrics have inverse relationships</p>
+</section>
+<section id="multivariate-testing" class="level4">
+<h4 class="anchored" data-anchor-id="multivariate-testing">Multivariate Testing</h4>
+<p>compares 3<span class="math inline">\(\plus\)</span> variants or combinations, but requires larger sample sizes</p>
+</section>
+<section id="bonferroni-correction" class="level4">
+<h4 class="anchored" data-anchor-id="bonferroni-correction">Bonferroni Correction</h4>
+<p>when conducting <span class="math inline">\(n\)</span> tests, run each test at the <span class="math inline">\(\frac{\alpha}{n}\)</span> significance level, which lowers the false positive rate of finding effects by chance</p>
+</section>
+<section id="network-effects" class="level4">
+<h4 class="anchored" data-anchor-id="network-effects">Network Effects</h4>
+<p>changes that occur due to effect spillover from other groups. To detect group interference:</p>
+<ol type="1">
+<li>Split the population into distinct clusters</li>
+<li>Randomly assign half the clusters to the control and treatment groups <span class="math inline">\(A_1\)</span> and <span class="math inline">\(B_1\)</span></li>
+<li>Randomize the other half at the user-level and assign to control and treatment groups <span class="math inline">\(A_2\)</span> and <span class="math inline">\(B_2\)</span></li>
+<li>Intuitively, if there are network effects, then the tests will have different results</li>
+</ol>
+<p>To account for network effects, randomize users based on time, cluster, or location</p>
+</section>
+<section id="sequential-testing" class="level4">
+<h4 class="anchored" data-anchor-id="sequential-testing">Sequential Testing</h4>
+<p>allows for early experiment stopping by drawing statistical borders based on the Type I Error rate. If the effect reaches a border, the test can be stopped. Used to combat (preliminarily checking results of a test), which can inflate <span class="math inline">\(p\)</span>-values and lead to incorrect conclusions.</p>
+</section>
+<section id="cohort-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="cohort-analysis">Cohort Analysis</h4>
+<p>examines specific groups of users based on behavior or time and can help identify whether novelty or primacy effects are present</p>
+</section>
+</section>
+<section id="miscellaneous" class="level2">
+<h2 class="anchored" data-anchor-id="miscellaneous">Miscellaneous</h2>
+<section id="shapley-values" class="level4">
+<h4 class="anchored" data-anchor-id="shapley-values">Shapley Values</h4>
+<p>measures the marginal contribution of each variable in the output of a model, where the sum of all Shapley values equals the total value (prediction <span class="math inline">\(-\)</span> mean prediction)</p>
+</section>
+<section id="shap" class="level4">
+<h4 class="anchored" data-anchor-id="shap">SHAP</h4>
+<p>interpretable Shapley method that utilizes both global and local importance to model variable explainability</p>
+</section>
+<section id="permutation" class="level4">
+<h4 class="anchored" data-anchor-id="permutation">Permutation</h4>
+<p>order matters <span class="math inline">\(\to \frac{n!}{(n-k)!} = {}^n P_k\)</span></p>
+</section>
+<section id="combination" class="level4">
+<h4 class="anchored" data-anchor-id="combination">Combination</h4>
+<p>order doesn’t matter <span class="math inline">\(\to \frac{n!}{k!(n-k)!}= {}^n C_k = \binom nk\)</span></p>
+</section>
+<section id="left-skew" class="level4">
+<h4 class="anchored" data-anchor-id="left-skew">Left Skew</h4>
+<p>Mean <span class="math inline">\(&lt;\)</span> Median <span class="math inline">\(\leq\)</span> Mode</p>
+</section>
+<section id="right-skew" class="level4">
+<h4 class="anchored" data-anchor-id="right-skew">Right Skew</h4>
+<p>Mean <span class="math inline">\(&gt;\)</span> Median <span class="math inline">\(\geq\)</span> Mode</p>
+</section>
+<section id="probability-vs-likelihood" class="level4">
+<h4 class="anchored" data-anchor-id="probability-vs-likelihood">Probability vs Likelihood</h4>
+<p>given a situation <span class="math inline">\(\theta\)</span> and observed outcomes <span class="math inline">\(O\)</span>, probability is calculated as <span class="math inline">\(P(O|\theta)\)</span>.</p>
+<p>However, when true values for <span class="math inline">\(\theta\)</span> are unknown, <span class="math inline">\(O\)</span> is used to estimate the <span class="math inline">\(\theta\)</span> that maximizes the likelihood function. That is, <span class="math inline">\(L(\theta|O) = P(O|\theta)\)</span>.</p>
 
 
 </section>
