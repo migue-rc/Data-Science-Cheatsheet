@@ -413,9 +413,51 @@ the foundation of a neural network that multiplies inputs by weights, adds bias,
 #### Activation Function  
 defines a node's output
 
-::: {layout-ncol=3}
-![Sigmoid](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/sigmoid1.JPG?raw=true)
-![ReLU](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/relu.JPG?raw=true)
-![Tanh](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/tanh.JPG?raw=true)
-Activation functions
-:::
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/activation.png?raw=true)
+
+
+#### Softmax 
+given final layer outputs, provides class probabilities that sum to 1 $\to \frac{e^{z_i}}{\sum e^{z}}$
+
+If there is more than one `correct' label, the sigmoid function provides probabilities for all, some, or none of the labels.
+
+#### Loss Function 
+measures prediction error using functions such as MSE for regression and binary cross-entropy for probability-based classification
+
+#### Gradient Descent 
+minimizes the average loss by moving iteratively in the direction of steepest descent, controlled by the learning rate $\gamma$ (step size). Note, $\gamma$ can be updated adaptively for better performance. For neural networks, finding the best set of weights involves:
+
+1. Initialize weights $W$ randomly with near-zero values
+2. Loop until convergence:
+    - Calculate the average network loss $J(W)$
+    - **Backpropagation** - iterate backwards from the last layer, computing the gradient $\frac{\partial J(W)}{\partial W}$ and updating the weight $W \leftarrow W - \gamma \frac{\partial J(W)}{\partial W}$
+3. Return the minimum loss weight matrix $W$
+
+To prevent overfitting, regularization can be applied by:
+- Stopping training when validation performance drops
+- Dropout - randomly drop some nodes during training to prevent over-reliance on a single node
+- Embedding weight penalties into the objective function
+- Batch Normalization - stabilizes learning by normalizing inputs to a layer
+
+#### Stochastic Gradient Descent  
+only uses a single point to compute gradients, leading to smoother convergence and faster compute speeds. Alternatively, mini-batch gradient descent trains on small subsets of the data, striking a balance between the approaches.
+
+## Convolutional Neural Network
+
+Analyzes structural or visual data by extracting local features
+
+
+#### Convolutional Layers 
+iterate over windows of the image, applying weights, bias, and an activation function to create feature maps. Different weights lead to different features maps.
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/windowCNNNew.JPG?raw=true)
+
+#### Pooling  
+downsamples convolution layers to reduce dimensionality and maintain spatial invariance, allowing detection of features even if they have shifted slightly. Common techniques return the max or average value in the pooling window.
+The general CNN architecture is as follows:
+
+1. Perform a series of convolution, ReLU, and pooling operations, extracting important features from the data
+2. Feed output into a fully-connected layer for classification, object detection, or other structural analyses
+
+
+
