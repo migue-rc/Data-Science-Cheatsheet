@@ -8,7 +8,7 @@
 
 <meta name="author" content="Miguel R.">
 
-<title>Data-Science Cheat Sheet</title>
+<title>Data-Science Cheat Sheet – Data Science Cheat Sheet</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,11 +28,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./https://migue-rc.github.io/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -44,11 +46,11 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-45431c2918bd31147ddb3fa7038bb99f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -103,11 +105,36 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Data Science Cheat Sheet</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://migue-rc.github.io"> 
+<span class="menu-text">← Back to Main</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
@@ -235,8 +262,244 @@ window.Quarto = {
 </section>
 <section id="classification" class="level3">
 <h3 class="anchored" data-anchor-id="classification">Classification</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Predict Yes</th>
+<th>Predict No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Actual Yes</strong></td>
+<td><strong>T</strong>rue <strong>P</strong>ositive (<span class="math inline">\(1-\beta\)</span>)</td>
+<td><strong>F</strong>alse <strong>N</strong>egative (<span class="math inline">\(\beta\)</span>)</td>
+</tr>
+<tr class="even">
+<td><strong>Actual No</strong></td>
+<td><strong>F</strong>alse <strong>P</strong>ositive (<span class="math inline">\(\alpha\)</span>)</td>
+<td><strong>T</strong>rue <strong>N</strong>egative (<span class="math inline">\(1-\alpha\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Precision = <span class="math inline">\(\frac{TP}{TP + FP}\)</span>, percent correct when predict positive</li>
+<li>Recall, Sensitivity = <span class="math inline">\(\frac{TP}{TP + FN}\)</span>, percent of actual positives identified correctly (True Positive Rate)</li>
+<li>Specificity = <span class="math inline">\(\frac{TN}{TN + FP}\)</span>, percent of actual negatives identified correctly, also 1 - FPR (True Negative Rate)</li>
+<li><span class="math inline">\(F_1 = 2\frac{precision\cdot recall}{precision + recall}\)</span>, useful when classes are <strong>imbalanced</strong></li>
+</ul>
+<section id="roc-curve" class="level4">
+<h4 class="anchored" data-anchor-id="roc-curve">ROC Curve</h4>
+<p>plots TPR (True Positive Rate) vs.&nbsp;FPR (False Positive Rate) for every threshold <span class="math inline">\(\alpha\)</span>. Area Under the Curve <em>measures how likely the model differentiates positives and negatives</em> (perfect AUC = 1, baseline = 0.5).</p>
+</section>
+<section id="precision-recall-curve" class="level4">
+<h4 class="anchored" data-anchor-id="precision-recall-curve">Precision-Recall Curve</h4>
+<p>focuses on the <em>correct prediction of the minority class</em>, useful when data is imbalanced</p>
+</section>
+</section>
+</section>
+<section id="linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression">Linear Regression</h2>
+<p>Models linear relationships between a continuous response and explanatory variables</p>
+<section id="ordinary-least-squares" class="level3">
+<h3 class="anchored" data-anchor-id="ordinary-least-squares">Ordinary Least Squares</h3>
+<p>find <span class="math inline">\(\hat{\beta}\)</span> for <span class="math inline">\(\hat{y} = \hat{\beta_{0}} + \hat{\beta}X + \epsilon\)</span> by solving <span class="math inline">\(\hat{\beta}\)</span> = <span class="math inline">\((X^{T}X)^{-1}X^{T}Y\)</span> which minimizes the SSE</p>
+</section>
+<section id="assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions">Assumptions</h3>
+<ul>
+<li>Linear relationship and independent observations</li>
+<li>Homoscedasticity - error terms have constant variance</li>
+<li>Errors are uncorrelated and normally distributed</li>
+<li>Low multicollinearity</li>
+</ul>
+</section>
+<section id="variance-inflation-factor" class="level3">
+<h3 class="anchored" data-anchor-id="variance-inflation-factor">Variance Inflation Factor</h3>
+<p>measures the severity of multicollinearity <span class="math inline">\(\to\)</span> <span class="math inline">\(\frac{1}{1-{R_i}^2}\)</span>, where <span class="math inline">\({R_i}^2\)</span> is found by regressing <span class="math inline">\(X_i\)</span> against all other variables (a common VIF cutoff is 10)</p>
+</section>
+<section id="regularization" class="level3">
+<h3 class="anchored" data-anchor-id="regularization">Regularization</h3>
+<p>Add a penalty <span class="math inline">\(\lambda\)</span> for large coefficients to the cost function, which reduces overfitting. Requires normalized data.</p>
+</section>
+<section id="subset-l_0" class="level3">
+<h3 class="anchored" data-anchor-id="subset-l_0">Subset <span class="math inline">\((L_0)\)</span></h3>
+<p><span class="math inline">\(\lambda ||\hat{\beta}||_0 = \lambda (number \;of\;non\hspace{-.7mm}-\hspace{-.7mm}zero\; variables)\)</span></p>
+</section>
+<section id="lasso-l_1" class="level3">
+<h3 class="anchored" data-anchor-id="lasso-l_1">LASSO (<span class="math inline">\(L_1\)</span>)</h3>
+<p><span class="math inline">\(\lambda ||\hat{\beta}||_1 = \lambda\sum | \hat{\beta} |\)</span></p>
+</section>
+<section id="ridge-l_2" class="level3">
+<h3 class="anchored" data-anchor-id="ridge-l_2">Ridge <span class="math inline">\((L_2)\)</span></h3>
+<p><span class="math inline">\(\lambda ||\hat{\beta}||_2 = \lambda\sum( \hat{\beta})^2\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Combining LASSO and Ridge gives Elastic Net</p>
+</div>
+</div>
+</section>
+</section>
+<section id="logistic-regression" class="level2">
+<h2 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h2>
+<p>Predicts probability that <span class="math inline">\(y\)</span> belongs to a binary class. Estimates <span class="math inline">\(\beta\)</span> through maximum likelihood estimation (MLE) by fitting a logistic (sigmoid) function to the data. This is equivalent to minimizing the cross entropy loss. Regularization can be added in the exponent.</p>
+<p><span class="math inline">\(\displaystyle P(Y=1) = \frac{1}{1 + e^{-({\beta_0} + {\beta x)}}}\)</span></p>
+<p>The threshold <span class="math inline">\(a\)</span> classifies predictions as either 1 or 0</p>
+<section id="assumptions-1" class="level3">
+<h3 class="anchored" data-anchor-id="assumptions-1">Assumptions</h3>
+<ul>
+<li>Linear relationship between X and log-odds of Y</li>
+<li>Independent observations</li>
+<li>Low multicollinearity</li>
+</ul>
+</section>
+<section id="odds" class="level3">
+<h3 class="anchored" data-anchor-id="odds">Odds</h3>
+<p>output probability can be transformed using <span class="math display">\[Odds(Y = 1) = \frac{P(Y=1)}{1-P(Y=1)}\]</span>, where <span class="math inline">\(P(\frac{1}{3})\)</span> = 1:2 odds Coefficients are linearly related to odds, such that a one unit increase in <span class="math inline">\(x_1\)</span> affects odds by <span class="math inline">\(e^{\beta_1}\)</span></p>
+</section>
+</section>
+<section id="decision-trees" class="level2">
+<h2 class="anchored" data-anchor-id="decision-trees">Decision Trees</h2>
+<section id="classification-and-regression-tree" class="level3">
+<h3 class="anchored" data-anchor-id="classification-and-regression-tree">Classification and Regression Tree</h3>
+<p>CART for regression minimizes SSE by splitting data into sub-regions and predicting the average value at leaf nodes. The complexity parameter <span class="math inline">\(cp\)</span> only keeps splits that reduce loss by at least <span class="math inline">\(cp\)</span> (small <span class="math inline">\(cp\)</span> <span class="math inline">\(\to\)</span> deep tree)</p>
+<p><img src="https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/CART.JPG?raw=true" class="img-fluid"></p>
+<p>CART for classification minimizes the sum of region impurity, where <span class="math inline">\(\hat{p_i}\)</span> is the probability of a sample being in category <span class="math inline">\(i\)</span>. Possible measures, each with a max impurity of 0.5.</p>
+<ul>
+<li>Gini impurity = <span class="math inline">\(\sum_i (\hat{p_i})^2\)</span></li>
+<li>Cross-Entropy = <span class="math inline">\(-\sum_i (\hat{p_i}) log_2(\hat{p_i})\)</span></li>
+</ul>
+<p>At each leaf node, CART predicts the most frequent category, assuming false negative and false positive costs are the same. The splitting process handles multicollinearity and outliers. Trees are prone to high variance, so tune through CV.</p>
+</section>
+<section id="random-forest" class="level3">
+<h3 class="anchored" data-anchor-id="random-forest">Random Forest</h3>
+<p>Trains an ensemble of trees that vote for the final prediction</p>
+<section id="bootstrapping" class="level4">
+<h4 class="anchored" data-anchor-id="bootstrapping">Bootstrapping</h4>
+<p>sampling with replacement (will contain duplicates), until the sample is as large as the training set</p>
+</section>
+<section id="bagging" class="level4">
+<h4 class="anchored" data-anchor-id="bagging">Bagging</h4>
+<p>training independent models on different subsets of the data, which reduces variance. Each tree is trained on $$63% of the data, so the out-of-bag 37% can estimate prediction error without resorting to CV.</p>
+<p>Deep trees may overfit, but adding more trees does not cause overfitting. Model bias is always equal to one of its individual trees.</p>
+</section>
+<section id="variable-importance" class="level4">
+<h4 class="anchored" data-anchor-id="variable-importance">Variable Importance</h4>
+<p>ranks variables by their ability to minimize error when split upon, averaged across all trees</p>
+</section>
+</section>
+</section>
+<section id="support-vector-machines" class="level2">
+<h2 class="anchored" data-anchor-id="support-vector-machines">Support Vector Machines</h2>
+<p>Separates data between two classes by maximizing the margin between the hyperplane and the nearest data points of any class. Relies on the following:</p>
+<p><img src="https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/svmNew2.JPG?raw=true" class="img-fluid"></p>
+<section id="support-vector-classifiers" class="level3">
+<h3 class="anchored" data-anchor-id="support-vector-classifiers">Support Vector Classifiers</h3>
+<p>account for outliers through the regularization parameter <span class="math inline">\(C\)</span>, which penalizes misclassifications in the margin by a factor of <span class="math inline">\(C &gt; 0\)</span></p>
+</section>
+<section id="kernel-functions" class="level3">
+<h3 class="anchored" data-anchor-id="kernel-functions">Kernel Functions</h3>
+<p>solve nonlinear problems by computing the similarity between points <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and mapping the data to a higher dimension. Common functions:</p>
+<ul>
+<li>Polynomial (<span class="math inline">\(ab + r)^d\)</span></li>
+<li>Radial <span class="math inline">\(e^{-\gamma(a-b)^2}\)</span>, where smaller <span class="math inline">\(\gamma \to\)</span> smoother boundaries</li>
+</ul>
+</section>
+<section id="hinge-loss" class="level3">
+<h3 class="anchored" data-anchor-id="hinge-loss">Hinge Loss</h3>
+<p>max(<span class="math inline">\(0,1-y_i(w^T x_i - b)\)</span>), where <span class="math inline">\(w\)</span> is the margin width, <span class="math inline">\(b\)</span> is the offset bias, and classes are labeled <span class="math inline">\(\pm1\)</span>. Acts as the cost function for SVM. Note, even a correct prediction inside the margin gives loss <span class="math inline">\(&gt;\)</span> 0. <img src="https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/hingeloss3.JPG?raw=true" class="img-fluid"></p>
+</section>
+</section>
+<section id="multiclass-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="multiclass-prediction">Multiclass Prediction</h2>
+<p>To classify data with 3+ classes <span class="math inline">\(C\)</span>, a common method is to binarize the problem through:</p>
+<ul>
+<li>One vs.&nbsp;Rest - train a classifier for each class <span class="math inline">\(c_i\)</span> by setting <span class="math inline">\(c_i\)</span>’s samples as 1 and all others as 0, and predict the class with the highest confidence score</li>
+<li>One vs.&nbsp;One - train <span class="math inline">\(\frac{C (C-1)}{2}\)</span> models for each pair of classes, and predict the class with the highest number of positive predictions</li>
+</ul>
+</section>
+<section id="k-nearest-neighbors" class="level2">
+<h2 class="anchored" data-anchor-id="k-nearest-neighbors">k-Nearest Neighbors</h2>
+<p>Non-parametric method that calculates <span class="math inline">\(\hat{y}\)</span> using the average value or most common class of its <span class="math inline">\(k\)</span>-nearest points. For high-dimensional data, information is lost through equidistant vectors, so dimension reduction is often applied prior to <span class="math inline">\(k\)</span>-NN.</p>
+<section id="minkowski-distance" class="level3">
+<h3 class="anchored" data-anchor-id="minkowski-distance">Minkowski Distance</h3>
+<p>count of the differences between two vectors, often used to compare categorical variables</p>
+<ul>
+<li>p = 1 gives Manhattan distance <span class="math inline">\({\sum|a_i - b_i|}\)</span></li>
+<li>p = 2 gives Euclidean distance <span class="math inline">\(\sqrt{\sum(a_i - b_i)^2}\)</span></li>
+</ul>
+</section>
+<section id="hamming-distance" class="level3">
+<h3 class="anchored" data-anchor-id="hamming-distance">Hamming Distance</h3>
+<p>count of the differences between two vectors, often used to compare categorical variables</p>
+</section>
+</section>
+<section id="clustering" class="level2">
+<h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
+<p>Unsupervised, non-parametric methods that groups similar data points together based on distance</p>
+<section id="k-means" class="level3">
+<h3 class="anchored" data-anchor-id="k-means">k-Means</h3>
+<p>Randomly place <span class="math inline">\(k\)</span> centroids across normalized data, and assig observations to the nearest centroid. Recalculate centroids as the mean of assignments and repeat until convergence. Using the median or medoid (actual data point) may be more robust to noise and outliers. <span class="math inline">\(k\)</span>-modes is used for categorical data. <strong>k-means++</strong> - improves selection on initial clusters.</p>
+<ol type="1">
+<li>Pick the first center randomly</li>
+<li>Compute distance between points and the nearest center</li>
+<li>Choose new center using a weighted probability distribution proportional to distance</li>
+<li>Repeat until <span class="math inline">\(k\)</span> centers are chosen</li>
+</ol>
+<p>Evaluating the number of clusters and performance:</p>
+<section id="silhouette-value" class="level4">
+<h4 class="anchored" data-anchor-id="silhouette-value">Silhouette Value</h4>
+<p>measures how similar a data point is to its own cluster compared to other clusters, and ranges from 1 (best) to -1 (worst).</p>
+</section>
+<section id="davies-bouldin-index" class="level4">
+<h4 class="anchored" data-anchor-id="davies-bouldin-index">Davies-Bouldin Index</h4>
+<p>ratio of within cluster scatter to between cluster separation, where lower values are better</p>
+</section>
+</section>
+<section id="hierarchical-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-clustering">Hierarchical Clustering</h3>
+<p>Clusters data into groups using a predominant hierarchy</p>
+<section id="agglomerative-approach" class="level4">
+<h4 class="anchored" data-anchor-id="agglomerative-approach">Agglomerative Approach</h4>
+<ol type="1">
+<li>Each observation starts in its own cluster</li>
+<li>Iteratively combine the most similar cluster pairs</li>
+<li>Continue until all points are in the same cluster</li>
+</ol>
+</section>
+<section id="divisive-approach" class="level4">
+<h4 class="anchored" data-anchor-id="divisive-approach">Divisive Approach</h4>
+<p>all points start in one cluster and splits are performed recursively down the hierarchy</p>
+</section>
+<section id="linkage-metrics" class="level4">
+<h4 class="anchored" data-anchor-id="linkage-metrics">Linkage Metrics</h4>
+<p>measure dissimilarity between clusters and combines them using the minimum linkage value over all pairwise points in different clusters by comparing:</p>
+<ul>
+<li>Single - the distance between the closest pair of points</li>
+<li>Complete - the distance between the farthest pair of points</li>
+<li>Ward’s - the increase in within-cluster SSE if two clusters were to be combined</li>
+</ul>
+</section>
+<section id="dendrogram" class="level4">
+<h4 class="anchored" data-anchor-id="dendrogram">Dendrogram</h4>
+<p>plots the full hierarchy of clusters, where the height of a node indicates the dissimilarity between its children <img src="https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/dendroedit3.JPG?raw=true" class="img-fluid"></p>
 
 
+</section>
 </section>
 </section>
 </section>
@@ -315,7 +578,7 @@ window.Quarto = {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/migue-rc\.github\.io\/Data-Science-Cheatsheet");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

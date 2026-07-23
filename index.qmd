@@ -146,11 +146,145 @@ $\lambda ||\hat{\beta}||_2 = \lambda\sum( \hat{\beta})^2$
 Combining LASSO and Ridge gives Elastic Net
 :::
 
-## LogisTic Regression
+## Logistic Regression
 
 Predicts probability that $y$ belongs to a binary class. Estimates $\beta$ through maximum likelihood estimation (MLE) by fitting a logistic (sigmoid) function to the data. This is equivalent to minimizing the cross entropy loss. Regularization can be added in the exponent.
 
 
+$\displaystyle P(Y=1) = \frac{1}{1 + e^{-({\beta_0} + {\beta x)}}}$
 
 
+The threshold $a$ classifies predictions as either 1 or 0
 
+### Assumptions
+
+- Linear relationship between X and log-odds of Y
+- Independent observations
+- Low multicollinearity
+
+###  Odds
+
+output probability can be transformed using $$Odds(Y = 1) = \frac{P(Y=1)}{1-P(Y=1)}$$, where $P(\frac{1}{3})$ = 1:2 odds
+Coefficients are linearly related to odds, such that a one unit increase in $x_1$ affects odds by $e^{\beta_1}$
+
+## Decision Trees
+
+### Classification and Regression Tree
+
+CART for regression minimizes SSE by splitting data into sub-regions and predicting the average value at leaf nodes.
+The complexity parameter $cp$ only keeps splits that reduce loss by at least $cp$ (small $cp$ $\to$ deep tree)
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/CART.JPG?raw=true)
+
+CART for classification minimizes the sum of region impurity, 
+where $\hat{p_i}$ is the probability of a sample being in category $i$.
+Possible measures, each with a max impurity of 0.5.
+
+- Gini impurity = $\sum_i (\hat{p_i})^2$ 
+- Cross-Entropy = $-\sum_i (\hat{p_i}) log_2(\hat{p_i})$ 
+
+At each leaf node, CART predicts the most frequent category, assuming false negative and false positive costs are the same. The splitting process handles multicollinearity and outliers. Trees are prone to high variance, so tune through CV.
+
+### Random Forest
+
+Trains an ensemble of trees that vote for the final prediction
+
+#### Bootstrapping 
+sampling with replacement (will contain duplicates), until the sample is as large as the training set
+
+#### Bagging 
+training independent models on different subsets of the data, which reduces variance. Each tree is trained on $\sim$63\% of the data, so the out-of-bag 37\% can estimate prediction error without resorting to CV.
+
+Deep trees may overfit, but adding more trees does not cause overfitting. Model bias is always equal to one of its individual trees.
+
+#### Variable Importance 
+ranks variables by their ability to minimize error when split upon, averaged across all trees
+
+## Support Vector Machines
+Separates data between two classes by maximizing the margin between the hyperplane and the nearest data points of any class. Relies on the following:
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/svmNew2.JPG?raw=true)
+
+### Support Vector Classifiers
+account for outliers through the regularization parameter $C$, which penalizes misclassifications in the margin by a factor of $C > 0$
+
+### Kernel Functions
+
+solve nonlinear problems by computing the similarity between points $a$, $b$ and mapping the data to a higher dimension. Common functions:
+
+- Polynomial ($ab + r)^d$
+- Radial $e^{-\gamma(a-b)^2}$, where smaller $\gamma \to$  smoother boundaries
+
+### Hinge Loss
+max($0,1-y_i(w^T x_i - b)$), where
+$w$ is the margin width, $b$ is the offset bias, and classes are labeled $\pm1$. Acts as the cost function for SVM. Note, even a correct prediction inside the margin gives loss $>$ 0.
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/hingeloss3.JPG?raw=true)
+
+## Multiclass Prediction
+
+To classify data with 3+ classes $C$, a common method is to binarize the problem through:
+
+
+- One vs. Rest - train a classifier for each class $c_i$ by setting $c_i$'s samples as 1 and all others as 0, and predict the class with the highest confidence score
+- One vs. One - train $\frac{C (C-1)}{2}$ models for each pair of classes, and predict the class with the highest number of positive predictions
+
+## k-Nearest Neighbors 
+
+Non-parametric method that calculates $\hat{y}$ using the average value or most common class of its $k$-nearest points. For high-dimensional data, information is lost through equidistant vectors, so dimension reduction is often applied prior to $k$-NN.
+
+### Minkowski Distance
+
+count of the differences between two vectors, often used to compare categorical variables
+
+- p = 1 gives Manhattan distance ${\sum|a_i - b_i|}$
+- p = 2 gives Euclidean distance $\sqrt{\sum(a_i - b_i)^2}$
+
+### Hamming Distance
+count of the differences between two vectors, often used to compare categorical variables 
+
+## Clustering
+
+Unsupervised, non-parametric methods that groups similar data points together based on distance
+
+### k-Means
+
+Randomly place $k$ centroids across normalized data, and assig observations to the nearest centroid. Recalculate centroids as the mean of assignments and repeat until convergence. Using the median or medoid (actual data point) may be more robust to noise and outliers. $k$-modes is used for categorical data.
+**k-means++** - improves selection on initial clusters.
+
+
+1. Pick the first center randomly
+2. Compute distance between points and the nearest center
+3. Choose new center using a weighted probability distribution proportional to distance
+4. Repeat until $k$ centers are chosen
+
+Evaluating the number of clusters and performance:
+
+
+#### Silhouette Value  
+measures how similar a data point is to its own cluster compared to other clusters, and ranges from 1 (best) to -1 (worst).
+
+#### Davies-Bouldin Index 
+ratio of within cluster scatter to between cluster separation, where lower values are better
+
+### Hierarchical Clustering
+Clusters data into groups using a predominant hierarchy
+
+#### Agglomerative Approach
+
+1. Each observation starts in its own cluster
+2. Iteratively combine the most similar cluster pairs
+3. Continue until all points are in the same cluster
+
+#### Divisive Approach
+all points start in one cluster and splits are performed recursively down the hierarchy
+
+#### Linkage Metrics  
+measure dissimilarity between clusters and combines them using the minimum linkage value over all pairwise points in different clusters by comparing:
+
+- Single - the distance between the closest pair of points
+- Complete - the distance between the farthest pair of points
+- Ward's - the increase in within-cluster SSE if two clusters were to be combined
+
+#### Dendrogram
+plots the full hierarchy of clusters, where the height of a node indicates the dissimilarity between its children
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/dendroedit3.JPG?raw=true)
