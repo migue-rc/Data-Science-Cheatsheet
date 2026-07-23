@@ -288,3 +288,134 @@ measure dissimilarity between clusters and combines them using the minimum linka
 #### Dendrogram
 plots the full hierarchy of clusters, where the height of a node indicates the dissimilarity between its children
 ![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/dendroedit3.JPG?raw=true)
+
+## Dimension Reduction
+
+High-dimensional data can lead to the \emph{curse of dimensionality}, which increases the risk of overfitting and decreases the value added. The number of samples for each feature combination quickly becomes sparse, reducing model performance.
+
+### Principal Component Analysis
+
+Projects data onto orthogonal vectors that maximize variance.
+Remember, given an $n\times n$ matrix $A$, a nonzero vector $\vec{x}$, and a scaler $\lambda$, if $A\vec{x} = \lambda \vec{x}$ then $\vec{x}$ and $\lambda$ are an eigenvector and eigenvalue of $A$. In PCA, the eigenvectors are uncorrelated and represent principal components.
+
+1. Start with the covariance matrix of standardized data
+2. Calculate eigenvalues and eigenvectors using SVD or eigendecomposition
+3. Rank the principal components by their proportion of variance explained = $\frac{\lambda_i}{\sum{\lambda}}$
+
+Data should be linearly related, and for a $p$-dimensional dataset, there will be $p$ principal components.
+Note, PCA explains the variance in X, not necessarily Y.
+
+#### Sparce PCA
+constrains the number of non-zero values in each component, reducing susceptibility to noise and improving interpretability
+
+### Linear Discriminant Analysis
+
+Supervised method that maximizes separation between classes and minimizes variance within classes for a labeled dataset
+
+1. Compute the mean and variance of each independent variable for every class $C_i$
+2. Calculate the within-class ($\sigma_w^2$) and between-class ($\sigma_b^2$) variance
+3. Find the matrix $W$ = ($\sigma_w^2)^{-1}(\sigma_b^2$) that maximizes Fisher's signal-to-noise ratio
+4. Rank the discriminant components by their signal-to-noise ratio $\lambda$
+
+::: {.callout-note}
+The number of components is at most $C_1 - 1$
+:::
+
+#### Assumptions
+
+- Independent variables are normally distributed
+- Homoscedasticity - constant variance of error
+- Low multicollinearity
+
+## Factor Analysis
+
+Describes data using a linear combination of $k$ latent factors.
+Given a normalized matrix $X$, it follows the form  $X = Lf + \epsilon$,  with factor loadings $L$ and hidden factors $f$.
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/factorNew1.JPG?raw=true)
+
+### Scree Plot
+graphs the eigenvalues of factors (or principal components) and is used to determine the number of factors to retain. The 'elbow' where values level off is often used as the cutoff.
+
+## Natural Language Processing
+Transforms human language into machine-usable code
+#### Processing Techniques
+
+- Tokenization - splits text into individual words (tokens)
+- Lemmatization - reduces words to its base form based on dictionary definition (\emph{am, are, is} $\to$ \emph{be})
+- Stemming - reduces words to its base form without context (\emph{ended} $\to$ \emph{end})
+- Stop words - removes common and irrelevant words (\emph{the, is})
+
+
+#### Markov Chain 
+stochastic and memoryless process that predicts future events based only on the current state
+
+#### N-gram 
+predicts the next term in a sequence of $n$ terms based on Markov chains
+
+#### Bag-of-words 
+represents text using word frequencies, without context or order
+
+#### tf-idf 
+measures word importance for a document in a collection (corpus), by multiplying the term frequency (occurrences of a term in a document) with the inverse document frequency (penalizes common terms across a corpus)
+
+#### Cosine Similarity 
+measures similarity between vectors, calculated as $$\cos(\theta) = \frac{A\cdot B}{||A||||B||}$$, which ranges from o to 1
+
+
+### Word Embedding
+
+Maps words and phrases to numerical vectors
+
+#### word2vec  
+trains iteratively over local  word context windows, places similar words close together, and embeds sub-relationships directly into vectors, such that $king - man + woman \approx queen$
+
+- Continuous bag-of-words (CBOW) - predicts the word given its context
+- skip-gram - predicts the context given a word
+
+
+#### GloVe  
+combines both global and local word co-occurrence data to learn word similarity
+
+#### BERT 
+accounts for word order and trains on sub-words, and unlike word2vec and GloVe, BERT outputs different vectors for different uses of words ($cell$ phone vs. blood $cell$)
+
+### Sentiment Analysis
+
+Extracts the attitudes and emotions from text
+
+
+#### Polarity  
+measures positive, negative, or neutral opinions
+- Valence shifters - capture amplifiers or negators such as '$really$ fun' or '$hardly$ fun'
+#### Sentiment  
+measures emotional states such as happy or sad
+#### Subject-Object Identification 
+classifies sentences as either subjective or objective
+
+### Topic Modelling
+Captures the underlying themes that appear in documents
+#### Latent Dirichlet Allocation (LDA)  
+generates $k$ topics by first assigning each word to a random topic, then iteratively updating assignments based on parameters $\alpha$, the mix of topics per document, and $\beta$, the distribution of words per topic
+
+#### Latent Semantic Analysis (LSA)  
+identifies patterns using tf-idf scores and reduces data to $k$ dimensions through SVD
+
+## Neural Network
+
+Feeds inputs through different hidden layers and relies on weights and nonlinear functions to reach an output
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/nn3.JPG?raw=true)
+
+#### Perceptron 
+the foundation of a neural network that multiplies inputs by weights, adds bias, and feeds the result $z$ to an activation function
+
+#### Activation Function  
+defines a node's output
+
+::: {layout-ncol=3}
+![Sigmoid](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/sigmoid1.JPG?raw=true)
+![ReLU](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/relu.JPG?raw=true)
+![Tanh](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/tanh.JPG?raw=true)
+Activation functions
+:::
