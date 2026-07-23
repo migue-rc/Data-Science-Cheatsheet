@@ -453,11 +453,297 @@ iterate over windows of the image, applying weights, bias, and an activation fun
 ![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/windowCNNNew.JPG?raw=true)
 
 #### Pooling  
-downsamples convolution layers to reduce dimensionality and maintain spatial invariance, allowing detection of features even if they have shifted slightly. Common techniques return the max or average value in the pooling window.
+down samples convolution layers to reduce dimensionality and maintain spatial invariance, allowing detection of features even if they have shifted slightly. Common techniques return the max or average value in the pooling window.
+
 The general CNN architecture is as follows:
 
 1. Perform a series of convolution, ReLU, and pooling operations, extracting important features from the data
 2. Feed output into a fully-connected layer for classification, object detection, or other structural analyses
 
+## Recurrent Neural Network
+Predicts sequential data using a temporally connected system that captures both new inputs and previous outputs using hidden states
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/rnn1.JPG?raw=true)
+
+RNNs can model various input-output scenarios, such as many-to-one, one-to-many, and many-to-many. Relies on parameter (weight) sharing for efficiency. To avoid redundant calculations during backpropagation, downstream gradients are found by chaining previous gradients. However, repeatedly multiplying values greater than or less than 1 leads to:
+- Exploding gradients - model instability and overflows
+- Vanishing gradients - loss of learning ability
+This can be solved using:
+- Gradient clipping - cap the maximum value of gradients
+- ReLU - its derivative prevents gradient shrinkage for $x > 0$
+- Gated cells - regulate the flow of information
+
+#### Long Short-Term Memory  
+learns long-term dependencies using gated cells and maintains a separate cell state from what is outputted. Gates in LSTM perform the following:
+
+1. Forget and filter out irrelevant info from previous layers
+2. Store relevant info from current input
+3. Update the current cell state
+4. Output the hidden state, a filtered version of the cell state
+LSTMs can be stacked to improve performance.
+
+## Boosting
+
+Sequentially fits many simple models that account for the previous model's errors. As opposed to bagging, boosting trains on all the data and combines models using the learning rate $\alpha$. 
+
+#### AdaBoost  
+uses sample weighting and decision 'stumps' (one-level decision trees) to classify samples
+1. Build decision stumps for every feature, choosing the one with the best classification accuracy
+2. Assign more weight to misclassified samples and reward trees that differentiate them, where  $\alpha = \frac{1}{2}ln\frac{1-TotalError}{TotalError}$
+3. Continue training and weighting decision stumps until convergence
+
+#### Gradient Boost 
+trains sequential models by minimizing a given loss function using gradient descent at each step
+1. Start by predicting the average value of the response
+2. Build a tree on the errors, constrained by depth or the number of leaf nodes
+3. Scale decision trees by a constant learning rate $\alpha$
+4. Continue training and weighting decision trees until convergence
+
+XGBoost - fast gradient boosting method that utilizes regularization and parallelization
+
+## Recommender Systems
+
+Suggests relevant items to users by predicting ratings and preferences, and is divided into two main types:
+- Content Filtering - recommends similar items
+- Collaborative Filtering - recommends what similar users like
+
+The latter is more common, and includes methods such as:
+#### Memory-based Approaches  
+finds neighborhoods by using rating data to compute user and item similarity, measured using correlation or cosine similarity
+
+- User-User - similar users also liked...
+    - Leads to more diverse recommendations, as opposed to just recommending popular items
+    - Suffers from sparsity, as the number of users who rate items is often low
+- Item-Item - similar users who liked this item also liked...
+    - Efficient when there are more users than items, since the item neighborhoods update less frequently than users
+    - Similarity between items is often more reliable than similarity between users
+
+#### Model-based Approaches  
+predict ratings of unrated items, through methods such as Bayesian networks, SVD, and clustering. Handles sparse data better than memory-based approaches.
+
+- Matrix Factorization - decomposes the user-item rating matrix into two lower-dimensional matrices representing the users and items, each with $k$ latent factors
+Recommender systems can also be combined through ensemble methods to improve performance.
+
+## Reinforcement Learning
+
+Maximizes future rewards by learning through state-action pairs. That is, an $agent$ performs $actions$ in an $environment$, which updates the $state$ and provides a $reward$.
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/reinforcement4.JPG?raw=true)
 
 
+#### Multi-armed Bandit Problem  
+a gambler plays slot machines with unknown probability distributions and must decide the best strategy to maximize reward. This exemplifies the exploration-exploitation tradeoff, as the best long-term strategy may involve short-term sacrifices.
+
+RL is divided into two types, with the former being more common:
+- Model-free - learn through trial and error in the environment
+- Model-based - access to the underlying (approximate) state-reward distribution
+
+#### Q-Value $Q(s,a)$ 
+captures the expected discounted total future reward given a state and action
+
+#### Policy 
+chooses the best actions for an agent at various states \\
+$ \pi(s) = \argmax\limits_a Q(s,a)$\\
+
+Deep RL algorithms can further be divided into two main types, depending on their learning objective
+
+#### Value Learning  
+aims to approximate $Q(s,a)$ for all actions the agent can take, but is restricted to discrete action spaces. Can use the $\epsilon$-greedy method, where $\epsilon$ measures the probability of exploration. If chosen, the next action is selected uniformly at random.
+
+- Q-Learning - simple value iteration model that maximizes the Q-value using a table on states and actions
+- Deep Q Network - finds the best action to take by minimizing the Q-loss, the squared error between the target Q-value and the prediction
+
+#### Policy Gradient Learning 
+directly optimize the the policy $\pi(s)$ through a probability distribution of actions, without the need for a value function, allowing for continuous action spaces.  
+
+#### Actor-Critic Model 
+hybrid algorithm that relies on two neural networks, an actor $\pi(s,a,\theta$) which controls agent behavior  and a critic $Q(s,a,w)$ that measures how good an action is. Both run in parallel to find the optimal weights $\theta, w$ to maximize expected reward. At each step:
+
+1. Pass the current state into the actor and critic
+2. The critic evaluates the action's Q-value, and the actor updates its weight $\theta$
+3. The actor takes the next action leading to a new state, and the critic updates its weight $w$
+
+## Anomaly Detection
+
+Identifies unusual patterns that differ from the majority of the data. Assumes that anomalies are:
+
+- Rare - the minority class that occurs rarely in the data
+- Different - have feature values that are very different from normal observations
+
+Anomaly detection techniques spans a wide range, including methods based on:
+
+#### Statistics  
+relies on various statistical methods to identify outliers, such as Z-tests, boxplots, interquartile ranges, and variance comparisons
+
+#### Density  
+useful when data is grouped around dense neighborhoods, measured by distance. Methods include $k$-nearest neighbors, local outlier factor, and isolation forest.
+
+- Isolation Forest - tree-based model that labels outliers based on an anomaly score
+
+    1. Select a random feature and split value, dividing the dataset in two
+    2. Continue splitting randomly until every point is isolated
+    3. Calculate the anomaly score for each observation, based on how many iterations it took to isolate that point.
+    4. If the anomaly score is greater than a threshold, mark it as an outlier
+
+        Intuitively, outliers are easier to isolate and should have shorter path lengths in the tree
+
+#### Clusters  
+data points outside of clusters could potentially be marked as anomalies
+
+#### Autoencoders  
+unsupervised neural networks that compress data through an encoder and reconstruct it using a decoder. Autoencoders do not reconstruct the data perfectly, but rather focus on capturing important features in the data.
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/autoencodeerNew.png?raw=true)
+
+The decoder struggles to capture anomalous patterns, and the reconstruction error acts as a score to detect anomalies.
+
+Autoencoders can also be used for image processing, dimension reduction, and information retrieval.
+
+#### Hidden Markov Model 
+uses observed events $O$ to model a set of $n$ underlying states $Q$ using $\lambda = (A,B,\pi)$
+
+- $A$ - $n\times n$ matrix of transition probabilities from state $i$ to $j$ 
+- $B$ - sequence of likelihoods of emitting $o_t$ in state $i$
+- $\pi$ - initial probability distribution over states
+
+HMMs can calculate $P(O|\lambda)$, find the best hidden state sequence Q, or learn the parameters $A$ and $B$.
+Anomalies are observations that are unlikely to occur across states.
+
+HMMs can be applied to many problems such as signal processing and part of speech tagging.
+
+## Time Series
+
+Extracts characteristics from time-sequenced data, which may exhibit the following characteristics:
+- Stationarity - statistical properties such as mean, variance, and auto correlation are constant over time
+- Trend - long-term rise or fall in values
+- Seasonality - variations associated with specific calendar times, occurring at regular intervals less than a year
+- Cyclicality - variations without a fixed time length, occurring in periods of greater or less than one year
+- Autocorrelation - degree of linear similarity between current and lagged values
+
+CV must account for the time aspect, such as for each fold $F_x$:
+
+- Sliding Window - train $F_1$, test $F_2$, then train $F_2$, test $F_3$
+- Forward Chain - train $F_1$, test $F_2$, then train $F_1, F_2$, test $F_3$
+
+#### Exponential Smoothing 
+uses an exponentially decreasing weight to observations over time, and takes a moving average. The time $t$ output is $s_t = \alpha x_t + (1-\alpha)s_{t-1}$, where  $0 < \alpha < 1$.
+
+#### Double Exponential Smoothing  
+applies a recursive exponential filter to capture trends within a time series
+
+$$s_t = \alpha x_t + (1-\alpha)(s_{t-1} + b_{t-1})$$
+
+$$b_t = \beta (s_t - s_{t-1}) + (1-\beta)b_{t-1}$$
+
+Triple exponential smoothing adds a third variable
+$\gamma$ that accounts for seasonality.
+\smallskip
+
+#### ARIMA 
+models time series using three parameters $(p,d,q)$:
+
+- Autoregressive - the past $p$ values affect the next value
+
+- Integrated - values are replaced with the difference between current and previous values, using the difference degree $d$ (0 for stationary data, and 1 for non-stationary)
+
+- Moving Average - the number of lagged forecast errors and the size of the moving average window $q$
+
+#### SARIMA  
+models seasonality through four additional seasonality-specific parameters: $P$, $D$, $Q$, and the season length $s$
+
+#### Prophet  
+additive model that uses non-linear trends to account for multiple seasonalities such as yearly, weekly, and daily. Robust to missing data and handles outliers well.\\ Can be represented as: $y(t) = g(t) + s(t) + h(t) + \epsilon(t)$, with four distinct components for the growth over time, seasonality, holiday effects, and error. This specification is similar to a generalized additive model.
+
+#### Generalized Additive Model  
+combine predictive methods while preserving additivity across variables, in a form such as
+$y = \beta_0 + f_1(x_1) + \cdots + f_m(x_m)$, where functions can be non-linear. GAMs also provide regularized and interpretable solutions for regression and classification problems.
+
+Classifies data using the label with the highest conditional probability, given data $a$ and classes $c$. Naive because it assumes variables are independent.
+
+## Naive Bayes
+
+#### Bayes' Theorem 
+$$P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}$$
+
+#### Gaussian Naive Bayes 
+calculates conditional probability for continuous data by assuming a normal distribution
+
+## Statistics
+
+#### p-value 
+probability that an effect could have occurred by chance. If less than the significance level $\alpha$, or if the test statistic is greater than the critical value, then reject the null.
+
+#### Type I Error (False Positive $\alpha$)  
+rejecting a true null
+
+#### Type II  Error (False Negative $\beta$)   
+not rejecting a false null
+
+Decreasing Type I Error causes an increase in Type II Error
+
+#### Confidence Level (1 - $\alpha$)  
+probability of finding an effect that did not occur by chance and avoiding a Type I error
+
+#### Power (1 - $\beta$)  
+probability of picking up on an effect that is present and avoiding a Type II Error
+
+#### Confidence Interval  
+estimated interval that models the long-term frequency of capturing the true parameter value
+
+##### z-test 
+tests whether normally distributed population means are different, used when $n$ is large and variances are known
+- z-score - the number of standard deviations between a data point $x$ and the mean $\to \frac{x - \mu}{\sigma}$
+
+##### t-test 
+used when population variances are unknown, and converges to the $z$-test when $n$ is large
+- t-score - uses the standard error as an estimate for population variance $\to \frac{x - \mu}{s/\sqrt{n}}$
+
+#### Degrees of Freedom  
+the number of independent (free) dimensions needed before the parameter estimate can be determined
+
+#### Chi-Square Tests 
+measure differences between categorical variables, using $\chi^2$ = $\sum \frac{observed - expected}{expected}$ to test:
+
+- Goodness of fit - if samples of one categorical variable match the population category expectations
+- Independence -  if being in one category is independent of another, based off two categories
+- Homogeneity - if different subgroups come from the same population, based off a single category
+
+#### ANOVA  
+analysis of variance, used to compare $3+$ samples
+
+- F-score - compares the ratio of explained and unexplained variance $\to \frac{\text{between group variance}}{\text{within group variance}}$
+
+#### Conditional Probability 
+$$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$
+
+If $A$ and $B$ are independent, then $P(A \cap B) = P(A) P(B)$.
+
+::: {.callout-note}
+Note, events that are independent of themselves must have
+probability either 1 or 0.
+:::
+
+#### Union 
+$P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+
+#### Mutually Exclusive 
+events cannot happen simultaneously
+
+#### Expected Value 
+$E[X] = \sum x_i p_i$, with properties
+- $E[X + Y] = E[X] + E[Y]$
+- $E[XY] = E[X]E[Y]$ if $X$ and $Y$ are independent
+
+#### Variance 
+$$Var(X) = E[X^2] - E[X]^2$$, with properties
+
+- Var$(X\pm Y) =$ Var$(X) +$Var$(Y) \pm 2$Cov$(X,Y)$
+- Var$(aX \pm b) = a^2$Var$(X)$
+
+#### Covariance 
+measures the direction of the joint linear relationship of two variables
+$\to \frac{\sum (x_i - \bar{x}) (y_i - \bar{y})}{n-1} $
+
+#### Correlation 
+normalizes covariance to provide both strength and direction of linear relationships $\to r =  \frac{Cov(x,y)}{\sigma_x \sigma_y}$
+Independent variables are uncorrelated,  though the inverse is not necessarily true
