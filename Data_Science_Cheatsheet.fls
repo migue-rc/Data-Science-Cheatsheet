@@ -274,12 +274,12 @@ INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm
 INPUT /usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
-INPUT ./images/CART.JPG
-INPUT ./images/CART.JPG
-INPUT ./images/CART.JPG
-INPUT ./images/CART.JPG
-INPUT ./images/CART.JPG
 INPUT /usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./images/CART.JPG
+INPUT ./images/CART.JPG
+INPUT ./images/CART.JPG
+INPUT ./images/CART.JPG
+INPUT ./images/CART.JPG
 INPUT ./images/svmNew2.JPG
 INPUT ./images/svmNew2.JPG
 INPUT ./images/svmNew2.JPG

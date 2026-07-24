@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1784910410.79502 "Data_Science_Cheatsheet.tex" "docs/Data_Science_Cheatsheet.pdf" "Data_Science_Cheatsheet" 1784910411.16263 0
+["pdflatex"] 1784912763.86434 "Data_Science_Cheatsheet.tex" "docs/Data_Science_Cheatsheet.pdf" "Data_Science_Cheatsheet" 1784912764.25783 0
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm" 1246382020 1120 200be8b775682cdf80acad4be5ef57e4 ""
@@ -173,9 +173,9 @@
   "/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1784905693 79187 e3f5941707347d15c1721f52279213a2 ""
   "/usr/local/texlive/2026basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1772405612 2966183 588a2f29d0aaf280e3a142a37c2dd621 ""
   "/usr/local/texlive/2026basic/texmf.cnf" 1772405582 628 bbc09d6d38872d53c11bb48dc9b14e88 ""
-  "Data_Science_Cheatsheet.tex" 1784910404.51039 50989 ec02277f3ed19d33cb1120d8a08d18cd ""
-  "docs/Data_Science_Cheatsheet.aux" 1784910411.10197 4355 47f0f71b57bcc54d592ee595d4877957 "pdflatex"
-  "docs/Data_Science_Cheatsheet.out" 1784910411.10242 5282 8ecb8caa0cc6cc9a9b4004901aa67a3d "pdflatex"
+  "Data_Science_Cheatsheet.tex" 1784912761.94406 53015 5cbeb2d8b15783b4c9feadf58d594bec ""
+  "docs/Data_Science_Cheatsheet.aux" 1784912764.19958 6650 bfcb0473eb67f6c1b47d6e25f2d1b7fd "pdflatex"
+  "docs/Data_Science_Cheatsheet.out" 1784912764.20009 5186 7a37f58672cd0ac6ff64993721eab8d3 "pdflatex"
   "images/CART.JPG" 1784755857.94226 140844 e9feb744f330a3d07902a860bd2d45b8 ""
   "images/autoencodeerNew.png" 1784841619.7189 56576 093e98f0423275bc9cce0dcaf3ee218e ""
   "images/dendroedit3.JPG" 1784755857.94415 220983 e1ae9838bdde9917c125709d569f8a0a ""
