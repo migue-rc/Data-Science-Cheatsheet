@@ -14,3 +14,25 @@ website:
     left:
       - text: "← Back to Main"
         href: "https://migue-rc.github.io"
+format:
+  html:
+    # Loads the base theme, then any local SCSS variables
+    # Order matters: base theme -> shared styles (fetched) -> local overrides.
+    # sketchy-*.scss are fetched from the main repo (do not edit them).
+    # custom.scss is your per-project override (safe to edit; never fetched).
+    theme:
+      light: [sketchy, sketchy-light.scss, custom.scss]
+      dark: [sketchy, sketchy-dark.scss, custom.scss]
+    # Injects your live, remote CSS file for instant global updates
+    highlight-style: 
+      light: github
+      dark: monokai
+    include-in-header: 
+      text: |
+        <link rel="stylesheet" href="https://migue-rc.github.io/brand-theme.css">
+    css: local-style.css
+    toc: true
+    code-fold: true
+
+execute:
+  warning: false # Hides Python deprecation/info warnings in the final output
