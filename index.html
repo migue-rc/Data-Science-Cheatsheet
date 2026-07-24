@@ -318,12 +318,7 @@ window.Quarto = {
   <li><a href="#discrete-distributions" id="toc-discrete-distributions" class="nav-link" data-scroll-target="#discrete-distributions">Discrete Distributions</a></li>
   <li><a href="#continuous-distributions" id="toc-continuous-distributions" class="nav-link" data-scroll-target="#continuous-distributions">Continuous Distributions</a></li>
   </ul></li>
-  <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts">Concepts</a>
-  <ul class="collapse">
-  <li><a href="#bias" id="toc-bias" class="nav-link" data-scroll-target="#bias">Bias</a></li>
-  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance">Variance</a></li>
-  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation">Cross Validation</a></li>
-  </ul></li>
+  <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts">Concepts</a></li>
   <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">Model Evaluation</a>
   <ul class="collapse">
   <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
@@ -390,7 +385,6 @@ window.Quarto = {
   <li><a href="#anomaly-detection" id="toc-anomaly-detection" class="nav-link" data-scroll-target="#anomaly-detection">Anomaly Detection</a></li>
   <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series">Time Series</a></li>
   <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes">Naive Bayes</a></li>
-  <li><a href="#statistics-2" id="toc-statistics-2" class="nav-link" data-scroll-target="#statistics-2">Statistics</a></li>
   <li><a href="#ab-testing" id="toc-ab-testing" class="nav-link" data-scroll-target="#ab-testing">A/B Testing</a></li>
   <li><a href="#miscellaneous" id="toc-miscellaneous" class="nav-link" data-scroll-target="#miscellaneous">Miscellaneous</a></li>
   </ul></li>
@@ -481,12 +475,12 @@ window.Quarto = {
 <section id="concepts" class="level2">
 <h2 class="anchored" data-anchor-id="concepts">Concepts</h2>
 <p>Prediction Error = Bias<span class="math inline">\(^2\)</span> + Variance + Irreducible Noise</p>
-<section id="bias" class="level3">
-<h3 class="anchored" data-anchor-id="bias">Bias</h3>
+<section id="bias" class="level4">
+<h4 class="anchored" data-anchor-id="bias">Bias</h4>
 <p>wrong assumptions when training <span class="math inline">\(\to\)</span> can’t capture underlying patterns <span class="math inline">\(\to\)</span> underfit</p>
 </section>
-<section id="variance" class="level3">
-<h3 class="anchored" data-anchor-id="variance">Variance</h3>
+<section id="variance" class="level4">
+<h4 class="anchored" data-anchor-id="variance">Variance</h4>
 <p>sensitive to fluctuations when training<span class="math inline">\(\to\)</span> can’t generalize on unseen data <span class="math inline">\(\to\)</span> overfit</p>
 <p>The bias-variance tradeoff attempts to minimize these two sources of error, through methods such as:</p>
 <ul>
@@ -495,9 +489,108 @@ window.Quarto = {
 </ul>
 <p>In all cases, as variance decreases, bias increases. ML models can be divided into two types: - Parametric - uses a fixed number of parameters with respect to sample size - Non-Parametric - uses a flexible number of parameters and doesn’t make particular assumptions on the data</p>
 </section>
-<section id="cross-validation" class="level3">
-<h3 class="anchored" data-anchor-id="cross-validation">Cross Validation</h3>
+<section id="cross-validation" class="level4">
+<h4 class="anchored" data-anchor-id="cross-validation">Cross Validation</h4>
 <p>validates test error with a subset of training data, and selects parameters to maximize average performance - <span class="math inline">\(k\)</span>-fold - divide data into <span class="math inline">\(k\)</span> groups, and use one to validate - leave-<span class="math inline">\(p\)</span>-out - use <span class="math inline">\(p\)</span> samples to validate and the rest to train</p>
+</section>
+<section id="p-value" class="level4">
+<h4 class="anchored" data-anchor-id="p-value">p-value</h4>
+<p>probability that an effect could have occurred by chance. If less than the significance level <span class="math inline">\(\alpha\)</span>, or if the test statistic is greater than the critical value, then reject the null.</p>
+</section>
+<section id="type-i-error-false-positive-alpha" class="level4">
+<h4 class="anchored" data-anchor-id="type-i-error-false-positive-alpha">Type I Error (False Positive <span class="math inline">\(\alpha\)</span>)</h4>
+<p>rejecting a true null</p>
+</section>
+<section id="type-ii-error-false-negative-beta" class="level4">
+<h4 class="anchored" data-anchor-id="type-ii-error-false-negative-beta">Type II Error (False Negative <span class="math inline">\(\beta\)</span>)</h4>
+<p>not rejecting a false null</p>
+<p>Decreasing Type I Error causes an increase in Type II Error</p>
+</section>
+<section id="confidence-level-1---alpha" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-level-1---alpha">Confidence Level (1 - <span class="math inline">\(\alpha\)</span>)</h4>
+<p>probability of finding an effect that did not occur by chance and avoiding a Type I error</p>
+</section>
+<section id="power-1---beta" class="level4">
+<h4 class="anchored" data-anchor-id="power-1---beta">Power (1 - <span class="math inline">\(\beta\)</span>)</h4>
+<p>probability of picking up on an effect that is present and avoiding a Type II Error</p>
+</section>
+<section id="confidence-interval" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h4>
+<p>estimated interval that models the long-term frequency of capturing the true parameter value</p>
+<section id="z-test" class="level5">
+<h5 class="anchored" data-anchor-id="z-test">z-test</h5>
+<p>tests whether normally distributed population means are different, used when <span class="math inline">\(n\)</span> is large and variances are known - z-score - the number of standard deviations between a data point <span class="math inline">\(x\)</span> and the mean <span class="math inline">\(\to \frac{x - \mu}{\sigma}\)</span></p>
+</section>
+<section id="t-test" class="level5">
+<h5 class="anchored" data-anchor-id="t-test">t-test</h5>
+<p>used when population variances are unknown, and converges to the <span class="math inline">\(z\)</span>-test when <span class="math inline">\(n\)</span> is large - t-score - uses the standard error as an estimate for population variance <span class="math inline">\(\to \frac{x - \mu}{s/\sqrt{n}}\)</span></p>
+</section>
+</section>
+<section id="degrees-of-freedom" class="level4">
+<h4 class="anchored" data-anchor-id="degrees-of-freedom">Degrees of Freedom</h4>
+<p>the number of independent (free) dimensions needed before the parameter estimate can be determined</p>
+</section>
+<section id="chi-square-tests" class="level4">
+<h4 class="anchored" data-anchor-id="chi-square-tests">Chi-Square Tests</h4>
+<p>measure differences between categorical variables, using <span class="math inline">\(\chi^2\)</span> = <span class="math inline">\(\sum \frac{observed - expected}{expected}\)</span> to test:</p>
+<ul>
+<li>Goodness of fit - if samples of one categorical variable match the population category expectations</li>
+<li>Independence - if being in one category is independent of another, based off two categories</li>
+<li>Homogeneity - if different subgroups come from the same population, based off a single category</li>
+</ul>
+</section>
+<section id="anova" class="level4">
+<h4 class="anchored" data-anchor-id="anova">ANOVA</h4>
+<p>analysis of variance, used to compare <span class="math inline">\(3+\)</span> samples</p>
+<ul>
+<li>F-score - compares the ratio of explained and unexplained variance <span class="math inline">\(\to \frac{\text{between group variance}}{\text{within group variance}}\)</span></li>
+</ul>
+</section>
+<section id="conditional-probability" class="level4">
+<h4 class="anchored" data-anchor-id="conditional-probability">Conditional Probability</h4>
+<p><span class="math display">\[P(A \mid B) = \frac{P(A \cap B)}{P(B)}\]</span></p>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then <span class="math inline">\(P(A \cap B) = P(A) P(B)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note, events that are independent of themselves must have probability either 1 or 0.</p>
+</div>
+</div>
+</section>
+<section id="union" class="level4">
+<h4 class="anchored" data-anchor-id="union">Union</h4>
+<p><span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</span></p>
+</section>
+<section id="mutually-exclusive" class="level4">
+<h4 class="anchored" data-anchor-id="mutually-exclusive">Mutually Exclusive</h4>
+<p>events cannot happen simultaneously</p>
+</section>
+<section id="expected-value" class="level4">
+<h4 class="anchored" data-anchor-id="expected-value">Expected Value</h4>
+<p><span class="math inline">\(E[X] = \sum x_i p_i\)</span>, with properties - <span class="math inline">\(E[X + Y] = E[X] + E[Y]\)</span> - <span class="math inline">\(E[XY] = E[X]E[Y]\)</span> if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent</p>
+</section>
+<section id="variance-1" class="level4">
+<h4 class="anchored" data-anchor-id="variance-1">Variance</h4>
+<p><span class="math display">\[Var(X) = E[X^2] - E[X]^2\]</span>, with properties</p>
+<ul>
+<li>Var<span class="math inline">\((X\pm Y) =\)</span> Var<span class="math inline">\((X) +\)</span>Var<span class="math inline">\((Y) \pm 2\)</span>Cov<span class="math inline">\((X,Y)\)</span></li>
+<li>Var<span class="math inline">\((aX \pm b) = a^2\)</span>Var<span class="math inline">\((X)\)</span></li>
+</ul>
+</section>
+<section id="covariance" class="level4">
+<h4 class="anchored" data-anchor-id="covariance">Covariance</h4>
+<p>measures the direction of the joint linear relationship of two variables $ $</p>
+</section>
+<section id="correlation" class="level4">
+<h4 class="anchored" data-anchor-id="correlation">Correlation</h4>
+<p>normalizes covariance to provide both strength and direction of linear relationships <span class="math inline">\(\to r =  \frac{Cov(x,y)}{\sigma_x \sigma_y}\)</span> Independent variables are uncorrelated, though the inverse is not necessarily true</p>
 </section>
 </section>
 <section id="model-evaluation" class="level2">
@@ -1139,108 +1232,6 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 <section id="gaussian-naive-bayes" class="level4">
 <h4 class="anchored" data-anchor-id="gaussian-naive-bayes">Gaussian Naive Bayes</h4>
 <p>calculates conditional probability for continuous data by assuming a normal distribution</p>
-</section>
-</section>
-<section id="statistics-2" class="level2">
-<h2 class="anchored" data-anchor-id="statistics-2">Statistics</h2>
-<section id="p-value" class="level4">
-<h4 class="anchored" data-anchor-id="p-value">p-value</h4>
-<p>probability that an effect could have occurred by chance. If less than the significance level <span class="math inline">\(\alpha\)</span>, or if the test statistic is greater than the critical value, then reject the null.</p>
-</section>
-<section id="type-i-error-false-positive-alpha" class="level4">
-<h4 class="anchored" data-anchor-id="type-i-error-false-positive-alpha">Type I Error (False Positive <span class="math inline">\(\alpha\)</span>)</h4>
-<p>rejecting a true null</p>
-</section>
-<section id="type-ii-error-false-negative-beta" class="level4">
-<h4 class="anchored" data-anchor-id="type-ii-error-false-negative-beta">Type II Error (False Negative <span class="math inline">\(\beta\)</span>)</h4>
-<p>not rejecting a false null</p>
-<p>Decreasing Type I Error causes an increase in Type II Error</p>
-</section>
-<section id="confidence-level-1---alpha" class="level4">
-<h4 class="anchored" data-anchor-id="confidence-level-1---alpha">Confidence Level (1 - <span class="math inline">\(\alpha\)</span>)</h4>
-<p>probability of finding an effect that did not occur by chance and avoiding a Type I error</p>
-</section>
-<section id="power-1---beta" class="level4">
-<h4 class="anchored" data-anchor-id="power-1---beta">Power (1 - <span class="math inline">\(\beta\)</span>)</h4>
-<p>probability of picking up on an effect that is present and avoiding a Type II Error</p>
-</section>
-<section id="confidence-interval" class="level4">
-<h4 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h4>
-<p>estimated interval that models the long-term frequency of capturing the true parameter value</p>
-<section id="z-test" class="level5">
-<h5 class="anchored" data-anchor-id="z-test">z-test</h5>
-<p>tests whether normally distributed population means are different, used when <span class="math inline">\(n\)</span> is large and variances are known - z-score - the number of standard deviations between a data point <span class="math inline">\(x\)</span> and the mean <span class="math inline">\(\to \frac{x - \mu}{\sigma}\)</span></p>
-</section>
-<section id="t-test" class="level5">
-<h5 class="anchored" data-anchor-id="t-test">t-test</h5>
-<p>used when population variances are unknown, and converges to the <span class="math inline">\(z\)</span>-test when <span class="math inline">\(n\)</span> is large - t-score - uses the standard error as an estimate for population variance <span class="math inline">\(\to \frac{x - \mu}{s/\sqrt{n}}\)</span></p>
-</section>
-</section>
-<section id="degrees-of-freedom" class="level4">
-<h4 class="anchored" data-anchor-id="degrees-of-freedom">Degrees of Freedom</h4>
-<p>the number of independent (free) dimensions needed before the parameter estimate can be determined</p>
-</section>
-<section id="chi-square-tests" class="level4">
-<h4 class="anchored" data-anchor-id="chi-square-tests">Chi-Square Tests</h4>
-<p>measure differences between categorical variables, using <span class="math inline">\(\chi^2\)</span> = <span class="math inline">\(\sum \frac{observed - expected}{expected}\)</span> to test:</p>
-<ul>
-<li>Goodness of fit - if samples of one categorical variable match the population category expectations</li>
-<li>Independence - if being in one category is independent of another, based off two categories</li>
-<li>Homogeneity - if different subgroups come from the same population, based off a single category</li>
-</ul>
-</section>
-<section id="anova" class="level4">
-<h4 class="anchored" data-anchor-id="anova">ANOVA</h4>
-<p>analysis of variance, used to compare <span class="math inline">\(3+\)</span> samples</p>
-<ul>
-<li>F-score - compares the ratio of explained and unexplained variance <span class="math inline">\(\to \frac{\text{between group variance}}{\text{within group variance}}\)</span></li>
-</ul>
-</section>
-<section id="conditional-probability" class="level4">
-<h4 class="anchored" data-anchor-id="conditional-probability">Conditional Probability</h4>
-<p><span class="math display">\[P(A \mid B) = \frac{P(A \cap B)}{P(B)}\]</span></p>
-<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then <span class="math inline">\(P(A \cap B) = P(A) P(B)\)</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note, events that are independent of themselves must have probability either 1 or 0.</p>
-</div>
-</div>
-</section>
-<section id="union" class="level4">
-<h4 class="anchored" data-anchor-id="union">Union</h4>
-<p><span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</span></p>
-</section>
-<section id="mutually-exclusive" class="level4">
-<h4 class="anchored" data-anchor-id="mutually-exclusive">Mutually Exclusive</h4>
-<p>events cannot happen simultaneously</p>
-</section>
-<section id="expected-value" class="level4">
-<h4 class="anchored" data-anchor-id="expected-value">Expected Value</h4>
-<p><span class="math inline">\(E[X] = \sum x_i p_i\)</span>, with properties - <span class="math inline">\(E[X + Y] = E[X] + E[Y]\)</span> - <span class="math inline">\(E[XY] = E[X]E[Y]\)</span> if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent</p>
-</section>
-<section id="variance-1" class="level4">
-<h4 class="anchored" data-anchor-id="variance-1">Variance</h4>
-<p><span class="math display">\[Var(X) = E[X^2] - E[X]^2\]</span>, with properties</p>
-<ul>
-<li>Var<span class="math inline">\((X\pm Y) =\)</span> Var<span class="math inline">\((X) +\)</span>Var<span class="math inline">\((Y) \pm 2\)</span>Cov<span class="math inline">\((X,Y)\)</span></li>
-<li>Var<span class="math inline">\((aX \pm b) = a^2\)</span>Var<span class="math inline">\((X)\)</span></li>
-</ul>
-</section>
-<section id="covariance" class="level4">
-<h4 class="anchored" data-anchor-id="covariance">Covariance</h4>
-<p>measures the direction of the joint linear relationship of two variables $ $</p>
-</section>
-<section id="correlation" class="level4">
-<h4 class="anchored" data-anchor-id="correlation">Correlation</h4>
-<p>normalizes covariance to provide both strength and direction of linear relationships <span class="math inline">\(\to r =  \frac{Cov(x,y)}{\sigma_x \sigma_y}\)</span> Independent variables are uncorrelated, though the inverse is not necessarily true</p>
 </section>
 </section>
 <section id="ab-testing" class="level2">
