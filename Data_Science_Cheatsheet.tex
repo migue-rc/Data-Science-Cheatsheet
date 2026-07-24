@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[10pt,landscape]{article}
+\documentclass[10pt,landscape,letterpaper]{article}
 \usepackage{amssymb,amsmath,amsthm,amsfonts}
 \usepackage{multicol,multirow}
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -16,19 +16,16 @@
 \usepackage{titlesec}
 \usepackage[landscape]{geometry}
 \usepackage{fancyhdr}
-\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
 %------------------------------------
 \ifthenelse{\lengthtest { \paperwidth = 11in}}
     { \geometry{top=.4in,left=.5in,right=.5in,bottom=.4in} }
-	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
-		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
-		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
-	}
+    { \geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
 \pagestyle{fancy}
 \fancyhf{}
 % Remove line
 \renewcommand{\headrulewidth}{0pt}
-\cfoot{\fontsize{9pt}{11pt}\selectfont Aaron Wang}
+% \cfoot{\fontsize{9pt}{11pt}\selectfont Aaron Wang}
 \setlength{\footskip}{16pt} % amount to move footer by
 % Remember to call your parents and tell them you love them!
 
@@ -54,7 +51,7 @@
 \setlength{\parskip}{0pt plus 0.5ex}
 % ----------------------------------------------------
 
-\title{Data Science Cheatsheet}
+\title{Data Science Cheat Sheet}
 \begin{document}
 
 \raggedright
@@ -62,7 +59,7 @@
 
 \begin{center}
 \vspace{-50mm}
-     \Large{\vspace{-15mm}\textbf{Data Science Cheatsheet 2.0}} \\
+     \Large{\vspace{-15mm}\textbf{Data Science Cheat Sheet}} \\
      \footnotesize{Last Updated \today}
      \vspace{-.4mm}
 \end{center}
@@ -71,10 +68,8 @@
 \setlength{\postmulticols}{1pt}
 \setlength{\multicolsep}{1pt}
 \setlength{\columnsep}{2pt}
-<<<<<<< Updated upstream
-% -----------------------------------------------------------------------
 % ----------------------------------------------------------------
-\section{Statistics}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#statistics}{Statistics}}
 \subsection{Discrete Distributions}
 \textbf{Binomial} - number of successes $x$ in $n$ events, each with $p$ probability $\to \binom{n}x p^x q^{n-x}$, with $\mu = np$ and $\delta^2 = npq$. If n = 1, this is Bernoulli.
 
@@ -86,36 +81,8 @@
 
 \textbf{Poisson} - number of successes $x$ in a fixed time interval, where success occurs at an average rate $\lambda$ $\to$ $\frac{\lambda^xe^{-\lambda}}{x!}$. $\mu = \delta^2 = \lambda$
 
-
-% -----------------------------------------------------------------------
-\subsection{Continuous Distributions} 
-\textbf{Normal/Gaussian} $N(\mu,\sigma$), Standard Normal $Z \sim N(0, 1)$
-
-Central Limit Theorem - sample mean of i.i.d. data approaches normal distribution 
-=======
-% --------------------------------------------------------------
-\section{Distributions}
-\subsection{Discrete}
-\textbf{Binomial} - $x$  successes in $n$ events, each with $p$ probability $\to \binom{n}x p^x q^{n-x}$, with $\mu = np$ and $\sigma^2 = npq$
-\begin{itemize}[label={--},leftmargin=4mm]
-\itemsep -.4mm
-\vspace{-.5mm}
-\item If n = 1, this is a Bernoulli distribution
-\end{itemize}
->>>>>>> Stashed changes
-
-\textbf{Geometric} - first success with $p$ probability on the $n^{th}$ trial $\to q^{n-1}p$, with $\mu = 1/p$ and $\sigma^2 = \frac{1-p}{p^2}$
-
-\textbf{Negative Binomial} - number of failures before $r$ successes
-
-\textbf{Hypergeometric} - $x$ successes in $n$ draws, no replacement, from a size $N$ population with $X$ items of that feature
-\vspace{.5mm}
-
-$\to \frac{\binom{X}{x} \binom{N-X}{n-x}}{\binom{N}{n}}$, with $\mu = \frac{nX}{N}$
-
-\textbf{Poisson} - number of successes $x$ in a fixed time interval, where success occurs at an average rate $\lambda$ $\to$ $\frac{\lambda^xe^{-\lambda}}{x!}$, with $\mu = \sigma^2 = \lambda$
-% ---------------------------------------------------------
-\subsection{Continuous}
+% % ---------------------------------------------------------
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#continuous-distributions}{Continuous Distributions}}
 \textbf{Uniform} - all values between $a$ and $b$ are equally likely $\to \frac{1}{b-a}$ with $\mu = \frac{a+b}{2}$ and $\sigma^2 = \frac{(b-a)^2}{12}$ or $\frac{n^2 - 1}{12}$ if discrete
 
 \textbf{Normal/Gaussian} $N(\mu,\sigma$), Standard Normal $Z\sim N(0, 1)$
@@ -132,8 +99,8 @@ $\to \frac{\binom{X}{x} \binom{N-X}{n-x}}{\binom{N}{n}}$, with $\mu = \frac{nX}{
 
 \textbf{Gamma} - time until $n$ independent events occurring at an average rate $\lambda$
 
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#Concepts}{Concepts}}
 % ---------------------------------------------------------------
-\section{Concepts}
 Prediction Error = Bias$^2$ + Variance + Irreducible Noise
 
 \textbf{Bias} - wrong assumptions when training $\to$ can't capture underlying patterns $\to$ underfit
@@ -168,8 +135,87 @@ ML models can be divided into two types:
 \end{itemize}
 
 \columnbreak
+%------------------------------------------------------
+% \textcolor{white}{.}\vspace{-5mm}\\ % Add space above column
+% \section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#k-nearest-neighbors}{Statistics}}
+$\boldsymbol p$\textbf{-value} - probability that an effect could have occurred by chance. If less than the significance level $\alpha$, or if the test statistic is greater than the critical value, then reject the null.
+
+\textbf{Type I Error} (False Positive $\alpha$) - rejecting a true null
+
+\textbf{Type II  Error} (False Negative $\beta$)  - not rejecting a false null
+
+Decreasing Type I Error causes an increase in Type II Error
+
+\textbf{Confidence Level} (1 - $\alpha$) - probability of finding an effect that did not occur by chance and avoiding a Type I error
+
+\textbf{Power} (1 - $\beta$) - probability of picking up on an effect that is present and avoiding a Type II Error
+
+\textbf{Confidence Interval} - estimated interval that models the long-term frequency of capturing the true parameter value
+
+$\boldsymbol{z}$\textbf{-test} - tests whether normally distributed population means are different, used when $n$ is large and variances are known
+\vspace{-.5mm}
+$\boldsymbol{z}$\textbf{-score} - the number of standard deviations between a data point $x$ and the mean $\to \frac{x - \mu}{\sigma}$
+\vspace{-.5mm}
+$\boldsymbol{t}$\textbf{-test} - used when population variances are unknown, and converges to the $z$-test when $n$ is large
+\vspace{-.5mm}
+$\boldsymbol{t}$\textbf{-score} - uses the standard error as an estimate for population variance $\to \frac{x - \mu}{s/\sqrt{n}}$
+\vspace{-.5mm}
+\textbf{Degrees of Freedom} - the number of independent (free) dimensions needed before the parameter estimate can be determined
+
+\textbf{Chi-Square Tests} - measure differences between categorical variables, using $\chi^2$ = $\sum \frac{observed - expected}{expected}$ to test:
+\begin{itemize}[label={--},leftmargin=4mm]
+    \itemsep -.4mm
+    \item Goodness of fit - if samples of one categorical variable match the population category expectations
+    \item Independence -  if being in one category is independent of another, based off two categories
+    \item Homogeneity - if different subgroups come from the same population, based off a single category
+\end{itemize}
+
+\textbf{ANOVA} - analysis of variance, used to compare 3$\plus$ samples
+\begin{itemize}[label={--},leftmargin=4mm]
+    \itemsep -.4mm
+    \item F-score - compares the ratio of explained and unexplained variance $\to \frac{\text{between group variance}}{\text{within group variance}}$
+\end{itemize}
+
+\smallskip
+
+\textbf{Conditional Probability} $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$
+
+If $A$ and $B$ are independent, then $P(A \cap B) = P(A) P(B)$.\\
+Note, events that are independent of themselves must have
+probability either 1 or 0.
+
+
+\textbf{Union} $P(A \cup B) = P(A) + P(B) - P(A \cap B) $
+
+\textbf{Mutually Exclusive} - events cannot happen simultaneously
+\smallskip
+
+\textbf{Expected Value} $E[X] = \sum x_i p_i$, with properties
+    \begin{itemize}[label={--},leftmargin=4mm]
+    \itemsep -.4mm
+    \item $E[X + Y] = E[X] + E[Y]$
+    \item $E[XY] = E[X]E[Y]$ if $X$ and $Y$ are independent
+    \end{itemize}
+
+\textbf{Variance} Var$(X) = E[X^2] - E[X]^2$, with properties
+    \begin{itemize}[label={--},leftmargin=4mm]
+    \itemsep -.4mm
+    \item Var$(X\pm Y) =$ Var$(X) +$Var$(Y) \pm 2$Cov$(X,Y)$
+    \item Var$(aX \pm b) = a^2$Var$(X)$
+    \end{itemize}
+
+\textbf{Covariance} - measures the direction of the joint linear relationship of two variables
+$\to \frac{\sum (x_i - \bar{x}) (y_i - \bar{y})}{n-1} $
+
+\textbf{Correlation} - normalizes covariance to provide both strength and direction of linear relationships $\to r =  \frac{Cov(x,y)}{\sigma_x \sigma_y}$
+Independent variables are uncorrelated,  though the inverse is not necessarily true
+
+\newcommand*{\Perm}[2]{{}^{#1}\!P_{#2}}%
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}%
+\smallskip
+\columnbreak
 % -------------------------------------------------
-\section{Model Evaluation}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#model-evaluation}{Model Evaluation}}
 % -----------------------------------------------
 \subsection{Regression}
 \textbf{Mean Squared Error} (MSE) = $\frac{1}{n}\sum (y_i -\hat{y})^2$
@@ -218,7 +264,7 @@ Note, negative $R^2$ means the model is worse than just predicting the mean. $R^
 \textbf{Precision-Recall Curve} - focuses on the correct prediction of the minority class, useful when data is imbalanced
 
 % ----------------------------------------------------------------
-\section{Linear Regression}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#linear-regression}{Linear Regression}}
 Models linear relationships between a continuous response and explanatory variables
 
 \textbf{Ordinary Least Squares} - find $\hat{\beta}$ for $\hat{y} = \hat{\beta_{0}} + \hat{\beta}X + \epsilon$
@@ -240,32 +286,20 @@ by solving $\hat{\beta}$ = $(X^{T}X)^{-1}X^{T}Y$ which minimizes the SSE
 
 Add a penalty $\lambda$ for large coefficients to the cost function, which reduces overfitting. Requires normalized data.
 
-<<<<<<< Updated upstream
-\textbf{Subset}  ($L_0$): $\lambda ||\hat{\beta}||_0 = \lambda (number \;of\;non\hspace{-.7mm}-\hspace{-.7mm}zero\; variables)$ 
-=======
 \textbf{Subset}  $(L_0)$: $\lambda ||\hat{\beta}||_0 = \lambda (number \;of\;non\hspace{-.7mm}-\hspace{-.7mm}zero\; variables)$
->>>>>>> Stashed changes
 \begin{itemize}[label={--},leftmargin=4mm]
 \vspace{-1mm}
 \itemsep -.4mm
 \item Computationally slow, need to fit $2^k$ models
 \item Alternatives: forward and backward stepwise selection
 \end{itemize}
-<<<<<<< Updated upstream
-\textbf{LASSO}  ($L_1$): $\lambda ||\hat{\beta}||_1 = \lambda\sum | \hat{\beta} |$
-=======
 \textbf{LASSO} $(L_1)$: $\lambda ||\hat{\beta}||_1 = \lambda\sum | \hat{\beta} |$
->>>>>>> Stashed changes
 \begin{itemize}[label={--},leftmargin=4mm]
 \vspace{-1mm}
 \itemsep -.4mm
 \item Shrinks coefficients to zero, and is robust to outliers
 \end{itemize}
-<<<<<<< Updated upstream
-\textbf{Ridge}  ($L_2$): $\lambda ||\hat{\beta}||_2 = \lambda\sum( \hat{\beta})^2$ 
-=======
 \textbf{Ridge}  $(L_2)$: $\lambda ||\hat{\beta}||_2 = \lambda\sum( \hat{\beta})^2$
->>>>>>> Stashed changes
 \begin{itemize}[label={--},leftmargin=4mm]
 \vspace{-1mm}
 \itemsep -.4mm
@@ -275,7 +309,8 @@ Combining LASSO and Ridge gives Elastic Net\\
 
 \columnbreak
 % ----------------------------------------------------------------
-\section{Logistic Regression}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#logistic-regression}{Logistic Regression}}
+% ----------------------------------------------------------------
 Predicts probability that $y$ belongs to a binary class. Estimates $\beta$ through maximum likelihood estimation (MLE) by fitting a logistic (sigmoid) function to the data. This is equivalent to minimizing the cross entropy loss. Regularization can be added in the exponent.
 \vspace{-3mm}
 \begin{center}
@@ -297,8 +332,8 @@ The threshold $a$ classifies predictions as either 1 or 0
 Coefficients are linearly related to odds, such that a one unit increase in $x_1$ affects odds by $e^{\beta_1}$
 % -------------------------------
 \vspace{-.5mm}
-\section{Decision Trees}
-\subsection{Classification and Regression Tree}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#decision-trees}{Decision Trees}}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#classification-and-regression-tree}{Classification and Regression Tree}}
 CART for regression minimizes SSE by splitting data into sub-regions and predicting the average value at leaf nodes.
 
 The complexity parameter $cp$ only keeps splits that reduce loss by at least $cp$ (small $cp$ $\to$ deep tree)
@@ -313,19 +348,13 @@ where $\hat{p_i}$ is the probability of a sample being in category $i$.
 Possible measures, each with a max impurity of 0.5.
 \begin{itemize}[label={--},leftmargin=4mm]
 \vspace{-1mm}
-<<<<<<< Updated upstream
-\itemsep -.4mm 
-\item Gini impurity = $\sum_i (\hat{p_i})^2$ 
-\item Cross-Entropy = $-\sum_i (\hat{p_i}) log_2(\hat{p_i})$ 
-=======
 \itemsep -.4mm
-\item Gini Impurity = 1$ - \sum (\hat{p_i})^2$
-\item Cross Entropy = $-\sum (\hat{p_i}) log_2(\hat{p_i})$
->>>>>>> Stashed changes
+\item Gini Impurity $= 1 - \sum_i (\hat{p_i})^2$
+\item Cross Entropy $= -\sum_i (\hat{p_i}) \log_2(\hat{p_i})$
 \end{itemize}
 At each leaf node, CART predicts the most frequent category, assuming false negative and false positive costs are the same. The splitting process handles multicollinearity and outliers. Trees are prone to high variance, so tune through CV.
 
-\subsection{Random Forest}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#random-forest}{Random Forest}}
 Trains an ensemble of trees that vote for the final prediction
 
 \textbf{Bootstrapping} - sampling with replacement (will contain duplicates), until the sample is as large as the training set
@@ -341,7 +370,7 @@ Deep trees may overfit, but adding more trees does not cause overfitting. Model 
 \\\textcolor{white}{.}\vspace{-5mm}\\ % Add space above column
 
 % ----------------------------------------------------------------
-\section{Support Vector Machines}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#support-vector-machines}{Support Vector Machines}}
 Separates data between two classes by maximizing the margin between the hyperplane and the nearest data points of any class. Relies on the following:
 \vspace{-2.5mm}
 \begin{center}
@@ -365,7 +394,7 @@ $w$ is the margin width, $b$ is the offset bias, and classes are labeled $\pm1$.
     \includegraphics[scale = .105]{images/hingeloss3.JPG}
 \end{center}
 \vspace{-3.5mm}
-\subsection{Multiclass Prediction}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#multiclass-prediction}{Multiclass Prediction}}
 To classify data with 3$\plus$ classes $C$, a common method is to binarize the problem through:
 \begin{itemize}[label={--},leftmargin=4mm]
 \vspace{-1mm}
@@ -375,7 +404,7 @@ To classify data with 3$\plus$ classes $C$, a common method is to binarize the p
 \end{itemize}
 
 % ---------------------------------------------------
-\section{k-Nearest Neighbors}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#k-nearest-neighbors}{k-Nearest Neighbors}}
 Non-parametric method that calculates $\hat{y}$ using the average value or most common class of its $k$-nearest points. For high-dimensional data, information is lost through equidistant vectors, so dimension reduction is often applied prior to $k$-NN.
 
 \textbf{Minkowski Distance} = $(\sum|a_i - b_i|^p)^{1/p}$
@@ -390,9 +419,9 @@ Non-parametric method that calculates $\hat{y}$ using the average value or most 
 \columnbreak
 % ----------------------------------------------------------------
 \textcolor{white}{.}\vspace{-5mm}\\ % Add space above column
-\section{Clustering}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#clustering}{Clustering}}
 Unsupervised, non-parametric methods that groups similar data points together based on distance
-\subsection{k-Means}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#k-means}{k-Means}}
 Randomly place $k$ centroids across normalized data, and assig observations to the nearest centroid. Recalculate centroids as the mean of assignments and repeat until convergence. Using the median or medoid (actual data point) may be more robust to noise and outliers. $k$-modes is used for categorical data.
 
 \def\Plus{\texttt{+}}
@@ -411,7 +440,7 @@ Evaluating the number of clusters and performance:
 
 \textbf{Davies-Bouldin Index} - ratio of within cluster scatter to between cluster separation, where lower values are better
 % ----------------------------------------------------------------
-\subsection{Hierarchical Clustering}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#hierarchical-clustering}{Hierarchical Clustering}}
 
 Clusters data into groups using a predominant hierarchy
 
@@ -440,10 +469,10 @@ Clusters data into groups using a predominant hierarchy
 \columnbreak
 % ----------------------------------------------------------------% ----------------------------------------------------------------
 \textcolor{white}{.}\vspace{-5mm}\\ % Add space above column
-\section{Dimension Reduction}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#dimension-reduction}{Dimension Reduction}}
 High-dimensional data can lead to the \emph{curse of dimensionality}, which increases the risk of overfitting and decreases the value added. The number of samples for each feature combination quickly becomes sparse, reducing model performance.
 
-\subsection{Principal Component Analysis}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#principal-component-analysis}{Principal Component Analysis}}
 Projects data onto orthogonal vectors that maximize variance.
 Remember, given an $n\times n$ matrix $A$, a nonzero vector $\vec{x}$, and a scaler $\lambda$, if $A\vec{x} = \lambda \vec{x}$ then $\vec{x}$ and $\lambda$ are an eigenvector and eigenvalue of $A$. In PCA, the eigenvectors are uncorrelated and represent principal components.
 \begin{enumerate}[leftmargin=5mm]
@@ -459,7 +488,7 @@ Note, PCA explains the variance in X, not necessarily Y.
 
 \textbf{Sparse PCA} - constrains the number of non-zero values in each component, reducing susceptibility to noise and improving interpretability
 % ----------------------------------------------------------------
-\subsection{Linear Discriminant Analysis}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#linear-discriminant-analysis}{Linear Discriminant Analysis}}
 Supervised method that maximizes separation between classes and minimizes variance within classes for a labeled dataset
 \begin{enumerate}[leftmargin=5mm]
 \itemsep -.4mm
@@ -480,7 +509,7 @@ Note, the number of components is at most $C_1 - 1$
 
 
 % ----------------------------------------------------------------
-\subsection{Factor Analysis}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#factor-analysis}{Factor Analysis}}
 Describes data using a linear combination of $k$ latent factors.
 Given a normalized matrix $X$, it follows the form  $X = Lf + \epsilon$,  with factor loadings $L$ and hidden factors $f$.
 \vspace{-1mm}
@@ -495,7 +524,7 @@ Given a normalized matrix $X$, it follows the form  $X = Lf + \epsilon$,  with f
 % ----------------------------------------------------------------
 % ----------------------------------------------------------------
 \\\textcolor{white}{.}\vspace{-5mm}\\ % Add space above column
-\section{Natural Language Processing}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#natural-language-processing}{Natural Language Processing}}
 Transforms human language into machine-usable code
 \textbf{Processing Techniques}
 \begin{itemize}[label={--},leftmargin=4mm]
@@ -516,7 +545,7 @@ $\boldsymbol{n}$\textbf{-gram} - predicts the next term in a sequence of $n$ ter
 \textbf{Cosine Similarity} - measures similarity between vectors, calculated as cos($\theta$) =
 $\frac{A\cdot B}{||A||||B||} $, which ranges from o to 1
 
-\subsection{Word Embedding}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#word-embedding}{Word Embedding}}
 Maps words and phrases to numerical vectors
 
 \textbf{word2vec} - trains iteratively over local  word context windows, places similar words close together, and embeds sub-relationships directly into vectors, such that $king - man + woman \approx queen$
@@ -532,7 +561,7 @@ Relies on one of the following:
 
 \textbf{BERT} - accounts for word order and trains on subwords, and unlike word2vec and GloVe, BERT outputs different vectors for different uses of words ($cell$ phone vs. blood $cell$)
 
-\subsection{Sentiment Analysis}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#sentiment-analysis}{Sentiment Analysis}}
 Extracts the attitudes and emotions from text
 
 \textbf{Polarity} - measures positive, negative, or neutral opinions
@@ -542,7 +571,7 @@ Extracts the attitudes and emotions from text
 \end{itemize}
 \textbf{Sentiment} - measures emotional states such as happy or sad
 \textbf{Subject-Object Identification} - classifies sentences as either subjective or objective
-\subsection{Topic Modelling}
+\subsection{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#topic-modelling}{Topic Modelling}}
 Captures the underlying themes that appear in documents
 \textbf{Latent Dirichlet Allocation} (LDA) - generates $k$ topics by first assigning each word to a random topic, then iteratively updating assignments based on parameters $\alpha$, the mix of topics per document, and $\beta$, the distribution of words per topic
 
@@ -551,7 +580,7 @@ Captures the underlying themes that appear in documents
 
 % -------------------------------------------------------------
 \textcolor{white}{.}\vspace{-5mm}\\ % Add space above column
-\section{Neural Network}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#neural-network}{Neural Network}}
 Feeds inputs through different hidden layers and relies on weights and nonlinear functions to reach an output
 \vspace{-1mm}
 \begin{center}
@@ -614,7 +643,7 @@ To prevent overfitting, regularization can be applied by:
 \columnbreak
 % -------------------------------------------------------------% -------------------------------------------------------------
 \textcolor{white}{.}\vspace{-5mm}\\ % Add space above column
-\section{Convolutional Neural Network}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#convolutional-neural-network}{Convolutional Neural Network}}
 Analyzes structural or visual data by extracting local features
 
 \textbf{Convolutional Layers} - iterate over windows of the image, applying weights, bias, and an activation function to create feature maps. Different weights lead to different features maps.
@@ -632,7 +661,7 @@ The general CNN architecture is as follows:
 \item Feed output into a fully-connected layer for classification, object detection, or other structural analyses
 \end{enumerate}
 
-\section{Recurrent Neural Network}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#recurrent-neural-network}{Recurrent Neural Network}}
 Predicts sequential data using a temporally connected system that captures both new inputs and previous outputs using hidden states
 \begin{center}
 \vspace{-2mm}
@@ -668,7 +697,7 @@ LSTMs can be stacked to improve performance.
 \columnbreak
 % -------------------------------------------------------------% -------------------------------------------------------------
 \textcolor{white}{.}\vspace{-3mm}\\ % Add space above column
-\section{Boosting}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#boosting}{Boosting}}
 Sequentially fits many simple models that account for the previous model's errors. As opposed to bagging, boosting trains on all the data and combines models using the learning rate $\alpha$. \\
 \smallskip
 \textbf{AdaBoost} - uses sample weighting and decision 'stumps' (one-level decision trees) to classify samples
@@ -690,7 +719,7 @@ Sequentially fits many simple models that account for the previous model's error
 
 XGBoost - fast gradient boosting method that utilizes regularization and parallelization
 % -------------------------------------------------------------% -------------------------------------------------------------
-\section{Recommender Systems}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#recommender-systems}{Recommender Systems}}
 Suggests relevant items to users by predicting ratings and preferences, and is divided into two main types:
 \begin{itemize}[label={--},leftmargin=4mm]
 \itemsep -.4mm
@@ -733,7 +762,7 @@ Recommender systems can also be combined through ensemble methods to improve per
 \columnbreak
 % -------------------------------------------------------------% -------------------------------------------------------------
 \\\textcolor{white}{.}\vspace{-3mm}\\ % Add space above column
-\section{Reinforcement Learning}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#reinforcement-learning}{Reinforcement Learning}}
 Maximizes future rewards by learning through state-action pairs. That is, an $agent$ performs $actions$ in an $environment$, which updates the $state$ and provides a $reward$.
 
 \begin{center}
@@ -778,7 +807,7 @@ Deep RL algorithms can further be divided into two main types, depending on thei
 
 % ----------------------------------------------------------------
 \textcolor{white}{.}\vspace{-3mm}\\ % Add space above column
-\section{Anomaly Detection}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#anomaly-detection}{Anomaly Detection}}
 Identifies unusual patterns that differ from the majority of the data. Assumes that anomalies are:
 \begin{itemize}[label={--},leftmargin=4mm]
 \itemsep -.4mm
@@ -813,7 +842,7 @@ Anomaly detection techniques spans a wide range, including methods based on:
 \textbf{Autoencoders} - unsupervised neural networks that compress data through an encoder and reconstruct it using a decoder. Autoencoders do not reconstruct the data perfectly, but rather focus on capturing important features in the data.
 \begin{center}
 \vspace{-2mm}
-    \includegraphics[scale = .19]{images/autoencodeerNew.JPG}
+    \includegraphics[scale = .19]{images/autoencodeerNew.png}
     \vspace{-2mm}
 \end{center}
 The decoder struggles to capture anomalous patterns, and the reconstruction error acts as a score to detect anomalies.
@@ -834,10 +863,10 @@ Anomalies are observations that are unlikely to occur across states.
 \smallskip
 HMMs can be applied to many problems such as signal processing and part of speech tagging.
 
-\newpage
+\columnbreak
 % ----------------------------------------------------------------
 \textcolor{white}{.}\vspace{-5mm}\\ % Add space above column
-\section{Time Series}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#time-series}{Time Series}}
 Extracts characteristics from time-sequenced data, which may exhibit the following characteristics:
 \begin{itemize}[label={--},leftmargin=4mm]
 \itemsep -.4mm
@@ -890,7 +919,7 @@ $\gamma$ that accounts for seasonality.
 $y = \beta_0 + f_1(x_1) + \cdots + f_m(x_m)$, where functions can be non-linear. GAMs also provide regularized and interpretable solutions for regression and classification problems.
 
 %%%%%%%%%%%%%%%%%%%%%%
-\section{Naive Bayes}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#naive-bayes}{Naive Bayes}}
 Classifies data using the label with the highest conditional probability, given data $a$ and classes $c$. Naive because it assumes variables are independent.
 
 \textbf{Bayes' Theorem} $ P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}$
@@ -898,92 +927,8 @@ Classifies data using the label with the highest conditional probability, given 
 \textbf{Gaussian Naive Bayes} - calculates conditional probability for continuous data by assuming a normal distribution
 
 \columnbreak
-%------------------------------------------------------
-\textcolor{white}{.}\vspace{-5mm}\\ % Add space above column
-\section{Statistics}
-$\boldsymbol p$\textbf{-value} - probability that an effect could have occurred by chance. If less than the significance level $\alpha$, or if the test statistic is greater than the critical value, then reject the null.
 
-\textbf{Type I Error} (False Positive $\alpha$) - rejecting a true null
-
-\textbf{Type II  Error} (False Negative $\beta$)  - not rejecting a false null
-
-Decreasing Type I Error causes an increase in Type II Error
-
-\textbf{Confidence Level} (1 - $\alpha$) - probability of finding an effect that did not occur by chance and avoiding a Type I error
-
-\textbf{Power} (1 - $\beta$) - probability of picking up on an effect that is present and avoiding a Type II Error
-
-\textbf{Confidence Interval} - estimated interval that models the long-term frequency of capturing the true parameter value
-
-$\boldsymbol{z}$\textbf{-test} - tests whether normally distributed population means are different, used when $n$ is large and variances are known
-\vspace{-.5mm}
-\begin{itemize}[label={--},leftmargin=4mm]
-    \itemsep -.4mm
-    \item z-score - the number of standard deviations between a data point $x$ and the mean $\to \frac{x - \mu}{\sigma}$
-\end{itemize}
-\vspace{-.5mm}
-$\boldsymbol{t}$\textbf{-test} - used when population variances are unknown, and converges to the $z$-test when $n$ is large
-\vspace{-.5mm}
-\begin{itemize}[label={--},leftmargin=4mm]
-    \itemsep -.4mm
-    \item t-score - uses the standard error as an estimate for population variance $\to \frac{x - \mu}{s/\sqrt{n}}$
-\end{itemize}
-\vspace{-1mm}
-\textbf{Degrees of Freedom} - the number of independent (free) dimensions needed before the parameter estimate can be determined
-
-\textbf{Chi-Square Tests} - measure differences between categorical variables, using $\chi^2$ = $\sum \frac{observed - expected}{expected}$ to test:
-\begin{itemize}[label={--},leftmargin=4mm]
-    \itemsep -.4mm
-    \item Goodness of fit - if samples of one categorical variable match the population category expectations
-    \item Independence -  if being in one category is independent of another, based off two categories
-    \item Homogeneity - if different subgroups come from the same population, based off a single category
-\end{itemize}
-
-\textbf{ANOVA} - analysis of variance, used to compare 3$\plus$ samples
-\begin{itemize}[label={--},leftmargin=4mm]
-    \itemsep -.4mm
-    \item F-score - compares the ratio of explained and unexplained variance $\to \frac{\text{between group variance}}{\text{within group variance}}$
-\end{itemize}
-
-\smallskip
-
-\textbf{Conditional Probability} $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$
-
-If $A$ and $B$ are independent, then $P(A \cap B) = P(A) P(B)$.\\
-Note, events that are independent of themselves must have
-probability either 1 or 0.
-
-
-\textbf{Union} $P(A \cup B) = P(A) + P(B) - P(A \cap B) $
-
-\textbf{Mutually Exclusive} - events cannot happen simultaneously
-\smallskip
-
-\textbf{Expected Value} $E[X] = \sum x_i p_i$, with properties
-    \begin{itemize}[label={--},leftmargin=4mm]
-    \itemsep -.4mm
-    \item $E[X + Y] = E[X] + E[Y]$
-    \item $E[XY] = E[X]E[Y]$ if $X$ and $Y$ are independent
-    \end{itemize}
-
-\textbf{Variance} Var$(X) = E[X^2] - E[X]^2$, with properties
-    \begin{itemize}[label={--},leftmargin=4mm]
-    \itemsep -.4mm
-    \item Var$(X\pm Y) =$ Var$(X) +$Var$(Y) \pm 2$Cov$(X,Y)$
-    \item Var$(aX \pm b) = a^2$Var$(X)$
-    \end{itemize}
-
-\textbf{Covariance} - measures the direction of the joint linear relationship of two variables
-$\to \frac{\sum (x_i - \bar{x}) (y_i - \bar{y})}{n-1} $
-
-\textbf{Correlation} - normalizes covariance to provide both strength and direction of linear relationships $\to r =  \frac{Cov(x,y)}{\sigma_x \sigma_y}$
-Independent variables are uncorrelated,  though the inverse is not necessarily true
-
-\newcommand*{\Perm}[2]{{}^{#1}\!P_{#2}}%
-\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}%
-\smallskip
-
-\section{A/B Testing}
+\section{\href{https://migue-rc.github.io/Data-Science-Cheatsheet/\#ab-testing}{A/B Testing}}
 Examines user experience through randomized tests with two variants.
 The typical steps are:
 \begin{enumerate}[leftmargin=5mm]
@@ -1002,7 +947,7 @@ The required sample size depends on $\alpha$, $\beta$, and the MDE
 \textbf{Overall Evaluation Criterion} - quantitative measure of the test's objective, commonly used when short and long-term metrics have inverse relationships
 \vspace{.7mm}
 
-\textbf{Multivariate Testing} - compares 3$\plus$ variants or combinations, but requires larger sample sizes
+\textbf{Multivariate Testing} - compares $3+$ variants or combinations, but requires larger sample sizes
 
 \textbf{Bonferroni Correction} - when conducting $n$ tests,
 run each test at the $\frac{\alpha}{n}$ significance level, which lowers the false positive rate of finding effects by chance

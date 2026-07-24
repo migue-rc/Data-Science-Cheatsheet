@@ -22,6 +22,6 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: main.pdf # REPLACE WITH YOUR COMPILED .pdf FILENAME
+          files: Data_Science_Cheatsheet.pdf # REPLACE WITH YOUR COMPILED .pdf FILENAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
