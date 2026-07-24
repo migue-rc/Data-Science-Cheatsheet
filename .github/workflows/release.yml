@@ -1,0 +1,27 @@
+name: Build LaTeX and Create Release
+
+on:
+  push:
+    tags:
+      - 'v*' # Triggers on tags starting with 'v' (e.g., v1.0, v1.0.1)
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Grants permissions to create releases
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex # REPLACE WITH YOUR .tex FILENAME
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: main.pdf # REPLACE WITH YOUR COMPILED .pdf FILENAME
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
