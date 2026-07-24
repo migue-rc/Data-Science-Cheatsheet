@@ -1,27 +1,31 @@
-name: Build LaTeX and Create Release
+name: Release PDF
 
 on:
   push:
     tags:
-      - 'v*' # Triggers on tags starting with 'v' (e.g., v1.0, v1.0.1)
+      - 'v*'
+  release:
+    types: [published]
+
+permissions:
+  contents: write
 
 jobs:
-  build_latex:
+  build-and-release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Grants permissions to create releases
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex # REPLACE WITH YOUR .tex FILENAME
+          root_file: Data_Science_Cheatsheet.tex
+          args: "-pdf -outdir=docs"
 
-      - name: Create GitHub Release
+      - name: Upload PDF to Release
         uses: softprops/action-gh-release@v2
         with:
-          files: Data_Science_Cheatsheet.pdf # REPLACE WITH YOUR COMPILED .pdf FILENAME
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: docs/Data_Science_Cheatsheet.pdf
+          fail_on_unmatched_files: true

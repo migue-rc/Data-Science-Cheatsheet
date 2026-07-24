@@ -28,8 +28,7 @@ Future additions (ideas welcome):
 - Generative Adversarial Networks
 - Graph Neural Networks
 
-[Download it here in PDF](https://github.com/aaronwangy/Data-Science-Cheatsheet/blob/main/Data_Science_Cheatsheet.pdf)
-
+[Download it here in PDF](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/docs/Data_Science_Cheatsheet.pdf)
 ## Screenshots
 
 Here are screenshots of a couple pages - the link to the full cheatsheet is above!
