@@ -1,0 +1,18 @@
+## Boosting
+
+Sequentially fits many simple models that account for the previous model's errors. As opposed to bagging, boosting trains on all the data and combines models using the learning rate $\alpha$. 
+
+#### AdaBoost  
+uses sample weighting and decision 'stumps' (one-level decision trees) to classify samples
+1. Build decision stumps for every feature, choosing the one with the best classification accuracy
+2. Assign more weight to misclassified samples and reward trees that differentiate them, where  $\alpha = \frac{1}{2}ln\frac{1-TotalError}{TotalError}$
+3. Continue training and weighting decision stumps until convergence
+
+#### Gradient Boost 
+trains sequential models by minimizing a given loss function using gradient descent at each step
+1. Start by predicting the average value of the response
+2. Build a tree on the errors, constrained by depth or the number of leaf nodes
+3. Scale decision trees by a constant learning rate $\alpha$
+4. Continue training and weighting decision trees until convergence
+
+XGBoost - fast gradient boosting method that utilizes regularization and parallelization

@@ -1,0 +1,145 @@
+## Statistics
+### Discrete Distributions
+#### Binomial
+number of successes $x$ in $n$ events,
+each with $p$ probability $\to \binom{n}x p^x q^{n-x}$, 
+with $\mu = np$ and $\delta^2 = npq$. If n = 1, this is Bernoulli.
+
+
+#### Geometric  
+first success with $p$ probability on the $n^{th}$ trial $\to q^{n-1}p$, with mean = $1/p$
+
+#### Negative Binomial 
+number of failures before $r$ successes 
+
+#### Hypergeometric 
+number of successes $x$ in a size $N$ population with $n$ draws, without replacement. 
+$$\mu=n\frac{x}{N}$$
+
+#### Poisson 
+number of successes $x$ in a fixed time interval, 
+where success occurs at an average rate $\lambda$ $\to$ $\frac{\lambda^xe^{-\lambda}}{x!}$. 
+$\mu = \delta^2 = \lambda$
+
+
+### Continuous Distributions
+
+#### Uniform 
+all values between $a$ and $b$ are equally likely $\to \frac{1}{b-a}$ with $\mu = \frac{a+b}{2}$ and $\sigma^2 = \frac{(b-a)^2}{12}$ or $\frac{n^2 - 1}{12}$ if discrete
+
+#### Normal/Gaussian 
+$N(\mu,\sigma$), Standard Normal $Z\sim N(0, 1)$
+
+- Central Limit Theorem - sample mean of i.i.d. data approaches normal distribution
+- Empirical Rule - 68\%, 95\%, and 99.7\% of values lie within one, two, and three standard deviations of the mean
+- Normal Approximation - discrete distributions such as Binomial and Poisson can be approximated using z-scores when $np$, $nq$, and $\lambda$ are greater than 10
+\end{itemize}
+
+#### Exponential 
+memory-less time between independent events occurring at an average rate $\lambda$ $\to \lambda e^{-\lambda x}$, with $\mu$ = $\frac{1}{\lambda}$
+
+#### Gamma 
+time until $n$ independent events occurring at an average rate $\lambda$
+
+## Concepts
+
+Prediction Error = Bias$^2$ + Variance + Irreducible Noise
+
+#### Bias 
+wrong assumptions when training $\to$ can't capture underlying patterns $\to$ underfit
+
+#### Variance 
+sensitive to fluctuations when training$\to$ can't generalize on unseen data $\to$ overfit
+
+The bias-variance tradeoff attempts to minimize these two sources of error, through methods such as:
+
+- Cross validation to generalize to unseen data
+- Dimension reduction and feature selection
+
+In all cases, as variance decreases, bias increases.
+ML models can be divided into two types:
+    - Parametric - uses a fixed number of parameters with respect to sample size
+    - Non-Parametric - uses a flexible number of parameters and doesn't make particular assumptions on the data
+
+#### Cross Validation 
+validates test error with a subset of training data, and selects parameters to maximize average performance
+- $k$-fold - divide data into $k$ groups, and use one to validate
+- leave-$p$-out  - use $p$ samples to validate and the rest to train
+
+#### p-value 
+probability that an effect could have occurred by chance. If less than the significance level $\alpha$, or if the test statistic is greater than the critical value, then reject the null.
+
+#### Type I Error (False Positive $\alpha$)  
+rejecting a true null
+
+#### Type II  Error (False Negative $\beta$)   
+not rejecting a false null
+
+Decreasing Type I Error causes an increase in Type II Error
+
+#### Confidence Level (1 - $\alpha$)  
+probability of finding an effect that did not occur by chance and avoiding a Type I error
+
+#### Power (1 - $\beta$)  
+probability of picking up on an effect that is present and avoiding a Type II Error
+
+#### Confidence Interval  
+estimated interval that models the long-term frequency of capturing the true parameter value
+
+##### z-test 
+tests whether normally distributed population means are different, used when $n$ is large and variances are known
+- z-score - the number of standard deviations between a data point $x$ and the mean $\to \frac{x - \mu}{\sigma}$
+
+##### t-test 
+used when population variances are unknown, and converges to the $z$-test when $n$ is large
+- t-score - uses the standard error as an estimate for population variance $\to \frac{x - \mu}{s/\sqrt{n}}$
+
+#### Degrees of Freedom  
+the number of independent (free) dimensions needed before the parameter estimate can be determined
+
+#### Chi-Square Tests 
+measure differences between categorical variables, using $\chi^2$ = $\sum \frac{observed - expected}{expected}$ to test:
+
+- Goodness of fit - if samples of one categorical variable match the population category expectations
+- Independence -  if being in one category is independent of another, based off two categories
+- Homogeneity - if different subgroups come from the same population, based off a single category
+
+#### ANOVA  
+analysis of variance, used to compare $3+$ samples
+
+- F-score - compares the ratio of explained and unexplained variance $\to \frac{\text{between group variance}}{\text{within group variance}}$
+
+#### Conditional Probability 
+$$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$
+
+If $A$ and $B$ are independent, then $P(A \cap B) = P(A) P(B)$.
+
+::: {.callout-note}
+Note, events that are independent of themselves must have
+probability either 1 or 0.
+:::
+
+#### Union 
+$P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+
+#### Mutually Exclusive 
+events cannot happen simultaneously
+
+#### Expected Value 
+$E[X] = \sum x_i p_i$, with properties
+- $E[X + Y] = E[X] + E[Y]$
+- $E[XY] = E[X]E[Y]$ if $X$ and $Y$ are independent
+
+#### Variance 
+$$Var(X) = E[X^2] - E[X]^2$$, with properties
+
+- Var$(X\pm Y) =$ Var$(X) +$Var$(Y) \pm 2$Cov$(X,Y)$
+- Var$(aX \pm b) = a^2$Var$(X)$
+
+#### Covariance 
+measures the direction of the joint linear relationship of two variables
+$\to \frac{\sum (x_i - \bar{x}) (y_i - \bar{y})}{n-1}$
+
+#### Correlation 
+normalizes covariance to provide both strength and direction of linear relationships $\to r =  \frac{Cov(x,y)}{\sigma_x \sigma_y}$
+Independent variables are uncorrelated,  though the inverse is not necessarily true

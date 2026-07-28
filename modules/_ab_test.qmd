@@ -1,0 +1,43 @@
+
+## A/B Testing
+
+Examines user experience through randomized tests with two variants.
+The typical steps are:
+
+1. Determine the evaluation metric and experiment goals
+2. Select a significance level $\alpha$ and power threshold 1 - $\beta$
+3. Calculate the required sample size per variation
+4. Randomly assign users into control and treatment groups
+5. Measure and analyze results using the appropriate test
+
+The required sample size depends on $\alpha$, $\beta$, and the MDE
+
+#### Minimum Detectable Effect  
+the target relative minimum increase over the baseline that should be observed from a test
+
+#### Overall Evaluation Criterion  
+quantitative measure of the test's objective, commonly used when short and long-term metrics have inverse relationships
+
+#### Multivariate Testing  
+compares $3+$ variants or combinations, but requires larger sample sizes
+
+#### Bonferroni Correction  
+when conducting $n$ tests,
+run each test at the $\frac{\alpha}{n}$ significance level, which lowers the false positive rate of finding effects by chance
+
+#### Network Effects  
+changes that occur due to effect spillover from other groups. To detect group interference:
+
+1. Split the population into distinct clusters
+2. Randomly assign half the clusters to the control and treatment groups $A_1$ and $B_1$
+3. Randomize the other half at the user-level and assign to control and treatment groups
+    $A_2$ and $B_2$
+4. Intuitively, if there are network effects, then the tests will have different results
+
+To account for network effects, randomize users based on time, cluster, or location
+
+#### Sequential Testing  
+allows for early experiment stopping by drawing statistical borders based on the Type I Error rate. If the effect reaches a border, the test can be stopped. Used to combat \emph{peeking} (preliminarily checking results of a test), which can inflate $p$-values and lead to incorrect conclusions.
+
+#### Cohort Analysis 
+examines specific groups of users based on behavior or time and can help identify whether novelty or primacy effects are present

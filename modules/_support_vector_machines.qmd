@@ -1,0 +1,19 @@
+## Support Vector Machines
+Separates data between two classes by maximizing the margin between the hyperplane and the nearest data points of any class. Relies on the following:
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/svmNew2.JPG?raw=true)
+
+### Support Vector Classifiers
+account for outliers through the regularization parameter $C$, which penalizes misclassifications in the margin by a factor of $C > 0$
+
+### Kernel Functions
+
+solve nonlinear problems by computing the similarity between points $a$, $b$ and mapping the data to a higher dimension. Common functions:
+
+- Polynomial ($ab + r)^d$
+- Radial $e^{-\gamma(a-b)^2}$, where smaller $\gamma \to$  smoother boundaries
+
+### Hinge Loss
+max($0,1-y_i(w^T x_i - b)$), where
+$w$ is the margin width, $b$ is the offset bias, and classes are labeled $\pm1$. Acts as the cost function for SVM. Note, even a correct prediction inside the margin gives loss $>$ 0.
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/hingeloss3.JPG?raw=true)
