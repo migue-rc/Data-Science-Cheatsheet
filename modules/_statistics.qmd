@@ -1,5 +1,7 @@
 ## Statistics
+
 ### Discrete Distributions
+
 #### Binomial
 number of successes $x$ in $n$ events,
 each with $p$ probability $\to \binom{n}x p^x q^{n-x}$, 

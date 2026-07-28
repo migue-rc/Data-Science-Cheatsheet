@@ -19,10 +19,31 @@ Note, negative $R^2$ means the model is worse than just predicting the mean. $R^
 $1 - (1-R^2)\frac{N-1}{N-p-1}$, which changes only when predictors affect $R^2$ above what would be expected by chance
 
 ### Classification
-||Predict Yes|Predict No|
+
+::: {.content-visible when-format="html"}
+| | Predict Yes | Predict No |
 |---|---|---|
-|**Actual Yes**| **T**rue **P**ositive ($1-\beta$)|**F**alse **N**egative ($\beta$)|
-|**Actual No** | **F**alse **P**ositive ($\alpha$)| **T**rue **N**egative ($1-\alpha$)|
+| **Actual Yes** | **T**rue **P**ositive ($1-\beta$) | **F**alse **N**egative ($\beta$) |
+| **Actual No** | **F**alse **P**ositive ($\alpha$) | **T**rue **N**egative ($1-\alpha$) |
+:::
+
+::: {.content-visible when-format="pdf"}
+```{=latex}
+\begin{center}
+\begingroup
+\setlength{\tabcolsep}{2pt} % tighten horizontal padding
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lll}
+\hline
+ & \textbf{Predict Yes} & \textbf{Predict No} \\ \hline
+\textbf{Actual Yes} & True Positive ($1-\beta$) & False Negative ($\beta$) \\
+\textbf{Actual No}  & False Positive ($\alpha$) & True Negative \\ \hline
+\end{tabular}%
+}
+\endgroup
+\end{center}
+```
+:::
 
 
 - Precision = $\frac{TP}{TP + FP}$, percent correct when predict positive
