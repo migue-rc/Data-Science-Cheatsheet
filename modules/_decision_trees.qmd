@@ -1,0 +1,32 @@
+## Decision Trees
+
+### Classification and Regression Tree
+
+CART for regression minimizes SSE by splitting data into sub-regions and predicting the average value at leaf nodes.
+The complexity parameter $cp$ only keeps splits that reduce loss by at least $cp$ (small $cp$ $\to$ deep tree)
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/CART.JPG?raw=true)
+
+CART for classification minimizes the sum of region impurity, 
+where $\hat{p_i}$ is the probability of a sample being in category $i$.
+Possible measures, each with a max impurity of 0.5.
+
+- Gini impurity = $\sum_i (\hat{p_i})^2$ 
+- Cross-Entropy = $-\sum_i (\hat{p_i}) log_2(\hat{p_i})$ 
+
+At each leaf node, CART predicts the most frequent category, assuming false negative and false positive costs are the same. The splitting process handles multicollinearity and outliers. Trees are prone to high variance, so tune through CV.
+
+### Random Forest
+
+Trains an ensemble of trees that vote for the final prediction
+
+#### Bootstrapping 
+sampling with replacement (will contain duplicates), until the sample is as large as the training set
+
+#### Bagging 
+training independent models on different subsets of the data, which reduces variance. Each tree is trained on $\sim$63\% of the data, so the out-of-bag 37\% can estimate prediction error without resorting to CV.
+
+Deep trees may overfit, but adding more trees does not cause overfitting. Model bias is always equal to one of its individual trees.
+
+#### Variable Importance 
+ranks variables by their ability to minimize error when split upon, averaged across all trees

@@ -1,0 +1,63 @@
+## Natural Language Processing
+Transforms human language into machine-usable code
+#### Processing Techniques
+
+- Tokenization - splits text into individual words (tokens)
+- Lemmatization - reduces words to its base form based on dictionary definition (\emph{am, are, is} $\to$ \emph{be})
+- Stemming - reduces words to its base form without context (\emph{ended} $\to$ \emph{end})
+- Stop words - removes common and irrelevant words (\emph{the, is})
+
+
+#### Markov Chain 
+stochastic and memoryless process that predicts future events based only on the current state
+
+#### N-gram 
+predicts the next term in a sequence of $n$ terms based on Markov chains
+
+#### Bag-of-words 
+represents text using word frequencies, without context or order
+
+#### tf-idf 
+measures word importance for a document in a collection (corpus), by multiplying the term frequency (occurrences of a term in a document) with the inverse document frequency (penalizes common terms across a corpus)
+
+#### Cosine Similarity 
+measures similarity between vectors, calculated as $$\cos(\theta) = \frac{A\cdot B}{||A||||B||}$$, which ranges from o to 1
+
+
+### Word Embedding
+
+Maps words and phrases to numerical vectors
+
+#### word2vec  
+trains iteratively over local  word context windows, places similar words close together, and embeds sub-relationships directly into vectors, such that $king - man + woman \approx queen$
+
+- Continuous bag-of-words (CBOW) - predicts the word given its context
+- skip-gram - predicts the context given a word
+
+
+#### GloVe  
+combines both global and local word co-occurrence data to learn word similarity
+
+#### BERT 
+accounts for word order and trains on sub-words, and unlike word2vec and GloVe, BERT outputs different vectors for different uses of words ($cell$ phone vs. blood $cell$)
+
+### Sentiment Analysis
+
+Extracts the attitudes and emotions from text
+
+
+#### Polarity  
+measures positive, negative, or neutral opinions
+- Valence shifters - capture amplifiers or negators such as '$really$ fun' or '$hardly$ fun'
+#### Sentiment  
+measures emotional states such as happy or sad
+#### Subject-Object Identification 
+classifies sentences as either subjective or objective
+
+### Topic Modelling
+Captures the underlying themes that appear in documents
+#### Latent Dirichlet Allocation (LDA)  
+generates $k$ topics by first assigning each word to a random topic, then iteratively updating assignments based on parameters $\alpha$, the mix of topics per document, and $\beta$, the distribution of words per topic
+
+#### Latent Semantic Analysis (LSA)  
+identifies patterns using tf-idf scores and reduces data to $k$ dimensions through SVD

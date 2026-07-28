@@ -1,0 +1,22 @@
+## Recommender Systems
+
+Suggests relevant items to users by predicting ratings and preferences, and is divided into two main types:
+- Content Filtering - recommends similar items
+- Collaborative Filtering - recommends what similar users like
+
+The latter is more common, and includes methods such as:
+#### Memory-based Approaches  
+finds neighborhoods by using rating data to compute user and item similarity, measured using correlation or cosine similarity
+
+- User-User - similar users also liked...
+    - Leads to more diverse recommendations, as opposed to just recommending popular items
+    - Suffers from sparsity, as the number of users who rate items is often low
+- Item-Item - similar users who liked this item also liked...
+    - Efficient when there are more users than items, since the item neighborhoods update less frequently than users
+    - Similarity between items is often more reliable than similarity between users
+
+#### Model-based Approaches  
+predict ratings of unrated items, through methods such as Bayesian networks, SVD, and clustering. Handles sparse data better than memory-based approaches.
+
+- Matrix Factorization - decomposes the user-item rating matrix into two lower-dimensional matrices representing the users and items, each with $k$ latent factors
+Recommender systems can also be combined through ensemble methods to improve performance.

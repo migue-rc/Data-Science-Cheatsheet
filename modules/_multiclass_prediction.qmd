@@ -1,0 +1,68 @@
+## Multiclass Prediction
+
+To classify data with 3+ classes $C$, a common method is to binarize the problem through:
+
+
+- One vs. Rest - train a classifier for each class $c_i$ by setting $c_i$'s samples as 1 and all others as 0, and predict the class with the highest confidence score
+- One vs. One - train $\frac{C (C-1)}{2}$ models for each pair of classes, and predict the class with the highest number of positive predictions
+
+## k-Nearest Neighbors 
+
+Non-parametric method that calculates $\hat{y}$ using the average value or most common class of its $k$-nearest points. For high-dimensional data, information is lost through equidistant vectors, so dimension reduction is often applied prior to $k$-NN.
+
+### Minkowski Distance
+
+count of the differences between two vectors, often used to compare categorical variables
+
+- p = 1 gives Manhattan distance ${\sum|a_i - b_i|}$
+- p = 2 gives Euclidean distance $\sqrt{\sum(a_i - b_i)^2}$
+
+### Hamming Distance
+count of the differences between two vectors, often used to compare categorical variables 
+
+## Clustering
+
+Unsupervised, non-parametric methods that groups similar data points together based on distance
+
+### k-Means
+
+Randomly place $k$ centroids across normalized data, and assig observations to the nearest centroid. Recalculate centroids as the mean of assignments and repeat until convergence. Using the median or medoid (actual data point) may be more robust to noise and outliers. $k$-modes is used for categorical data.
+**k-means++** - improves selection on initial clusters.
+
+
+1. Pick the first center randomly
+2. Compute distance between points and the nearest center
+3. Choose new center using a weighted probability distribution proportional to distance
+4. Repeat until $k$ centers are chosen
+
+Evaluating the number of clusters and performance:
+
+
+#### Silhouette Value  
+measures how similar a data point is to its own cluster compared to other clusters, and ranges from 1 (best) to -1 (worst).
+
+#### Davies-Bouldin Index 
+ratio of within cluster scatter to between cluster separation, where lower values are better
+
+### Hierarchical Clustering
+Clusters data into groups using a predominant hierarchy
+
+#### Agglomerative Approach
+
+1. Each observation starts in its own cluster
+2. Iteratively combine the most similar cluster pairs
+3. Continue until all points are in the same cluster
+
+#### Divisive Approach
+all points start in one cluster and splits are performed recursively down the hierarchy
+
+#### Linkage Metrics  
+measure dissimilarity between clusters and combines them using the minimum linkage value over all pairwise points in different clusters by comparing:
+
+- Single - the distance between the closest pair of points
+- Complete - the distance between the farthest pair of points
+- Ward's - the increase in within-cluster SSE if two clusters were to be combined
+
+#### Dendrogram
+plots the full hierarchy of clusters, where the height of a node indicates the dissimilarity between its children
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/dendroedit3.JPG?raw=true)

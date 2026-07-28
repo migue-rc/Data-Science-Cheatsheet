@@ -15,6 +15,7 @@ website:
       - text: "← Back to Main"
         href: "https://migue-rc.github.io"
 format:
+  
   html:
     # Loads the base theme, then any local SCSS variables
     # Order matters: base theme -> shared styles (fetched) -> local overrides.
