@@ -117,7 +117,7 @@ $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$
 If $A$ and $B$ are independent, then $P(A \cap B) = P(A) P(B)$.
 
 ::: {.callout-note}
-Note, events that are independent of themselves must have
+Events that are independent of themselves must have
 probability either 1 or 0.
 :::
 
