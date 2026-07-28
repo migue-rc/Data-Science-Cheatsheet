@@ -12,13 +12,14 @@ Non-parametric method that calculates $\hat{y}$ using the average value or most 
 
 ### Minkowski Distance
 
-count of the differences between two vectors, often used to compare categorical variables
+General metric used to calculate distance between two vectors in a normed vector space:
 
 - p = 1 gives Manhattan distance ${\sum|a_i - b_i|}$
 - p = 2 gives Euclidean distance $\sqrt{\sum(a_i - b_i)^2}$
 
 ### Hamming Distance
-count of the differences between two vectors, often used to compare categorical variables 
+Counts the number of positions at which the corresponding symbols are different, 
+primarily used to compare categorical strings or binary vectors of equals length. 
 
 ## Clustering
 
