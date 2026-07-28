@@ -4,10 +4,13 @@ author: Miguel R.
 format:
   html: default
   pdf: 
+    callout-appearance: minimal
+    callout-icon: false
     documentclass: extarticle
-    fontsize: 8pt
+    fontsize: 9pt
     block-headings: false
     geometry: 
+      - landscape
       - top=8mm
       - bottom=5mm
       - left=5mm
@@ -16,14 +19,18 @@ format:
     number-sections: false
     colorlinks: true
     include-in-header:
-      - text: |
-          \AtBeginDocument{\let\maketitle\relax}
-          \usepackage{multicol}
-          \usepackage{enumitem}
-          \setlist{nosep}
-          \usepackage{titlesec}
-          \titlespacing*{\section}{0pt}{1ex plus .2ex minus .2ex}{0.3ex plus .1ex}
-          \titlespacing*{\subsection}{0pt}{0.8ex plus .2ex minus .2ex}{0.2ex plus .1ex}
+        - text: |
+            \AtBeginDocument{\let\maketitle\relax}
+            \usepackage{multicol}
+            \usepackage{enumitem}
+            \usepackage{titlesec}
+            \titlespacing*{\section}{0pt}{0.2ex}{0.1ex}
+            \titlespacing*{\subsection}{0pt}{0.2ex}{0.1ex}
+            \titlespacing*{\subsubsection}{0pt}{0.1ex}{0.1ex}
+            \setlist{nosep, noitemsep, topsep=0pt, parsep=0pt, partopsep=0pt, leftmargin=1.2em}
+            \setlength{\parindent}{0pt}
+            \setlength{\parskip}{0pt}  
+            \raggedbottom             
 ---
 
 ::: {.content-visible when-format="html"}
@@ -31,15 +38,15 @@ format:
 [[Download PDF CheatSheet](https://github.com/migue-rc/Data-Science-Cheatsheet/releases/download/v1.0.0/Data_Science_Cheatsheet.pdf)]{.btn .btn-outline-primary .btn-sm style="font-family: inherit;" role="button"}
 :::
 
-::: {.content-visible when-format="pdf"}
 ```{=latex}
 \begin{multicols}{3}
 ```
-:::
 
 {{< include modules/_statistics.qmd >}}
 
 {{< include modules/_model_evaluation.qmd >}}
+
+{{< include modules/_naive_bayes.qmd >}}
 
 {{< include modules/_decision_trees.qmd >}}
 
@@ -63,14 +70,10 @@ format:
 
 {{< include modules/_time_series.qmd >}}
 
-{{< include modules/_naive_bayes.qmd >}}
-
 {{< include modules/_ab_test.qmd >}}
 
 {{< include modules/_miscellaneous.qmd >}}
 
-::: {.content-visible when-format="pdf"}
 ```{=latex}
 \end{multicols}
 ```
-:::

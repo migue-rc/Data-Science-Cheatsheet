@@ -339,6 +339,7 @@ window.Quarto = {
   <li><a href="#assumptions-1" id="toc-assumptions-1" class="nav-link" data-scroll-target="#assumptions-1">Assumptions</a></li>
   <li><a href="#odds" id="toc-odds" class="nav-link" data-scroll-target="#odds">Odds</a></li>
   </ul></li>
+  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes">Naive Bayes</a></li>
   <li><a href="#decision-trees" id="toc-decision-trees" class="nav-link" data-scroll-target="#decision-trees">Decision Trees</a>
   <ul class="collapse">
   <li><a href="#classification-and-regression-tree" id="toc-classification-and-regression-tree" class="nav-link" data-scroll-target="#classification-and-regression-tree">Classification and Regression Tree</a></li>
@@ -384,7 +385,6 @@ window.Quarto = {
   <li><a href="#reinforcement-learning" id="toc-reinforcement-learning" class="nav-link" data-scroll-target="#reinforcement-learning">Reinforcement Learning</a></li>
   <li><a href="#anomaly-detection" id="toc-anomaly-detection" class="nav-link" data-scroll-target="#anomaly-detection">Anomaly Detection</a></li>
   <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series">Time Series</a></li>
-  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes">Naive Bayes</a></li>
   <li><a href="#ab-testing" id="toc-ab-testing" class="nav-link" data-scroll-target="#ab-testing">A/B Testing</a></li>
   <li><a href="#miscellaneous" id="toc-miscellaneous" class="nav-link" data-scroll-target="#miscellaneous">Miscellaneous</a></li>
   </ul></li>
@@ -441,7 +441,7 @@ window.Quarto = {
 </section>
 <section id="hypergeometric" class="level4">
 <h4 class="anchored" data-anchor-id="hypergeometric">Hypergeometric</h4>
-<p>number of successes <span class="math inline">\(x\)</span> in a size <span class="math inline">\(N\)</span> population with <span class="math inline">\(n\)</span> draws, without replacement. <span class="math display">\[\mu=n\frac{x}{N}\]</span></p>
+<p>number of successes <span class="math inline">\(x\)</span> in a size <span class="math inline">\(N\)</span> population with <span class="math inline">\(n\)</span> draws, without replacement. <span class="math inline">\(\mu=n\frac{x}{N}\)</span></p>
 </section>
 <section id="poisson" class="level4">
 <h4 class="anchored" data-anchor-id="poisson">Poisson</h4>
@@ -549,7 +549,7 @@ window.Quarto = {
 </section>
 <section id="conditional-probability" class="level4">
 <h4 class="anchored" data-anchor-id="conditional-probability">Conditional Probability</h4>
-<p><span class="math display">\[P(A \mid B) = \frac{P(A \cap B)}{P(B)}\]</span></p>
+<p><span class="math inline">\(P(A \mid B) = \frac{P(A \cap B)}{P(B)}\)</span></p>
 <p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then <span class="math inline">\(P(A \cap B) = P(A) P(B)\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -579,7 +579,7 @@ Note
 </section>
 <section id="variance-1" class="level4">
 <h4 class="anchored" data-anchor-id="variance-1">Variance</h4>
-<p><span class="math display">\[Var(X) = E[X^2] - E[X]^2\]</span>, with properties</p>
+<p><span class="math inline">\(Var(X) = E[X^2] - E[X]^2\)</span>, with properties</p>
 <ul>
 <li>Var<span class="math inline">\((X\pm Y) =\)</span> Var<span class="math inline">\((X) +\)</span>Var<span class="math inline">\((Y) \pm 2\)</span>Cov<span class="math inline">\((X,Y)\)</span></li>
 <li>Var<span class="math inline">\((aX \pm b) = a^2\)</span>Var<span class="math inline">\((X)\)</span></li>
@@ -723,7 +723,18 @@ Note
 </section>
 <section id="odds" class="level3">
 <h3 class="anchored" data-anchor-id="odds">Odds</h3>
-<p>output probability can be transformed using <span class="math display">\[Odds(Y = 1) = \frac{P(Y=1)}{1-P(Y=1)}\]</span>, where <span class="math inline">\(P(\frac{1}{3})\)</span> = 1:2 odds Coefficients are linearly related to odds, such that a one unit increase in <span class="math inline">\(x_1\)</span> affects odds by <span class="math inline">\(e^{\beta_1}\)</span></p>
+<p>output probability can be transformed using <span class="math inline">\(Odds(Y = 1) = \frac{P(Y=1)}{1-P(Y=1)}\)</span>, where <span class="math inline">\(P(\frac{1}{3})\)</span> = 1:2 odds Coefficients are linearly related to odds, such that a one unit increase in <span class="math inline">\(x_1\)</span> affects odds by <span class="math inline">\(e^{\beta_1}\)</span></p>
+</section>
+</section>
+<section id="naive-bayes" class="level2">
+<h2 class="anchored" data-anchor-id="naive-bayes">Naive Bayes</h2>
+<section id="bayes-theorem" class="level4">
+<h4 class="anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h4>
+<p><span class="math inline">\(P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}\)</span></p>
+</section>
+<section id="gaussian-naive-bayes" class="level4">
+<h4 class="anchored" data-anchor-id="gaussian-naive-bayes">Gaussian Naive Bayes</h4>
+<p>calculates conditional probability for continuous data by assuming a normal distribution</p>
 </section>
 </section>
 <section id="decision-trees" class="level2">
@@ -1071,8 +1082,10 @@ generates <span class="math inline">\(k\)</span> topics by first assigning each 
 <section id="recommender-systems" class="level2">
 <h2 class="anchored" data-anchor-id="recommender-systems">Recommender Systems</h2>
 <p>Suggests relevant items to users by predicting ratings and preferences, and is divided into two main types: - Content Filtering - recommends similar items - Collaborative Filtering - recommends what similar users like</p>
-<p>The latter is more common, and includes methods such as: #### Memory-based Approaches<br>
-finds neighborhoods by using rating data to compute user and item similarity, measured using correlation or cosine similarity</p>
+<p>The latter is more common, and includes methods such as:</p>
+<section id="memory-based-approaches" class="level4">
+<h4 class="anchored" data-anchor-id="memory-based-approaches">Memory-based Approaches</h4>
+<p>finds neighborhoods by using rating data to compute user and item similarity, measured using correlation or cosine similarity</p>
 <ul>
 <li>User-User - similar users also liked…
 <ul>
@@ -1085,6 +1098,7 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 <li>Similarity between items is often more reliable than similarity between users</li>
 </ul></li>
 </ul>
+</section>
 <section id="model-based-approaches" class="level4">
 <h4 class="anchored" data-anchor-id="model-based-approaches">Model-based Approaches</h4>
 <p>predict ratings of unrated items, through methods such as Bayesian networks, SVD, and clustering. Handles sparse data better than memory-based approaches.</p>
@@ -1108,7 +1122,7 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 </section>
 <section id="policy" class="level4">
 <h4 class="anchored" data-anchor-id="policy">Policy</h4>
-<p>chooses the best actions for an agent at various states <span class="math display">\[\pi(s) = \operatorname*{argmax}_a Q(s,a)\]</span></p>
+<p>chooses the best actions for an agent at various states <span class="math inline">\(\pi(s) = \operatorname*{argmax}_a Q(s,a)\)</span></p>
 <p>Deep RL algorithms can further be divided into two main types, depending on their learning objective</p>
 </section>
 <section id="value-learning" class="level4">
@@ -1163,8 +1177,8 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 <h4 class="anchored" data-anchor-id="clusters">Clusters</h4>
 <p>data points outside of clusters could potentially be marked as anomalies</p>
 </section>
-<section id="autoencoders" class="level4">
-<h4 class="anchored" data-anchor-id="autoencoders">Autoencoders</h4>
+<section id="auto-encoders" class="level4">
+<h4 class="anchored" data-anchor-id="auto-encoders">Auto Encoders</h4>
 <p>unsupervised neural networks that compress data through an encoder and reconstruct it using a decoder. Autoencoders do not reconstruct the data perfectly, but rather focus on capturing important features in the data.</p>
 <p><img src="https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/autoencodeerNew.png?raw=true" class="img-fluid"></p>
 <p>The decoder struggles to capture anomalous patterns, and the reconstruction error acts as a score to detect anomalies.</p>
@@ -1197,8 +1211,8 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 <section id="double-exponential-smoothing" class="level4">
 <h4 class="anchored" data-anchor-id="double-exponential-smoothing">Double Exponential Smoothing</h4>
 <p>applies a recursive exponential filter to capture trends within a time series</p>
-<p><span class="math display">\[s_t = \alpha x_t + (1-\alpha)(s_{t-1} + b_{t-1})\]</span></p>
-<p><span class="math display">\[b_t = \beta (s_t - s_{t-1}) + (1-\beta)b_{t-1}\]</span></p>
+<p><span class="math inline">\(s_t = \alpha x_t + (1-\alpha)(s_{t-1} + b_{t-1})\)</span></p>
+<p><span class="math inline">\(b_t = \beta (s_t - s_{t-1}) + (1-\beta)b_{t-1}\)</span></p>
 <p>Triple exponential smoothing adds a third variable <span class="math inline">\(\gamma\)</span> that accounts for seasonality. </p>
 </section>
 <section id="arima" class="level4">
@@ -1222,17 +1236,6 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 <h4 class="anchored" data-anchor-id="generalized-additive-model">Generalized Additive Model</h4>
 <p>combine predictive methods while preserving additivity across variables, in a form such as <span class="math inline">\(y = \beta_0 + f_1(x_1) + \cdots + f_m(x_m)\)</span>, where functions can be non-linear. GAMs also provide regularized and interpretable solutions for regression and classification problems.</p>
 <p>Classifies data using the label with the highest conditional probability, given data <span class="math inline">\(a\)</span> and classes <span class="math inline">\(c\)</span>. Naive because it assumes variables are independent.</p>
-</section>
-</section>
-<section id="naive-bayes" class="level2">
-<h2 class="anchored" data-anchor-id="naive-bayes">Naive Bayes</h2>
-<section id="bayes-theorem" class="level4">
-<h4 class="anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h4>
-<p><span class="math display">\[P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}\]</span></p>
-</section>
-<section id="gaussian-naive-bayes" class="level4">
-<h4 class="anchored" data-anchor-id="gaussian-naive-bayes">Gaussian Naive Bayes</h4>
-<p>calculates conditional probability for continuous data by assuming a normal distribution</p>
 </section>
 </section>
 <section id="ab-testing" class="level2">

@@ -17,7 +17,7 @@ captures the expected discounted total future reward given a state and action
 
 #### Policy 
 chooses the best actions for an agent at various states
-$$\pi(s) = \operatorname*{argmax}_a Q(s,a)$$
+$\pi(s) = \operatorname*{argmax}_a Q(s,a)$
 
 Deep RL algorithms can further be divided into two main types, depending on their learning objective
 

@@ -19,9 +19,9 @@ uses an exponentially decreasing weight to observations over time, and takes a m
 #### Double Exponential Smoothing  
 applies a recursive exponential filter to capture trends within a time series
 
-$$s_t = \alpha x_t + (1-\alpha)(s_{t-1} + b_{t-1})$$
+$s_t = \alpha x_t + (1-\alpha)(s_{t-1} + b_{t-1})$
 
-$$b_t = \beta (s_t - s_{t-1}) + (1-\beta)b_{t-1}$$
+$b_t = \beta (s_t - s_{t-1}) + (1-\beta)b_{t-1}$
 
 Triple exponential smoothing adds a third variable
 $\gamma$ that accounts for seasonality.

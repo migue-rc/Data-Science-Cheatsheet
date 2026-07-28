@@ -25,7 +25,7 @@ useful when data is grouped around dense neighborhoods, measured by distance. Me
 #### Clusters  
 data points outside of clusters could potentially be marked as anomalies
 
-#### Autoencoders  
+#### Auto Encoders  
 unsupervised neural networks that compress data through an encoder and reconstruct it using a decoder. Autoencoders do not reconstruct the data perfectly, but rather focus on capturing important features in the data.
 
 ![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/autoencodeerNew.png?raw=true)

@@ -5,6 +5,7 @@ Suggests relevant items to users by predicting ratings and preferences, and is d
 - Collaborative Filtering - recommends what similar users like
 
 The latter is more common, and includes methods such as:
+
 #### Memory-based Approaches  
 finds neighborhoods by using rating data to compute user and item similarity, measured using correlation or cosine similarity
 

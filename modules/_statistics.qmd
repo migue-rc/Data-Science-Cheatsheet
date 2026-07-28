@@ -16,7 +16,7 @@ number of failures before $r$ successes
 
 #### Hypergeometric 
 number of successes $x$ in a size $N$ population with $n$ draws, without replacement. 
-$$\mu=n\frac{x}{N}$$
+$\mu=n\frac{x}{N}$
 
 #### Poisson 
 number of successes $x$ in a fixed time interval, 
@@ -112,7 +112,7 @@ analysis of variance, used to compare $3+$ samples
 - F-score - compares the ratio of explained and unexplained variance $\to \frac{\text{between group variance}}{\text{within group variance}}$
 
 #### Conditional Probability 
-$$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$
+$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$
 
 If $A$ and $B$ are independent, then $P(A \cap B) = P(A) P(B)$.
 
@@ -133,7 +133,7 @@ $E[X] = \sum x_i p_i$, with properties
 - $E[XY] = E[X]E[Y]$ if $X$ and $Y$ are independent
 
 #### Variance 
-$$Var(X) = E[X^2] - E[X]^2$$, with properties
+$Var(X) = E[X^2] - E[X]^2$, with properties
 
 - Var$(X\pm Y) =$ Var$(X) +$Var$(Y) \pm 2$Cov$(X,Y)$
 - Var$(aX \pm b) = a^2$Var$(X)$

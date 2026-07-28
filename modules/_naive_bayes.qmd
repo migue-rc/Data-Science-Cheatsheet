@@ -2,7 +2,7 @@
 ## Naive Bayes
 
 #### Bayes' Theorem 
-$$P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}$$
+$P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}$
 
 #### Gaussian Naive Bayes 
 calculates conditional probability for continuous data by assuming a normal distribution
