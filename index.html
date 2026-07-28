@@ -311,7 +311,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-science-cheat-sheet" id="toc-data-science-cheat-sheet" class="nav-link active" data-scroll-target="#data-science-cheat-sheet">Data Science Cheat sheet</a>
+  <li><a href="#data-science-cheat-sheet" id="toc-data-science-cheat-sheet" class="nav-link active" data-scroll-target="#data-science-cheat-sheet">Data Science Cheat Sheet</a>
   <ul class="collapse">
   <li><a href="#statistics" id="toc-statistics" class="nav-link" data-scroll-target="#statistics">Statistics</a>
   <ul class="collapse">
@@ -339,6 +339,7 @@ window.Quarto = {
   <li><a href="#assumptions-1" id="toc-assumptions-1" class="nav-link" data-scroll-target="#assumptions-1">Assumptions</a></li>
   <li><a href="#odds" id="toc-odds" class="nav-link" data-scroll-target="#odds">Odds</a></li>
   </ul></li>
+  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes">Naive Bayes</a></li>
   <li><a href="#decision-trees" id="toc-decision-trees" class="nav-link" data-scroll-target="#decision-trees">Decision Trees</a>
   <ul class="collapse">
   <li><a href="#classification-and-regression-tree" id="toc-classification-and-regression-tree" class="nav-link" data-scroll-target="#classification-and-regression-tree">Classification and Regression Tree</a></li>
@@ -384,12 +385,11 @@ window.Quarto = {
   <li><a href="#reinforcement-learning" id="toc-reinforcement-learning" class="nav-link" data-scroll-target="#reinforcement-learning">Reinforcement Learning</a></li>
   <li><a href="#anomaly-detection" id="toc-anomaly-detection" class="nav-link" data-scroll-target="#anomaly-detection">Anomaly Detection</a></li>
   <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series">Time Series</a></li>
-  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes">Naive Bayes</a></li>
   <li><a href="#ab-testing" id="toc-ab-testing" class="nav-link" data-scroll-target="#ab-testing">A/B Testing</a></li>
   <li><a href="#miscellaneous" id="toc-miscellaneous" class="nav-link" data-scroll-target="#miscellaneous">Miscellaneous</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -421,7 +421,8 @@ window.Quarto = {
 
 
 <section id="data-science-cheat-sheet" class="level1">
-<h1>Data Science Cheat sheet</h1>
+<h1>Data Science Cheat Sheet</h1>
+<p><span class="btn btn-outline-primary btn-sm" style="font-family: inherit;" role="button"><a href="https://github.com/migue-rc/Data-Science-Cheatsheet/releases/download/v1.0.0/Data_Science_Cheatsheet.pdf">Download PDF CheatSheet</a></span></p>
 <section id="statistics" class="level2">
 <h2 class="anchored" data-anchor-id="statistics">Statistics</h2>
 <section id="discrete-distributions" class="level3">
@@ -440,7 +441,7 @@ window.Quarto = {
 </section>
 <section id="hypergeometric" class="level4">
 <h4 class="anchored" data-anchor-id="hypergeometric">Hypergeometric</h4>
-<p>number of successes <span class="math inline">\(x\)</span> in a size <span class="math inline">\(N\)</span> population with <span class="math inline">\(n\)</span> draws, without replacement. <span class="math display">\[\mu=n\frac{x}{N}\]</span></p>
+<p>number of successes <span class="math inline">\(x\)</span> in a size <span class="math inline">\(N\)</span> population with <span class="math inline">\(n\)</span> draws, without replacement. <span class="math inline">\(\mu=n\frac{x}{N}\)</span></p>
 </section>
 <section id="poisson" class="level4">
 <h4 class="anchored" data-anchor-id="poisson">Poisson</h4>
@@ -464,7 +465,7 @@ window.Quarto = {
 </section>
 <section id="exponential" class="level4">
 <h4 class="anchored" data-anchor-id="exponential">Exponential</h4>
-<p>memoryless time between independent events occurring at an average rate <span class="math inline">\(\lambda\)</span> <span class="math inline">\(\to \lambda e^{-\lambda x}\)</span>, with <span class="math inline">\(\mu\)</span> = <span class="math inline">\(\frac{1}{\lambda}\)</span></p>
+<p>memory-less time between independent events occurring at an average rate <span class="math inline">\(\lambda\)</span> <span class="math inline">\(\to \lambda e^{-\lambda x}\)</span>, with <span class="math inline">\(\mu\)</span> = <span class="math inline">\(\frac{1}{\lambda}\)</span></p>
 </section>
 <section id="gamma" class="level4">
 <h4 class="anchored" data-anchor-id="gamma">Gamma</h4>
@@ -548,7 +549,7 @@ window.Quarto = {
 </section>
 <section id="conditional-probability" class="level4">
 <h4 class="anchored" data-anchor-id="conditional-probability">Conditional Probability</h4>
-<p><span class="math display">\[P(A \mid B) = \frac{P(A \cap B)}{P(B)}\]</span></p>
+<p><span class="math inline">\(P(A \mid B) = \frac{P(A \cap B)}{P(B)}\)</span></p>
 <p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then <span class="math inline">\(P(A \cap B) = P(A) P(B)\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -560,7 +561,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note, events that are independent of themselves must have probability either 1 or 0.</p>
+<p>Events that are independent of themselves must have probability either 1 or 0.</p>
 </div>
 </div>
 </section>
@@ -578,7 +579,7 @@ Note
 </section>
 <section id="variance-1" class="level4">
 <h4 class="anchored" data-anchor-id="variance-1">Variance</h4>
-<p><span class="math display">\[Var(X) = E[X^2] - E[X]^2\]</span>, with properties</p>
+<p><span class="math inline">\(Var(X) = E[X^2] - E[X]^2\)</span>, with properties</p>
 <ul>
 <li>Var<span class="math inline">\((X\pm Y) =\)</span> Var<span class="math inline">\((X) +\)</span>Var<span class="math inline">\((Y) \pm 2\)</span>Cov<span class="math inline">\((X,Y)\)</span></li>
 <li>Var<span class="math inline">\((aX \pm b) = a^2\)</span>Var<span class="math inline">\((X)\)</span></li>
@@ -586,7 +587,7 @@ Note
 </section>
 <section id="covariance" class="level4">
 <h4 class="anchored" data-anchor-id="covariance">Covariance</h4>
-<p>measures the direction of the joint linear relationship of two variables $ $</p>
+<p>measures the direction of the joint linear relationship of two variables <span class="math inline">\(\to \frac{\sum (x_i - \bar{x}) (y_i - \bar{y})}{n-1}\)</span></p>
 </section>
 <section id="correlation" class="level4">
 <h4 class="anchored" data-anchor-id="correlation">Correlation</h4>
@@ -645,7 +646,7 @@ Note
 <li>Precision = <span class="math inline">\(\frac{TP}{TP + FP}\)</span>, percent correct when predict positive</li>
 <li>Recall, Sensitivity = <span class="math inline">\(\frac{TP}{TP + FN}\)</span>, percent of actual positives identified correctly (True Positive Rate)</li>
 <li>Specificity = <span class="math inline">\(\frac{TN}{TN + FP}\)</span>, percent of actual negatives identified correctly, also 1 - FPR (True Negative Rate)</li>
-<li><span class="math inline">\(F_1 = 2\frac{precision\cdot recall}{precision + recall}\)</span>, useful when classes are <strong>imbalanced</strong></li>
+<li><span class="math inline">\(F_1 = frac{2\cdot precision\cdot recall}{precision + recall}\)</span>, useful when classes are <strong>imbalanced</strong></li>
 </ul>
 <section id="roc-curve" class="level4">
 <h4 class="anchored" data-anchor-id="roc-curve">ROC Curve</h4>
@@ -722,7 +723,18 @@ Note
 </section>
 <section id="odds" class="level3">
 <h3 class="anchored" data-anchor-id="odds">Odds</h3>
-<p>output probability can be transformed using <span class="math display">\[Odds(Y = 1) = \frac{P(Y=1)}{1-P(Y=1)}\]</span>, where <span class="math inline">\(P(\frac{1}{3})\)</span> = 1:2 odds Coefficients are linearly related to odds, such that a one unit increase in <span class="math inline">\(x_1\)</span> affects odds by <span class="math inline">\(e^{\beta_1}\)</span></p>
+<p>output probability can be transformed using <span class="math inline">\(Odds(Y = 1) = \frac{P(Y=1)}{1-P(Y=1)}\)</span>, where <span class="math inline">\(P(\frac{1}{3})\)</span> = 1:2 odds Coefficients are linearly related to odds, such that a one unit increase in <span class="math inline">\(x_1\)</span> affects odds by <span class="math inline">\(e^{\beta_1}\)</span></p>
+</section>
+</section>
+<section id="naive-bayes" class="level2">
+<h2 class="anchored" data-anchor-id="naive-bayes">Naive Bayes</h2>
+<section id="bayes-theorem" class="level4">
+<h4 class="anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h4>
+<p><span class="math inline">\(P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}\)</span></p>
+</section>
+<section id="gaussian-naive-bayes" class="level4">
+<h4 class="anchored" data-anchor-id="gaussian-naive-bayes">Gaussian Naive Bayes</h4>
+<p>calculates conditional probability for continuous data by assuming a normal distribution</p>
 </section>
 </section>
 <section id="decision-trees" class="level2">
@@ -790,7 +802,7 @@ Note
 <p>Non-parametric method that calculates <span class="math inline">\(\hat{y}\)</span> using the average value or most common class of its <span class="math inline">\(k\)</span>-nearest points. For high-dimensional data, information is lost through equidistant vectors, so dimension reduction is often applied prior to <span class="math inline">\(k\)</span>-NN.</p>
 <section id="minkowski-distance" class="level3">
 <h3 class="anchored" data-anchor-id="minkowski-distance">Minkowski Distance</h3>
-<p>count of the differences between two vectors, often used to compare categorical variables</p>
+<p>General metric used to calculate distance between two vectors in a normed vector space:</p>
 <ul>
 <li>p = 1 gives Manhattan distance <span class="math inline">\({\sum|a_i - b_i|}\)</span></li>
 <li>p = 2 gives Euclidean distance <span class="math inline">\(\sqrt{\sum(a_i - b_i)^2}\)</span></li>
@@ -798,7 +810,7 @@ Note
 </section>
 <section id="hamming-distance" class="level3">
 <h3 class="anchored" data-anchor-id="hamming-distance">Hamming Distance</h3>
-<p>count of the differences between two vectors, often used to compare categorical variables</p>
+<p>Counts the number of positions at which the corresponding symbols are different, primarily used to compare categorical strings or binary vectors of equals length.</p>
 </section>
 </section>
 <section id="clustering" class="level2">
@@ -1070,8 +1082,10 @@ generates <span class="math inline">\(k\)</span> topics by first assigning each 
 <section id="recommender-systems" class="level2">
 <h2 class="anchored" data-anchor-id="recommender-systems">Recommender Systems</h2>
 <p>Suggests relevant items to users by predicting ratings and preferences, and is divided into two main types: - Content Filtering - recommends similar items - Collaborative Filtering - recommends what similar users like</p>
-<p>The latter is more common, and includes methods such as: #### Memory-based Approaches<br>
-finds neighborhoods by using rating data to compute user and item similarity, measured using correlation or cosine similarity</p>
+<p>The latter is more common, and includes methods such as:</p>
+<section id="memory-based-approaches" class="level4">
+<h4 class="anchored" data-anchor-id="memory-based-approaches">Memory-based Approaches</h4>
+<p>finds neighborhoods by using rating data to compute user and item similarity, measured using correlation or cosine similarity</p>
 <ul>
 <li>User-User - similar users also liked…
 <ul>
@@ -1084,6 +1098,7 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 <li>Similarity between items is often more reliable than similarity between users</li>
 </ul></li>
 </ul>
+</section>
 <section id="model-based-approaches" class="level4">
 <h4 class="anchored" data-anchor-id="model-based-approaches">Model-based Approaches</h4>
 <p>predict ratings of unrated items, through methods such as Bayesian networks, SVD, and clustering. Handles sparse data better than memory-based approaches.</p>
@@ -1107,7 +1122,7 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 </section>
 <section id="policy" class="level4">
 <h4 class="anchored" data-anchor-id="policy">Policy</h4>
-<p>chooses the best actions for an agent at various states \ $ (s) = _a Q(s,a)$\</p>
+<p>chooses the best actions for an agent at various states <span class="math inline">\(\pi(s) = \operatorname*{argmax}_a Q(s,a)\)</span></p>
 <p>Deep RL algorithms can further be divided into two main types, depending on their learning objective</p>
 </section>
 <section id="value-learning" class="level4">
@@ -1162,8 +1177,8 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 <h4 class="anchored" data-anchor-id="clusters">Clusters</h4>
 <p>data points outside of clusters could potentially be marked as anomalies</p>
 </section>
-<section id="autoencoders" class="level4">
-<h4 class="anchored" data-anchor-id="autoencoders">Autoencoders</h4>
+<section id="auto-encoders" class="level4">
+<h4 class="anchored" data-anchor-id="auto-encoders">Auto Encoders</h4>
 <p>unsupervised neural networks that compress data through an encoder and reconstruct it using a decoder. Autoencoders do not reconstruct the data perfectly, but rather focus on capturing important features in the data.</p>
 <p><img src="https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/autoencodeerNew.png?raw=true" class="img-fluid"></p>
 <p>The decoder struggles to capture anomalous patterns, and the reconstruction error acts as a score to detect anomalies.</p>
@@ -1196,8 +1211,8 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 <section id="double-exponential-smoothing" class="level4">
 <h4 class="anchored" data-anchor-id="double-exponential-smoothing">Double Exponential Smoothing</h4>
 <p>applies a recursive exponential filter to capture trends within a time series</p>
-<p><span class="math display">\[s_t = \alpha x_t + (1-\alpha)(s_{t-1} + b_{t-1})\]</span></p>
-<p><span class="math display">\[b_t = \beta (s_t - s_{t-1}) + (1-\beta)b_{t-1}\]</span></p>
+<p><span class="math inline">\(s_t = \alpha x_t + (1-\alpha)(s_{t-1} + b_{t-1})\)</span></p>
+<p><span class="math inline">\(b_t = \beta (s_t - s_{t-1}) + (1-\beta)b_{t-1}\)</span></p>
 <p>Triple exponential smoothing adds a third variable <span class="math inline">\(\gamma\)</span> that accounts for seasonality. </p>
 </section>
 <section id="arima" class="level4">
@@ -1223,17 +1238,6 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 <p>Classifies data using the label with the highest conditional probability, given data <span class="math inline">\(a\)</span> and classes <span class="math inline">\(c\)</span>. Naive because it assumes variables are independent.</p>
 </section>
 </section>
-<section id="naive-bayes" class="level2">
-<h2 class="anchored" data-anchor-id="naive-bayes">Naive Bayes</h2>
-<section id="bayes-theorem" class="level4">
-<h4 class="anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h4>
-<p><span class="math display">\[P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}\]</span></p>
-</section>
-<section id="gaussian-naive-bayes" class="level4">
-<h4 class="anchored" data-anchor-id="gaussian-naive-bayes">Gaussian Naive Bayes</h4>
-<p>calculates conditional probability for continuous data by assuming a normal distribution</p>
-</section>
-</section>
 <section id="ab-testing" class="level2">
 <h2 class="anchored" data-anchor-id="ab-testing">A/B Testing</h2>
 <p>Examines user experience through randomized tests with two variants. The typical steps are:</p>
@@ -1255,7 +1259,7 @@ finds neighborhoods by using rating data to compute user and item similarity, me
 </section>
 <section id="multivariate-testing" class="level4">
 <h4 class="anchored" data-anchor-id="multivariate-testing">Multivariate Testing</h4>
-<p>compares 3<span class="math inline">\(\plus\)</span> variants or combinations, but requires larger sample sizes</p>
+<p>compares <span class="math inline">\(3+\)</span> variants or combinations, but requires larger sample sizes</p>
 </section>
 <section id="bonferroni-correction" class="level4">
 <h4 class="anchored" data-anchor-id="bonferroni-correction">Bonferroni Correction</h4>
