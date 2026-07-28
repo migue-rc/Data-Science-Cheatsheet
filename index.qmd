@@ -1,8 +1,10 @@
 ---
 title: Data-Science Cheat Sheet
 author: Miguel R.
+subtitle: "[Download PDF CheatSheet](https://github.com/migue-rc/Data-Science-Cheatsheet/releases/download/v1.0.0/Data_Science_Cheatsheet.pdf){.btn .btn-outline-primary .btn-sm style=\"font-family: inherit;\" role=\"button\"}"
 ---
 # Data Science Cheat sheet
+[Download the che]
 ## Statistics
 ### Discrete Distributions
 #### Binomial
@@ -41,7 +43,7 @@ $N(\mu,\sigma$), Standard Normal $Z\sim N(0, 1)$
 \end{itemize}
 
 #### Exponential 
-memoryless time between independent events occurring at an average rate $\lambda$ $\to \lambda e^{-\lambda x}$, with $\mu$ = $\frac{1}{\lambda}$
+memory-less time between independent events occurring at an average rate $\lambda$ $\to \lambda e^{-\lambda x}$, with $\mu$ = $\frac{1}{\lambda}$
 
 #### Gamma 
 time until $n$ independent events occurring at an average rate $\lambda$
