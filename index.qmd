@@ -22,6 +22,7 @@ format:
 {{< include modules/_model_evaluation.qmd >}}
 
 {{< include modules/_decision_trees.qmd >}}
+
 {{< include modules/_support_vector_machines.qmd >}}
 
 {{< include modules/_multiclass_prediction.qmd >}}
