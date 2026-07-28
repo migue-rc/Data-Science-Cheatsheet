@@ -1,0 +1,38 @@
+## Reinforcement Learning
+
+Maximizes future rewards by learning through state-action pairs. That is, an $agent$ performs $actions$ in an $environment$, which updates the $state$ and provides a $reward$.
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/reinforcement4.JPG?raw=true)
+
+
+#### Multi-armed Bandit Problem  
+a gambler plays slot machines with unknown probability distributions and must decide the best strategy to maximize reward. This exemplifies the exploration-exploitation tradeoff, as the best long-term strategy may involve short-term sacrifices.
+
+RL is divided into two types, with the former being more common:
+- Model-free - learn through trial and error in the environment
+- Model-based - access to the underlying (approximate) state-reward distribution
+
+#### Q-Value $Q(s,a)$ 
+captures the expected discounted total future reward given a state and action
+
+#### Policy 
+chooses the best actions for an agent at various states
+$$\pi(s) = \operatorname*{argmax}_a Q(s,a)$$
+
+Deep RL algorithms can further be divided into two main types, depending on their learning objective
+
+#### Value Learning  
+aims to approximate $Q(s,a)$ for all actions the agent can take, but is restricted to discrete action spaces. Can use the $\epsilon$-greedy method, where $\epsilon$ measures the probability of exploration. If chosen, the next action is selected uniformly at random.
+
+- Q-Learning - simple value iteration model that maximizes the Q-value using a table on states and actions
+- Deep Q Network - finds the best action to take by minimizing the Q-loss, the squared error between the target Q-value and the prediction
+
+#### Policy Gradient Learning 
+directly optimize the the policy $\pi(s)$ through a probability distribution of actions, without the need for a value function, allowing for continuous action spaces.  
+
+#### Actor-Critic Model 
+hybrid algorithm that relies on two neural networks, an actor $\pi(s,a,\theta$) which controls agent behavior  and a critic $Q(s,a,w)$ that measures how good an action is. Both run in parallel to find the optimal weights $\theta, w$ to maximize expected reward. At each step:
+
+1. Pass the current state into the actor and critic
+2. The critic evaluates the action's Q-value, and the actor updates its weight $\theta$
+3. The actor takes the next action leading to a new state, and the critic updates its weight $w$

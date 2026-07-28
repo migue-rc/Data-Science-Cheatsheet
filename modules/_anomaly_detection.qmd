@@ -1,0 +1,47 @@
+## Anomaly Detection
+
+Identifies unusual patterns that differ from the majority of the data. Assumes that anomalies are:
+
+- Rare - the minority class that occurs rarely in the data
+- Different - have feature values that are very different from normal observations
+
+Anomaly detection techniques spans a wide range, including methods based on:
+
+#### Statistics  
+relies on various statistical methods to identify outliers, such as Z-tests, boxplots, interquartile ranges, and variance comparisons
+
+#### Density  
+useful when data is grouped around dense neighborhoods, measured by distance. Methods include $k$-nearest neighbors, local outlier factor, and isolation forest.
+
+- Isolation Forest - tree-based model that labels outliers based on an anomaly score
+
+    1. Select a random feature and split value, dividing the dataset in two
+    2. Continue splitting randomly until every point is isolated
+    3. Calculate the anomaly score for each observation, based on how many iterations it took to isolate that point.
+    4. If the anomaly score is greater than a threshold, mark it as an outlier
+
+        Intuitively, outliers are easier to isolate and should have shorter path lengths in the tree
+
+#### Clusters  
+data points outside of clusters could potentially be marked as anomalies
+
+#### Autoencoders  
+unsupervised neural networks that compress data through an encoder and reconstruct it using a decoder. Autoencoders do not reconstruct the data perfectly, but rather focus on capturing important features in the data.
+
+![](https://github.com/migue-rc/Data-Science-Cheatsheet/blob/main/images/autoencodeerNew.png?raw=true)
+
+The decoder struggles to capture anomalous patterns, and the reconstruction error acts as a score to detect anomalies.
+
+Autoencoders can also be used for image processing, dimension reduction, and information retrieval.
+
+#### Hidden Markov Model 
+uses observed events $O$ to model a set of $n$ underlying states $Q$ using $\lambda = (A,B,\pi)$
+
+- $A$ - $n\times n$ matrix of transition probabilities from state $i$ to $j$ 
+- $B$ - sequence of likelihoods of emitting $o_t$ in state $i$
+- $\pi$ - initial probability distribution over states
+
+HMMs can calculate $P(O|\lambda)$, find the best hidden state sequence Q, or learn the parameters $A$ and $B$.
+Anomalies are observations that are unlikely to occur across states.
+
+HMMs can be applied to many problems such as signal processing and part of speech tagging.

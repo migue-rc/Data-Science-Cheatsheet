@@ -1,0 +1,28 @@
+
+## Miscellaneous
+
+#### Shapley Values 
+measures the marginal contribution of each variable in the output of a model, where the sum of all Shapley values equals the total value (prediction $-$ mean prediction)
+
+#### SHAP 
+interpretable Shapley method that utilizes both global and local importance to model variable explainability
+
+#### Permutation 
+order matters  $\to \frac{n!}{(n-k)!} = {}^n P_k$
+
+#### Combination  
+order doesn't matter $\to \frac{n!}{k!(n-k)!}= {}^n C_k = \binom nk$
+
+#### Left Skew
+Mean $<$ Median $\leq$ Mode
+
+#### Right Skew  
+Mean $>$ Median $\geq$ Mode
+
+#### Probability vs Likelihood  
+given a situation $\theta$ and observed outcomes $O$, 
+probability is calculated as $P(O|\theta)$. 
+
+However, when true values for $\theta$ are unknown, 
+$O$ is used to estimate the $\theta$ that maximizes the likelihood function. 
+That is, $L(\theta|O) = P(O|\theta)$.
