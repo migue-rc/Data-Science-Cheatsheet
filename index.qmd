@@ -7,7 +7,7 @@ format:
     callout-appearance: minimal
     callout-icon: false
     documentclass: extarticle
-    fontsize: 9pt
+    fontsize: 8pt
     block-headings: false
     geometry: 
       - landscape
@@ -43,10 +43,13 @@ format:
 ```
 
 {{< include modules/_statistics.qmd >}}
+{{< include modules/_naive_bayes.qmd >}}
 
+```{=latex}
+\columnbreak
+```
 {{< include modules/_model_evaluation.qmd >}}
 
-{{< include modules/_naive_bayes.qmd >}}
 
 {{< include modules/_decision_trees.qmd >}}
 

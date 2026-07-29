@@ -112,5 +112,6 @@ The threshold $a$ classifies predictions as either 1 or 0
 
 ###  Odds
 
-output probability can be transformed using $Odds(Y = 1) = \frac{P(Y=1)}{1-P(Y=1)}$, where $P(\frac{1}{3})$ = 1:2 odds
+output probability can be transformed using $Odds(Y = 1) = \frac{P(Y=1)}{1-P(Y=1)}$, 
+where $P(\frac{1}{3})$ = 1:2 odds
 Coefficients are linearly related to odds, such that a one unit increase in $x_1$ affects odds by $e^{\beta_1}$

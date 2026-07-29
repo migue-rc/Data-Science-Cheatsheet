@@ -21,7 +21,7 @@ represents text using word frequencies, without context or order
 measures word importance for a document in a collection (corpus), by multiplying the term frequency (occurrences of a term in a document) with the inverse document frequency (penalizes common terms across a corpus)
 
 #### Cosine Similarity 
-measures similarity between vectors, calculated as $$\cos(\theta) = \frac{A\cdot B}{||A||||B||}$$, which ranges from o to 1
+measures similarity between vectors, calculated as $\cos(\theta) = \frac{A\cdot B}{||A||||B||}$, which ranges from o to 1
 
 
 ### Word Embedding
@@ -49,13 +49,16 @@ Extracts the attitudes and emotions from text
 #### Polarity  
 measures positive, negative, or neutral opinions
 - Valence shifters - capture amplifiers or negators such as '$really$ fun' or '$hardly$ fun'
+
 #### Sentiment  
 measures emotional states such as happy or sad
+
 #### Subject-Object Identification 
 classifies sentences as either subjective or objective
 
 ### Topic Modelling
 Captures the underlying themes that appear in documents
+
 #### Latent Dirichlet Allocation (LDA)  
 generates $k$ topics by first assigning each word to a random topic, then iteratively updating assignments based on parameters $\alpha$, the mix of topics per document, and $\beta$, the distribution of words per topic
 
