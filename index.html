@@ -319,6 +319,7 @@ window.Quarto = {
   <li><a href="#continuous-distributions" id="toc-continuous-distributions" class="nav-link" data-scroll-target="#continuous-distributions">Continuous Distributions</a></li>
   </ul></li>
   <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts">Concepts</a></li>
+  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes">Naive Bayes</a></li>
   <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">Model Evaluation</a>
   <ul class="collapse">
   <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
@@ -339,7 +340,6 @@ window.Quarto = {
   <li><a href="#assumptions-1" id="toc-assumptions-1" class="nav-link" data-scroll-target="#assumptions-1">Assumptions</a></li>
   <li><a href="#odds" id="toc-odds" class="nav-link" data-scroll-target="#odds">Odds</a></li>
   </ul></li>
-  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes">Naive Bayes</a></li>
   <li><a href="#decision-trees" id="toc-decision-trees" class="nav-link" data-scroll-target="#decision-trees">Decision Trees</a>
   <ul class="collapse">
   <li><a href="#classification-and-regression-tree" id="toc-classification-and-regression-tree" class="nav-link" data-scroll-target="#classification-and-regression-tree">Classification and Regression Tree</a></li>
@@ -505,7 +505,19 @@ window.Quarto = {
 <section id="type-ii-error-false-negative-beta" class="level4">
 <h4 class="anchored" data-anchor-id="type-ii-error-false-negative-beta">Type II Error (False Negative <span class="math inline">\(\beta\)</span>)</h4>
 <p>not rejecting a false null</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Decreasing Type I Error causes an increase in Type II Error</p>
+</div>
+</div>
 </section>
 <section id="confidence-level-1---alpha" class="level4">
 <h4 class="anchored" data-anchor-id="confidence-level-1---alpha">Confidence Level (1 - <span class="math inline">\(\alpha\)</span>)</h4>
@@ -592,6 +604,17 @@ Note
 <section id="correlation" class="level4">
 <h4 class="anchored" data-anchor-id="correlation">Correlation</h4>
 <p>normalizes covariance to provide both strength and direction of linear relationships <span class="math inline">\(\to r =  \frac{Cov(x,y)}{\sigma_x \sigma_y}\)</span> Independent variables are uncorrelated, though the inverse is not necessarily true</p>
+</section>
+</section>
+<section id="naive-bayes" class="level2">
+<h2 class="anchored" data-anchor-id="naive-bayes">Naive Bayes</h2>
+<section id="bayes-theorem" class="level4">
+<h4 class="anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h4>
+<p><span class="math inline">\(P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}\)</span></p>
+</section>
+<section id="gaussian-naive-bayes" class="level4">
+<h4 class="anchored" data-anchor-id="gaussian-naive-bayes">Gaussian Naive Bayes</h4>
+<p>calculates conditional probability for continuous data by assuming a normal distribution</p>
 </section>
 </section>
 <section id="model-evaluation" class="level2">
@@ -724,17 +747,6 @@ Note
 <section id="odds" class="level3">
 <h3 class="anchored" data-anchor-id="odds">Odds</h3>
 <p>output probability can be transformed using <span class="math inline">\(Odds(Y = 1) = \frac{P(Y=1)}{1-P(Y=1)}\)</span>, where <span class="math inline">\(P(\frac{1}{3})\)</span> = 1:2 odds Coefficients are linearly related to odds, such that a one unit increase in <span class="math inline">\(x_1\)</span> affects odds by <span class="math inline">\(e^{\beta_1}\)</span></p>
-</section>
-</section>
-<section id="naive-bayes" class="level2">
-<h2 class="anchored" data-anchor-id="naive-bayes">Naive Bayes</h2>
-<section id="bayes-theorem" class="level4">
-<h4 class="anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h4>
-<p><span class="math inline">\(P({c_i}|{a})  = \frac{P({a}|{c_i})P({c_i})}{P({a})}\)</span></p>
-</section>
-<section id="gaussian-naive-bayes" class="level4">
-<h4 class="anchored" data-anchor-id="gaussian-naive-bayes">Gaussian Naive Bayes</h4>
-<p>calculates conditional probability for continuous data by assuming a normal distribution</p>
 </section>
 </section>
 <section id="decision-trees" class="level2">
@@ -950,7 +962,7 @@ Note
 </section>
 <section id="cosine-similarity" class="level4">
 <h4 class="anchored" data-anchor-id="cosine-similarity">Cosine Similarity</h4>
-<p>measures similarity between vectors, calculated as <span class="math display">\[\cos(\theta) = \frac{A\cdot B}{||A||||B||}\]</span>, which ranges from o to 1</p>
+<p>measures similarity between vectors, calculated as <span class="math inline">\(\cos(\theta) = \frac{A\cdot B}{||A||||B||}\)</span>, which ranges from o to 1</p>
 </section>
 <section id="word-embedding" class="level3">
 <h3 class="anchored" data-anchor-id="word-embedding">Word Embedding</h3>
@@ -977,14 +989,24 @@ Note
 <p>Extracts the attitudes and emotions from text</p>
 <section id="polarity" class="level4">
 <h4 class="anchored" data-anchor-id="polarity">Polarity</h4>
-<p>measures positive, negative, or neutral opinions - Valence shifters - capture amplifiers or negators such as ‘<span class="math inline">\(really\)</span> fun’ or ‘<span class="math inline">\(hardly\)</span> fun’ #### Sentiment<br>
-measures emotional states such as happy or sad #### Subject-Object Identification classifies sentences as either subjective or objective</p>
+<p>measures positive, negative, or neutral opinions - Valence shifters - capture amplifiers or negators such as ‘<span class="math inline">\(really\)</span> fun’ or ‘<span class="math inline">\(hardly\)</span> fun’</p>
+</section>
+<section id="sentiment" class="level4">
+<h4 class="anchored" data-anchor-id="sentiment">Sentiment</h4>
+<p>measures emotional states such as happy or sad</p>
+</section>
+<section id="subject-object-identification" class="level4">
+<h4 class="anchored" data-anchor-id="subject-object-identification">Subject-Object Identification</h4>
+<p>classifies sentences as either subjective or objective</p>
 </section>
 </section>
 <section id="topic-modelling" class="level3">
 <h3 class="anchored" data-anchor-id="topic-modelling">Topic Modelling</h3>
-<p>Captures the underlying themes that appear in documents #### Latent Dirichlet Allocation (LDA)<br>
-generates <span class="math inline">\(k\)</span> topics by first assigning each word to a random topic, then iteratively updating assignments based on parameters <span class="math inline">\(\alpha\)</span>, the mix of topics per document, and <span class="math inline">\(\beta\)</span>, the distribution of words per topic</p>
+<p>Captures the underlying themes that appear in documents</p>
+<section id="latent-dirichlet-allocation-lda" class="level4">
+<h4 class="anchored" data-anchor-id="latent-dirichlet-allocation-lda">Latent Dirichlet Allocation (LDA)</h4>
+<p>generates <span class="math inline">\(k\)</span> topics by first assigning each word to a random topic, then iteratively updating assignments based on parameters <span class="math inline">\(\alpha\)</span>, the mix of topics per document, and <span class="math inline">\(\beta\)</span>, the distribution of words per topic</p>
+</section>
 <section id="latent-semantic-analysis-lsa" class="level4">
 <h4 class="anchored" data-anchor-id="latent-semantic-analysis-lsa">Latent Semantic Analysis (LSA)</h4>
 <p>identifies patterns using tf-idf scores and reduces data to <span class="math inline">\(k\)</span> dimensions through SVD</p>
